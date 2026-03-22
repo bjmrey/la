@@ -9,6 +9,7 @@
 :root {
   --ink: #0A0A0A;
   --paper: #F5F0E8;
+  --paper-alt: #EBE5D8;
   --gold: #9A7209;
   --gold-light: #C49A1A;
   --gold-pale: #F0E6C8;
@@ -22,844 +23,157 @@
   --sans: 'DM Sans', sans-serif;
   --mono: 'JetBrains Mono', monospace;
 }
-
 * { margin: 0; padding: 0; box-sizing: border-box; }
 ::selection { background: var(--gold); color: var(--paper); }
 html { scroll-behavior: smooth; }
+body { font-family: var(--sans); background: var(--paper); color: var(--ink); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
 
-body {
-  font-family: var(--sans);
-  background: var(--paper);
-  color: var(--ink);
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-}
+.hero { min-height: 100vh; display: flex; flex-direction: column; position: relative; background: var(--ink); color: var(--paper); overflow: hidden; }
+.hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 20% 80%, rgba(184,134,11,0.08) 0%, transparent 70%), radial-gradient(ellipse 60% 80% at 80% 20%, rgba(26,58,42,0.15) 0%, transparent 70%); z-index: 1; }
+.hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(184,134,11,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(184,134,11,0.04) 1px, transparent 1px); background-size: 80px 80px; z-index: 1; }
+.hero-nav { position: relative; z-index: 10; display: flex; justify-content: space-between; align-items: center; padding: 2rem 4rem; border-bottom: 1px solid rgba(245,240,232,0.08); }
+.hero-nav .logo { font-family: var(--serif); font-size: 1.15rem; letter-spacing: 0.25em; text-transform: uppercase; font-weight: 500; color: var(--gold-light); }
+.hero-nav .nav-cta { font-family: var(--sans); font-size: 0.95rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.75rem 2rem; border: 1px solid var(--gold-light); color: var(--paper); text-decoration: none; transition: all 0.4s ease; }
+.hero-nav .nav-cta:hover { background: var(--gold-light); color: var(--ink); }
+.hero-content { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 4rem; position: relative; z-index: 10; max-width: 1400px; margin: 0 auto; width: 100%; }
+.hero-tag { font-family: var(--mono); font-size: 0.95rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 2.5rem; opacity: 0; animation: fadeUp 0.8s ease 0.3s forwards; display: flex; align-items: center; gap: 1rem; }
+.hero-tag::before { content: ''; width: 40px; height: 1px; background: var(--gold-light); }
+.hero-title { font-family: var(--serif); font-size: clamp(2.8rem, 6.5vw, 6rem); font-weight: 300; line-height: 1.08; max-width: 900px; opacity: 0; animation: fadeUp 0.8s ease 0.5s forwards; }
+.hero-title em { font-style: italic; color: var(--gold-light); }
+.hero-baseline { font-family: var(--serif); font-size: clamp(1.2rem, 2vw, 1.55rem); font-weight: 400; font-style: italic; color: var(--light-text); max-width: 680px; line-height: 1.6; margin-top: 2rem; opacity: 0; animation: fadeUp 0.8s ease 0.7s forwards; }
+.hero-bottom { position: relative; z-index: 10; padding: 2rem 4rem; border-top: 1px solid rgba(245,240,232,0.08); display: flex; justify-content: space-between; align-items: center; font-family: var(--mono); font-size: 0.92rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--light-text-secondary); }
+.scroll-indicator { display: flex; align-items: center; gap: 0.8rem; animation: pulse 2s ease infinite; }
+.scroll-indicator .line { width: 20px; height: 1px; background: var(--gold-light); animation: expandLine 2s ease infinite; }
 
-/* ── HERO ── */
-.hero {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  background: var(--ink);
-  color: var(--paper);
-  overflow: hidden;
-}
+/* Intro band — slightly darker than paper for contrast with section 01 */
+.intro-band { background: var(--paper-alt); }
+.manifesto { padding: 7rem 4rem 3rem; max-width: 900px; margin: 0 auto; }
+.manifesto p { font-family: var(--serif); font-size: clamp(1.3rem, 2.2vw, 1.7rem); line-height: 1.85; color: var(--slate); margin-bottom: 1.5rem; }
+.manifesto .emphasis { font-weight: 600; color: var(--ink); font-style: italic; }
+.manifesto .gold-line { display: block; width: 60px; height: 2px; background: var(--gold); margin: 2.5rem 0; }
 
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 80% 60% at 20% 80%, rgba(184, 134, 11, 0.08) 0%, transparent 70%),
-    radial-gradient(ellipse 60% 80% at 80% 20%, rgba(26, 58, 42, 0.15) 0%, transparent 70%);
-  z-index: 1;
-}
+.section-header { padding: 0 4rem; max-width: 1400px; margin: 0 auto 4rem; }
+.section-number { font-family: var(--mono); font-size: 0.95rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+.section-title { font-family: var(--serif); font-size: clamp(2.2rem, 4.5vw, 3.8rem); font-weight: 300; line-height: 1.15; color: var(--ink); }
 
-.hero-grid {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(184, 134, 11, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(184, 134, 11, 0.04) 1px, transparent 1px);
-  background-size: 80px 80px;
-  z-index: 1;
-}
+.pillars { padding: 8rem 4rem; background: var(--paper); }
+.pillars-grid { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.pillar { background: var(--paper); padding: 3rem 2.5rem; transition: all 0.5s ease; }
+.pillar:hover { background: rgba(184,134,11,0.03); }
+.pillar-icon { font-family: var(--mono); font-size: 0.95rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--line); }
+.pillar h3 { font-family: var(--serif); font-size: 1.6rem; font-weight: 500; margin-bottom: 1.2rem; line-height: 1.3; color: var(--ink); }
+.pillar p { font-family: var(--sans); font-size: 1.05rem; line-height: 1.75; color: var(--muted); margin-bottom: 1rem; }
+.usage { font-family: var(--sans); font-size: 1rem; color: var(--gold); font-style: italic; display: block; }
+.usage::before { content: '\2192  '; }
 
-.hero-nav {
-  position: relative;
-  z-index: 10;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 2rem 4rem;
-  border-bottom: 1px solid rgba(245, 240, 232, 0.08);
-}
+.architecture { padding: 10rem 4rem; background: var(--deep-green); color: var(--paper); position: relative; overflow: hidden; }
+.architecture::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 100% 100% at 50% 0%, rgba(184,134,11,0.06) 0%, transparent 70%); }
+.arch-wrapper { max-width: 1400px; margin: 0 auto; position: relative; z-index: 2; }
+.arch-header { margin-bottom: 5rem; }
+.arch-header .section-number { color: var(--gold-light); }
+.arch-header .section-title { color: var(--paper); }
+.arch-items { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+.arch-item { border: 1px solid rgba(245,240,232,0.12); padding: 2.5rem; transition: all 0.4s ease; background: rgba(245,240,232,0.04); }
+.arch-item:hover { border-color: var(--gold-light); background: rgba(184,134,11,0.06); }
+.arch-item-label { font-family: var(--mono); font-size: 0.95rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 1rem; }
+.arch-item h4 { font-family: var(--serif); font-size: 1.45rem; font-weight: 500; margin-bottom: 0.8rem; line-height: 1.3; color: var(--paper); }
+.arch-item p { font-family: var(--sans); font-size: 1.05rem; line-height: 1.7; color: var(--light-text); margin-bottom: 0.8rem; }
+.arch-item .usage { color: var(--gold-light); }
 
-.hero-nav .logo {
-  font-family: var(--serif);
-  font-size: 1.15rem;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  font-weight: 500;
-  color: var(--gold-light);
-}
-
-.hero-nav .nav-cta {
-  font-family: var(--sans);
-  font-size: 0.92rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  padding: 0.75rem 2rem;
-  border: 1px solid var(--gold-light);
-  color: var(--paper);
-  text-decoration: none;
-  transition: all 0.4s ease;
-}
-
-.hero-nav .nav-cta:hover {
-  background: var(--gold-light);
-  color: var(--ink);
-}
-
-.hero-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 4rem;
-  position: relative;
-  z-index: 10;
-  max-width: 1400px;
-  margin: 0 auto;
-  width: 100%;
-}
-
-.hero-tag {
-  font-family: var(--mono);
-  font-size: 0.92rem;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--gold-light);
-  margin-bottom: 2.5rem;
-  opacity: 0;
-  animation: fadeUp 0.8s ease 0.3s forwards;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.hero-tag::before {
-  content: '';
-  width: 40px;
-  height: 1px;
-  background: var(--gold-light);
-}
-
-.hero-title {
-  font-family: var(--serif);
-  font-size: clamp(2.8rem, 6.5vw, 6rem);
-  font-weight: 300;
-  line-height: 1.08;
-  margin-bottom: 1rem;
-  opacity: 0;
-  animation: fadeUp 0.8s ease 0.5s forwards;
-}
-
-.hero-title em {
-  font-style: italic;
-  color: var(--gold-light);
-}
-
-.hero-title .thin {
-  font-weight: 300;
-  opacity: 0.8;
-}
-
-.hero-subtitle {
-  font-family: var(--serif);
-  font-size: clamp(1.2rem, 2vw, 1.6rem);
-  font-weight: 400;
-  font-style: italic;
-  color: var(--light-text);
-  max-width: 700px;
-  line-height: 1.6;
-  margin-top: 1.5rem;
-  opacity: 0;
-  animation: fadeUp 0.8s ease 0.7s forwards;
-}
-
-.hero-bottom {
-  position: relative;
-  z-index: 10;
-  padding: 2rem 4rem;
-  border-top: 1px solid rgba(245, 240, 232, 0.08);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-family: var(--mono);
-  font-size: 0.88rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--light-text-secondary);
-}
-
-.scroll-indicator {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  animation: pulse 2s ease infinite;
-}
-
-.scroll-indicator .line {
-  width: 20px;
-  height: 1px;
-  background: var(--gold-light);
-  animation: expandLine 2s ease infinite;
-}
-
-/* ── MANIFESTO ── */
-.manifesto {
-  padding: 10rem 4rem;
-  max-width: 900px;
-  margin: 0 auto;
-  position: relative;
-}
-
-.manifesto::before {
-  content: '\201C';
-  position: absolute;
-  top: 6rem;
-  left: 0;
-  font-family: var(--serif);
-  font-size: 8rem;
-  color: var(--gold);
-  opacity: 0.15;
-  line-height: 1;
-}
-
-.manifesto p {
-  font-family: var(--serif);
-  font-size: clamp(1.3rem, 2.2vw, 1.75rem);
-  line-height: 1.85;
-  color: var(--slate);
-  margin-bottom: 2rem;
-}
-
-.manifesto .emphasis {
-  font-weight: 600;
-  color: var(--ink);
-  font-style: italic;
-}
-
-.manifesto .gold-line {
-  display: block;
-  width: 60px;
-  height: 2px;
-  background: var(--gold);
-  margin: 3rem 0;
-}
-
-/* ── SECTION HEADERS ── */
-.section-header {
-  padding: 0 4rem;
-  max-width: 1400px;
-  margin: 0 auto 4rem;
-}
-
-.section-number {
-  font-family: var(--mono);
-  font-size: 0.9rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 1rem;
-}
-
-.section-title {
-  font-family: var(--serif);
-  font-size: clamp(2.2rem, 4.5vw, 3.8rem);
-  font-weight: 300;
-  line-height: 1.15;
-  color: var(--ink);
-}
-
-/* ── PILLARS ── */
-.pillars {
-  padding: 8rem 4rem;
-  background: var(--paper);
-}
-
-.pillars-grid {
-  max-width: 1400px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
-  background: var(--line);
-  border: 1px solid var(--line);
-}
-
-.pillar {
-  background: var(--paper);
-  padding: 3rem 2.5rem;
-  position: relative;
-  transition: all 0.5s ease;
-}
-
-.pillar:hover {
-  background: rgba(184, 134, 11, 0.03);
-}
-
-.pillar-icon {
-  font-family: var(--mono);
-  font-size: 0.9rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 2rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--line);
-}
-
-.pillar h3 {
-  font-family: var(--serif);
-  font-size: 1.6rem;
-  font-weight: 500;
-  margin-bottom: 1.5rem;
-  line-height: 1.3;
-  color: var(--ink);
-}
-
-.pillar p {
-  font-family: var(--sans);
-  font-size: 1.02rem;
-  line-height: 1.75;
-  color: var(--muted);
-}
-
-/* ── ARCHITECTURE ── */
-.architecture {
-  padding: 10rem 4rem;
-  background: var(--deep-green);
-  color: var(--paper);
-  position: relative;
-  overflow: hidden;
-}
-
-.architecture::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse 100% 100% at 50% 0%, rgba(184, 134, 11, 0.06) 0%, transparent 70%);
-}
-
-.arch-wrapper {
-  max-width: 1400px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 2;
-}
-
-.arch-header {
-  margin-bottom: 5rem;
-}
-
-.arch-header .section-number {
-  color: var(--gold-light);
-}
-
-.arch-header .section-title {
-  color: var(--paper);
-}
-
-.arch-items {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-}
-
-.arch-item {
-  border: 1px solid rgba(245, 240, 232, 0.12);
-  padding: 2.5rem;
-  position: relative;
-  transition: all 0.4s ease;
-  background: rgba(245, 240, 232, 0.04);
-}
-
-.arch-item:hover {
-  border-color: var(--gold-light);
-  background: rgba(184, 134, 11, 0.06);
-}
-
-.arch-item-label {
-  font-family: var(--mono);
-  font-size: 0.9rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--gold-light);
-  margin-bottom: 1rem;
-}
-
-.arch-item h4 {
-  font-family: var(--serif);
-  font-size: 1.45rem;
-  font-weight: 500;
-  margin-bottom: 0.8rem;
-  line-height: 1.3;
-  color: var(--paper);
-}
-
-.arch-item p {
-  font-family: var(--sans);
-  font-size: 1.02rem;
-  line-height: 1.7;
-  color: var(--light-text);
-}
-
-/* ── AUDIENCE ── */
-.audience {
-  padding: 10rem 4rem;
-}
-
-.audience-wrapper {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 6rem;
-  align-items: start;
-}
-
+.audience { padding: 10rem 4rem; background: var(--paper); }
+.audience-wrapper { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
 .audience-left .section-number { margin-bottom: 1rem; }
 .audience-left .section-title { margin-bottom: 2rem; }
+.audience-left p { font-family: var(--serif); font-size: 1.4rem; line-height: 1.8; color: var(--muted); font-style: italic; }
+.audience-profiles { display: flex; flex-direction: column; }
+.profile { padding: 1.8rem 0; border-bottom: 1px solid var(--line); display: flex; align-items: baseline; gap: 1.5rem; transition: all 0.3s ease; }
+.profile:first-child { border-top: 1px solid var(--line); }
+.profile:hover { padding-left: 1rem; }
+.profile-num { font-family: var(--mono); font-size: 0.95rem; color: var(--gold); letter-spacing: 0.1em; min-width: 30px; }
+.profile-name { font-family: var(--serif); font-size: 1.35rem; font-weight: 500; color: var(--ink); }
 
-.audience-left p {
-  font-family: var(--serif);
-  font-size: 1.25rem;
-  line-height: 1.8;
-  color: var(--muted);
-  font-style: italic;
-}
-
-.audience-profiles {
-  display: flex;
-  flex-direction: column;
-}
-
-.profile {
-  padding: 1.8rem 0;
-  border-bottom: 1px solid var(--line);
-  display: flex;
-  align-items: baseline;
-  gap: 1.5rem;
-  transition: all 0.3s ease;
-}
-
-.profile:first-child {
-  border-top: 1px solid var(--line);
-}
-
-.profile:hover {
-  padding-left: 1rem;
-}
-
-.profile-num {
-  font-family: var(--mono);
-  font-size: 0.9rem;
-  color: var(--gold);
-  letter-spacing: 0.1em;
-  min-width: 30px;
-}
-
-.profile-name {
-  font-family: var(--serif);
-  font-size: 1.3rem;
-  font-weight: 500;
-  color: var(--ink);
-}
-
-/* ── RIGOR ── */
-.rigor {
-  padding: 8rem 4rem;
-  background: var(--ink);
-  color: var(--paper);
-}
-
-.rigor-wrapper {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 6rem;
-  align-items: center;
-}
-
+.rigor { padding: 8rem 4rem; background: var(--ink); color: var(--paper); }
+.rigor-wrapper { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
 .rigor-text .section-number { color: var(--gold-light); }
 .rigor-text .section-title { color: var(--paper); margin-bottom: 2rem; }
+.rigor-text p { font-family: var(--sans); font-size: 1.1rem; line-height: 1.85; color: var(--light-text); margin-bottom: 1.5rem; }
+.rigor-text .key-line { font-weight: 500; color: var(--paper); font-style: italic; }
+.rigor-pillars { display: flex; flex-direction: column; gap: 2rem; }
+.rigor-pillar { padding: 2rem 2.5rem; border-left: 2px solid var(--gold-light); background: rgba(184,134,11,0.05); }
+.rigor-pillar h4 { font-family: var(--serif); font-size: 1.35rem; font-weight: 500; margin-bottom: 0.4rem; color: var(--paper); }
+.rigor-pillar p { font-family: var(--sans); font-size: 1.05rem; color: var(--light-text-secondary); margin: 0; }
 
-.rigor-text p {
-  font-family: var(--sans);
-  font-size: 1.05rem;
-  line-height: 1.85;
-  color: var(--light-text);
-  margin-bottom: 1.5rem;
-}
+/* Editions — slightly darker for contrast with pricing below */
+.editions { padding: 10rem 4rem; background: var(--paper-alt); }
+.editions-wrapper { max-width: 1200px; margin: 0 auto; }
+.editions-layout { display: grid; grid-template-columns: 1fr 1.2fr; gap: 6rem; align-items: start; }
+.editions-left .section-title { margin-bottom: 1.2rem; }
+.editions-meta { margin-bottom: 2rem; }
+.editions-intro { font-family: var(--serif); font-size: 1.3rem; line-height: 1.8; color: var(--muted); font-style: italic; margin-bottom: 1rem; }
+.editions-reserved { font-family: var(--mono); font-size: 0.95rem; letter-spacing: 0.1em; color: var(--gold); text-transform: uppercase; }
+.editions-rubrique { display: flex; align-items: baseline; gap: 1.5rem; padding: 1.5rem 0; border-bottom: 1px solid var(--line); transition: all 0.3s ease; }
+.editions-rubrique:first-child { border-top: 1px solid var(--line); }
+.editions-rubrique:hover { padding-left: 0.8rem; }
+.editions-rubrique.highlight { background: rgba(184,134,11,0.04); padding-left: 1rem; padding-right: 1rem; margin-left: -1rem; margin-right: -1rem; border-left: 2px solid var(--gold); border-bottom-color: transparent; }
+.editions-rubrique.highlight + .editions-rubrique { border-top: 1px solid var(--line); }
+.editions-rubrique-num { font-family: var(--mono); font-size: 0.95rem; color: var(--gold); letter-spacing: 0.1em; min-width: 28px; flex-shrink: 0; }
+.editions-rubrique h4 { font-family: var(--serif); font-size: 1.3rem; font-weight: 500; color: var(--ink); margin-bottom: 0.25rem; line-height: 1.3; }
+.editions-rubrique p { font-family: var(--sans); font-size: 1.05rem; color: var(--muted); line-height: 1.6; }
+.edition-badge { display: inline-block; font-family: var(--mono); font-size: 0.88rem; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.35rem 1rem; font-weight: 600; background: var(--deep-green); color: var(--paper); }
 
-.rigor-pillars {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-.rigor-pillar {
-  padding: 2rem 2.5rem;
-  border-left: 2px solid var(--gold-light);
-  background: rgba(184, 134, 11, 0.05);
-}
-
-.rigor-pillar h4 {
-  font-family: var(--serif);
-  font-size: 1.35rem;
-  font-weight: 500;
-  margin-bottom: 0.4rem;
-  color: var(--paper);
-}
-
-.rigor-pillar p {
-  font-family: var(--sans);
-  font-size: 1.02rem;
-  color: var(--light-text-secondary);
-  margin: 0;
-}
-
-/* ── EDITIONS ── */
-.editions {
-  padding: 10rem 4rem;
-  background: var(--paper);
-}
-
-.editions-wrapper {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.editions-layout {
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 6rem;
-  align-items: start;
-}
-
-.editions-left .section-title {
-  margin-bottom: 1.2rem;
-}
-
-.editions-meta {
-  margin-bottom: 2rem;
-}
-
-.editions-intro {
-  font-family: var(--serif);
-  font-size: 1.4rem;
-  line-height: 1.8;
-  color: var(--muted);
-  font-style: italic;
-  margin-bottom: 1rem;
-}
-
-.editions-reserved {
-  font-family: var(--mono);
-  font-size: 0.88rem;
-  letter-spacing: 0.1em;
-  color: var(--gold);
-  text-transform: uppercase;
-}
-
-.editions-rubrique {
-  display: flex;
-  align-items: baseline;
-  gap: 1.5rem;
-  padding: 1.5rem 0;
-  border-bottom: 1px solid var(--line);
-  transition: all 0.3s ease;
-}
-
-.editions-rubrique:first-child {
-  border-top: 1px solid var(--line);
-}
-
-.editions-rubrique:hover {
-  padding-left: 0.8rem;
-}
-
-.editions-rubrique.highlight {
-  background: rgba(184, 134, 11, 0.04);
-  padding-left: 1rem;
-  padding-right: 1rem;
-  margin-left: -1rem;
-  margin-right: -1rem;
-  border-left: 2px solid var(--gold);
-  border-bottom-color: transparent;
-}
-
-.editions-rubrique.highlight + .editions-rubrique {
-  border-top: 1px solid var(--line);
-}
-
-.editions-rubrique-num {
-  font-family: var(--mono);
-  font-size: 0.88rem;
-  color: var(--gold);
-  letter-spacing: 0.1em;
-  min-width: 28px;
-  flex-shrink: 0;
-}
-
-.editions-rubrique h4 {
-  font-family: var(--serif);
-  font-size: 1.3rem;
-  font-weight: 500;
-  color: var(--ink);
-  margin-bottom: 0.25rem;
-  line-height: 1.3;
-}
-
-.editions-rubrique p {
-  font-family: var(--sans);
-  font-size: 1rem;
-  color: var(--muted);
-  line-height: 1.6;
-}
-
-.edition-badge {
-  display: inline-block;
-  font-family: var(--mono);
-  font-size: 0.82rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  padding: 0.35rem 1rem;
-  font-weight: 600;
-}
-
-.edition-badge.upcoming {
-  background: var(--deep-green);
-  color: var(--paper);
-}
-
-/* ── PRICING ── */
-.pricing {
-  padding: 10rem 4rem;
-  background: linear-gradient(180deg, var(--paper) 0%, var(--gold-pale) 100%);
-}
-
-.pricing-wrapper {
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-.pricing-header {
-  text-align: center;
-  margin-bottom: 5rem;
-}
-
+.pricing { padding: 10rem 4rem; background: linear-gradient(180deg, var(--paper) 0%, var(--gold-pale) 100%); }
+.pricing-wrapper { max-width: 1100px; margin: 0 auto; }
+.pricing-header { text-align: center; margin-bottom: 5rem; }
 .pricing-header .section-number { margin-bottom: 1rem; }
 .pricing-header .section-title { margin-bottom: 1.5rem; }
-
-.pricing-header p {
-  font-family: var(--serif);
-  font-size: 1.25rem;
-  color: var(--muted);
-  font-style: italic;
-}
-
-.pricing-cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-}
-
-.pricing-card {
-  padding: 3.5rem;
-  border: 1px solid var(--line);
-  position: relative;
-  transition: all 0.4s ease;
-  background: var(--paper);
-}
-
-.pricing-card:hover {
-  border-color: var(--gold);
-}
-
-.pricing-card.featured {
-  background: var(--ink);
-  color: var(--paper);
-  border-color: var(--gold-light);
-}
-
+.pricing-header p { font-family: var(--sans); font-size: 1.15rem; color: var(--muted); }
+.pricing-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.pricing-card { padding: 3.5rem; border: 1px solid var(--line); position: relative; transition: all 0.4s ease; background: var(--paper); }
+.pricing-card:hover { border-color: var(--gold); }
+.pricing-card.featured { background: var(--ink); color: var(--paper); border-color: var(--gold-light); }
 .pricing-card.featured .pricing-label { color: var(--gold-light); }
 .pricing-card.featured .pricing-desc { color: var(--light-text); }
 .pricing-card.featured .pricing-price { color: var(--paper); }
-.pricing-card.featured .pricing-price-standard { color: var(--light-text-secondary); text-decoration-color: rgba(196, 154, 26, 0.6); }
-.pricing-card.featured .pricing-cta {
-  background: var(--gold-light);
-  color: var(--ink);
-  border-color: var(--gold-light);
-}
-.pricing-card.featured .pricing-cta:hover {
-  background: #D9AE2E;
-}
+.pricing-card.featured .pricing-standard { color: var(--light-text-secondary); text-decoration-color: rgba(196,154,26,0.6); }
+.pricing-card.featured .pricing-cta { background: var(--gold-light); color: var(--ink); border-color: var(--gold-light); }
+.pricing-card.featured .pricing-cta:hover { background: #D9AE2E; }
+.pricing-card.featured .pricing-anchor { color: var(--light-text-secondary); }
+.pricing-label { font-family: var(--mono); font-size: 0.95rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; }
+.pricing-card h3 { font-family: var(--serif); font-size: 1.9rem; font-weight: 500; margin-bottom: 1rem; }
+.pricing-price { font-family: var(--serif); font-size: 2.8rem; font-weight: 600; color: var(--ink); line-height: 1.1; margin-bottom: 0.3rem; }
+.pricing-price span { font-size: 1.1rem; font-weight: 400; opacity: 0.7; }
+.pricing-standard { font-family: var(--sans); font-size: 1.1rem; color: var(--muted); margin-bottom: 0.5rem; text-decoration: line-through; text-decoration-thickness: 2px; text-decoration-color: rgba(154,114,9,0.5); }
+.pricing-anchor { font-family: var(--sans); font-size: 1rem; color: var(--muted); font-style: italic; margin-bottom: 2rem; display: block; line-height: 1.6; }
+.pricing-desc { font-family: var(--sans); font-size: 1.1rem; line-height: 1.75; color: var(--muted); margin-bottom: 2.5rem; }
+.pricing-cta { display: inline-block; font-family: var(--sans); font-size: 0.95rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 1rem 2.5rem; border: 1px solid var(--ink); color: var(--ink); text-decoration: none; transition: all 0.4s ease; font-weight: 500; cursor: pointer; }
+.pricing-cta:hover { background: var(--ink); color: var(--paper); }
+.pricing-tier-select { width: 100%; font-family: var(--sans); font-size: 1.05rem; padding: 0.9rem 1.2rem; border: 1px solid var(--line); background: var(--paper); color: var(--ink); appearance: none; -webkit-appearance: none; cursor: pointer; margin-bottom: 1rem; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239A7209' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1.2rem center; padding-right: 3rem; }
+.pricing-tier-select:focus { outline: none; border-color: var(--gold); }
+.pricing-or-custom { font-family: var(--sans); font-size: 1rem; color: var(--muted); font-style: italic; margin-bottom: 2.5rem; display: block; }
 
-.pricing-badge-wrap {
-  position: absolute;
-  top: -1px;
-  right: 2rem;
-  background: var(--gold-light);
-  color: var(--ink);
-  font-family: var(--mono);
-  font-size: 0.82rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  padding: 0.45rem 1.1rem;
-  font-weight: 600;
-}
+.footer { padding: 4rem; background: var(--ink); display: flex; justify-content: space-between; align-items: center; }
+.footer-logo { font-family: var(--serif); font-size: 1.05rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold-light); }
+.footer-tagline { font-family: var(--serif); font-size: 1.12rem; font-style: italic; color: var(--light-text-secondary); max-width: 500px; text-align: right; line-height: 1.6; }
 
-.pricing-label {
-  font-family: var(--mono);
-  font-size: 0.9rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 1.5rem;
-}
+@keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes expandLine { 0%, 100% { width: 20px; } 50% { width: 40px; } }
+@keyframes pulse { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
+.reveal { opacity: 1; transform: translateY(0); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+.reveal.hidden { opacity: 0; transform: translateY(40px); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
 
-.pricing-card h3 {
-  font-family: var(--serif);
-  font-size: 1.9rem;
-  font-weight: 500;
-  margin-bottom: 1rem;
-}
-
-.pricing-price {
-  font-family: var(--serif);
-  font-size: 2.8rem;
-  font-weight: 600;
-  color: var(--ink);
-  line-height: 1.1;
-  margin-bottom: 0.3rem;
-}
-
-.pricing-price span {
-  font-size: 1.1rem;
-  font-weight: 400;
-  opacity: 0.7;
-}
-
-.pricing-price-standard {
-  font-family: var(--sans);
-  font-size: 1.05rem;
-  color: var(--muted);
-  margin-bottom: 2rem;
-  text-decoration: line-through;
-  text-decoration-thickness: 2px;
-  text-decoration-color: rgba(154, 114, 9, 0.6);
-}
-
-.pricing-desc {
-  font-family: var(--sans);
-  font-size: 1.05rem;
-  line-height: 1.75;
-  color: var(--muted);
-  margin-bottom: 1.5rem;
-}
-
-.pricing-deadline {
-  display: block;
-  font-family: var(--mono);
-  font-size: 0.88rem;
-  color: var(--gold);
-  margin-bottom: 2rem;
-  letter-spacing: 0.05em;
-}
-
-.pricing-card.featured .pricing-deadline {
-  color: var(--gold-light);
-}
-
-.pricing-cta {
-  display: inline-block;
-  font-family: var(--sans);
-  font-size: 0.95rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  padding: 1rem 2.5rem;
-  border: 1px solid var(--ink);
-  color: var(--ink);
-  text-decoration: none;
-  transition: all 0.4s ease;
-  font-weight: 500;
-  cursor: pointer;
-}
-
-.pricing-cta:hover {
-  background: var(--ink);
-  color: var(--paper);
-}
-
-/* ── FOOTER ── */
-.footer {
-  padding: 4rem;
-  background: var(--ink);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.footer-logo {
-  font-family: var(--serif);
-  font-size: 1.05rem;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--gold-light);
-}
-
-.footer-tagline {
-  font-family: var(--serif);
-  font-size: 1.12rem;
-  font-style: italic;
-  color: var(--light-text-secondary);
-  max-width: 500px;
-  text-align: right;
-  line-height: 1.6;
-}
-
-/* ── ANIMATIONS ── */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes expandLine {
-  0%, 100% { width: 20px; }
-  50% { width: 40px; }
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 0.6; }
-  50% { opacity: 1; }
-}
-
-.reveal {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.reveal.hidden {
-  opacity: 0;
-  transform: translateY(40px);
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ── RESPONSIVE ── */
 @media (max-width: 1024px) {
   .pillars-grid { grid-template-columns: repeat(2, 1fr); }
   .arch-items { grid-template-columns: 1fr; }
   .audience-wrapper { grid-template-columns: 1fr; gap: 3rem; }
   .rigor-wrapper { grid-template-columns: 1fr; gap: 4rem; }
-  .editions-grid { grid-template-columns: 1fr; }
   .editions-layout { grid-template-columns: 1fr; gap: 3rem; }
 }
-
 @media (max-width: 768px) {
   .hero-nav { padding: 1.5rem 2rem; }
   .hero-content { padding: 3rem 2rem; }
   .hero-bottom { padding: 1.5rem 2rem; flex-direction: column; gap: 1rem; }
-  .manifesto { padding: 6rem 2rem; }
+  .manifesto { padding: 5rem 2rem 2rem; }
   .section-header { padding: 0 2rem; }
   .pillars { padding: 5rem 2rem; }
   .pillars-grid { grid-template-columns: 1fr; }
@@ -876,295 +190,197 @@ body {
 </head>
 <body>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-grid"></div>
   <nav class="hero-nav">
     <div class="logo">Lex Africana Mining Intelligence</div>
-    <a href="#access" class="nav-cta">S'abonner</a>
+    <a href="#access" class="nav-cta">S’abonner</a>
   </nav>
   <div class="hero-content">
-    <div class="hero-tag">Bulletin d'intelligence juridique</div>
-    <h1 class="hero-title">
-      L'intelligence <em>juridique</em><br>
-      <span class="thin">du secteur minier</span><br>
-      africain
-    </h1>
-    <p class="hero-subtitle">
-      Chaque mois, une analyse de terrain écrite depuis l'Afrique, pour ceux qui y investissent.
-    </p>
+    <div class="hero-tag">Bulletin d’intelligence juridique</div>
+    <h1 class="hero-title">L’intelligence <em>juridique</em><br>du secteur minier africain</h1>
+    <p class="hero-baseline">Chaque mois, une analyse de terrain écrite depuis l’Afrique, pour ceux qui y investissent.</p>
   </div>
   <div class="hero-bottom">
-    <span>Lancement avril 2026</span>
-    <div class="scroll-indicator">
-      <span class="line"></span>
-      <span>Découvrir</span>
-    </div>
+    <span>Lancement mars 2026</span>
+    <div class="scroll-indicator"><span class="line"></span><span>Découvrir</span></div>
   </div>
 </section>
 
-<!-- MANIFESTO -->
+<div class="intro-band">
 <section class="manifesto">
-  <p class="reveal">
-    Codes miniers en mutation. Arbitrages investisseur-État en hausse. Clauses de stabilisation sous pression. Le secteur minier africain traverse une phase de recomposition accélérée — et les professionnels qui y opèrent ont besoin d'une lecture juridique claire, structurée et exploitable.
-  </p>
+  <p class="reveal">Codes miniers en mutation. Arbitrages investisseur-État en hausse. Clauses de stabilisation sous pression. Le secteur minier africain traverse une phase de recomposition accélérée, et la plupart des acteurs réagissent trop tard.</p>
   <span class="gold-line reveal"></span>
-  <p class="reveal">
-    <span class="emphasis">Lex Africana Mining Intelligence</span> est conçu pour cela. Chaque édition est un outil de décision : ce qui change, pourquoi c'est important, ce qu'il faut faire.
-  </p>
+  <p class="reveal"><span class="emphasis">Lex Africana Mining Intelligence</span> est conçu pour cela. Chaque édition est un outil de décision : ce qui change, pourquoi c’est important, ce qu’il faut faire.</p>
 </section>
+</div>
 
-<!-- PILLARS -->
 <section class="pillars">
   <div class="section-header reveal">
     <div class="section-number">01 — Ce que vous obtenez</div>
-    <h2 class="section-title">Quatre dimensions<br>d'intelligence</h2>
+    <h2 class="section-title">Quatre axes<br>d’analyse</h2>
   </div>
   <div class="pillars-grid reveal">
     <div class="pillar">
       <div class="pillar-icon">Dynamiques</div>
       <h3>Évolutions réglementaires</h3>
-      <p>Réformes des codes miniers, politiques de transformation locale, exigences de contenu local, participation étatique : les évolutions qui affectent directement les conventions et projets en cours.</p>
+      <p>Réformes des codes miniers, politiques de transformation locale, exigences de contenu local, participation étatique.</p>
+      <span class="usage">Anticiper les changements avant qu’ils n’impactent vos conventions</span>
     </div>
     <div class="pillar">
       <div class="pillar-icon">Opportunités</div>
       <h3>Projets en structuration</h3>
-      <p>Projets miniers et infrastructures en cours de structuration : Simandou, Lobito, minerais critiques. Acteurs, montages juridiques, fenêtres d'entrée.</p>
+      <p>Simandou, Lobito, minerais critiques. Acteurs, montages juridiques, fenêtres d’entrée.</p>
+      <span class="usage">Identifier les fenêtres d’investissement et les montages adaptés</span>
     </div>
     <div class="pillar">
       <div class="pillar-icon">Risques</div>
       <h3>Carte des risques juridiques</h3>
-      <p>Risques par juridiction : tensions fiscales (Ghana), quotas d'exportation (RDC), révocations de licences (Guinée), instabilité sahélienne. Signaux faibles et contentieux émergents.</p>
+      <p>Tensions fiscales (Ghana), quotas d’exportation (RDC), révocations de licences (Guinée), instabilité sahélienne.</p>
+      <span class="usage">Évaluer le risque contractuel par juridiction avant de s’engager</span>
     </div>
     <div class="pillar">
       <div class="pillar-icon">Arbitrage</div>
       <h3>Différends investisseur-État</h3>
-      <p>Suivi des arbitrages devant le CIRDI et la CCI. Tendances décisionnelles, stratégies contentieuses, implications des sentences récentes (Sundance c. Congo, règlement Barrick-Mali).</p>
+      <p>Suivi des arbitrages CIRDI et CCI. Sundance c. Congo, règlement Barrick-Mali, affaires guinéennes.</p>
+      <span class="usage">Calibrer votre stratégie contentieuse à partir des précédents récents</span>
     </div>
   </div>
 </section>
 
-<!-- ARCHITECTURE -->
 <section class="architecture">
   <div class="arch-wrapper">
     <div class="arch-header reveal">
       <div class="section-number">02 — Architecture éditoriale</div>
-      <h2 class="section-title" style="color: var(--paper)">Structuré pour<br>la décision</h2>
+      <h2 class="section-title" style="color: var(--paper)">Structuré pour éclairer la décision</h2>
     </div>
     <div class="arch-items">
-      <div class="arch-item reveal">
-        <div class="arch-item-label">Synthèse</div>
-        <h4>Executive Brief</h4>
-        <p>L'essentiel à retenir en quelques minutes. Les points clés de chaque édition, condensés pour une lecture rapide.</p>
-      </div>
-      <div class="arch-item reveal">
-        <div class="arch-item-label">Analyse</div>
-        <h4>Deep Dive</h4>
-        <p>Analyse approfondie d'un enjeu structurant. Exemple : jusqu'où les États africains peuvent-ils imposer la transformation locale sans heurter le droit international ?</p>
-      </div>
-      <div class="arch-item reveal">
-        <div class="arch-item-label">Projets</div>
-        <h4>Deal & Project Intelligence</h4>
-        <p>Cartographie des opportunités concrètes. Projets miniers, énergétiques, infrastructures en structuration.</p>
-      </div>
-      <div class="arch-item reveal">
-        <div class="arch-item-label">Contentieux</div>
-        <h4>Arbitration & Dispute Tracker</h4>
-        <p>Suivi et analyse des contentieux investisseur-État. Tendances arbitrales, positionnement des parties, implications pratiques.</p>
-      </div>
-      <div class="arch-item reveal">
-        <div class="arch-item-label">Régulation</div>
-        <h4>Regulatory Radar</h4>
-        <p>Tableau de suivi par juridiction : réforme en cours, niveau de tension, direction du risque. Actualisé chaque mois.</p>
-      </div>
-      <div class="arch-item reveal">
-        <div class="arch-item-label">Expertise</div>
-        <h4>Expert Insight</h4>
-        <p>Regard d'un praticien de premier plan sur un enjeu clé du secteur extractif africain.</p>
-      </div>
+      <div class="arch-item reveal"><div class="arch-item-label">Synthèse</div><h4>Executive Brief</h4><p>L’essentiel à retenir en quelques minutes.</p><span class="usage">Préparer comités d’investissement et réunions de direction</span></div>
+      <div class="arch-item reveal"><div class="arch-item-label">Analyse</div><h4>Deep Dive</h4><p>Analyse approfondie d’un enjeu structurant.</p><span class="usage">Structurer contrats et anticiper le risque réglementaire</span></div>
+      <div class="arch-item reveal"><div class="arch-item-label">Projets</div><h4>Deal &amp; Project Intelligence</h4><p>Cartographie des opportunités concrètes.</p><span class="usage">Sourcing et due diligence des opportunités</span></div>
+      <div class="arch-item reveal"><div class="arch-item-label">Contentieux</div><h4>Arbitration &amp; Dispute Tracker</h4><p>Suivi des contentieux investisseur-État.</p><span class="usage">Calibrer les stratégies de protection et de résolution</span></div>
+      <div class="arch-item reveal"><div class="arch-item-label">Régulation</div><h4>Regulatory Radar</h4><p>Tableau de suivi par juridiction, actualisé chaque mois.</p><span class="usage">Monitoring continu des juridictions cibles</span></div>
+      <div class="arch-item reveal"><div class="arch-item-label">Expertise</div><h4>Expert Insight</h4><p>Regard d’un praticien de premier plan.</p><span class="usage">Enrichir l’analyse interne avec une perspective de terrain</span></div>
     </div>
   </div>
 </section>
 
-<!-- AUDIENCE -->
 <section class="audience">
   <div class="audience-wrapper">
     <div class="audience-left reveal">
       <div class="section-number">03 — Pour qui</div>
       <h2 class="section-title">Pour ceux qui opèrent, structurent ou arbitrent</h2>
-      <p>Le bulletin s'adresse aux professionnels qui ont besoin d'une lecture juridique exigeante et directement exploitable du secteur minier africain.</p>
+      <p>Pour des acteurs déjà engagés ou en cours d’engagement sur le continent africain — qui ont besoin d’une lecture juridique exigeante et directement exploitable.</p>
     </div>
     <div class="audience-profiles reveal">
-      <div class="profile">
-        <span class="profile-num">01</span>
-        <span class="profile-name">Cabinets d'avocats et praticiens de l'arbitrage</span>
-      </div>
-      <div class="profile">
-        <span class="profile-num">02</span>
-        <span class="profile-name">Entreprises minières et opérateurs extractifs</span>
-      </div>
-      <div class="profile">
-        <span class="profile-num">03</span>
-        <span class="profile-name">Fonds d'investissement et institutions financières</span>
-      </div>
-      <div class="profile">
-        <span class="profile-num">04</span>
-        <span class="profile-name">Institutions publiques et régulateurs</span>
-      </div>
-      <div class="profile">
-        <span class="profile-num">05</span>
-        <span class="profile-name">Arbitres et institutions d'arbitrage</span>
-      </div>
+      <div class="profile"><span class="profile-num">01</span><span class="profile-name">Cabinets d’avocats et praticiens de l’arbitrage</span></div>
+      <div class="profile"><span class="profile-num">02</span><span class="profile-name">Entreprises minières et opérateurs extractifs</span></div>
+      <div class="profile"><span class="profile-num">03</span><span class="profile-name">Fonds d’investissement et institutions financières</span></div>
+      <div class="profile"><span class="profile-num">04</span><span class="profile-name">Institutions publiques et régulateurs</span></div>
+      <div class="profile"><span class="profile-num">05</span><span class="profile-name">Arbitres et institutions d’arbitrage</span></div>
     </div>
   </div>
 </section>
 
-<!-- RIGOR / MÉTHODE -->
 <section class="rigor">
   <div class="rigor-wrapper">
     <div class="rigor-text reveal">
       <div class="section-number">04 — Méthode</div>
       <h2 class="section-title">Écrit depuis le terrain</h2>
-      <p>Lex Africana Mining Intelligence n'est pas une veille compilée à distance. Chaque analyse est produite par des praticiens actifs dans le secteur extractif africain — avocats, arbitres, consultants — qui suivent les dossiers de l'intérieur.</p>
-      <p>La veille couvre systématiquement les sources primaires : décisions arbitrales, réformes législatives, publications des régulateurs, conventions minières.</p>
+      <p>Lex Africana Mining Intelligence n’est pas une veille compilée à distance. Chaque analyse est produite par des praticiens actifs dans le secteur extractif africain — avocats, arbitres, consultants — qui suivent les dossiers de l’intérieur.</p>
+      <p>La veille couvre systématiquement les sources primaires : décisions arbitrales, réformes législatives, publications des régulateurs, conventions minières.</p>
+      <p class="key-line">Une partie significative de ces informations n’est pas accessible de l’extérieur.</p>
     </div>
     <div class="rigor-pillars reveal">
-      <div class="rigor-pillar">
-        <h4>Perspective africaine</h4>
-        <p>Analyses produites depuis le continent, par des praticiens qui connaissent les juridictions de l'intérieur</p>
-      </div>
-      <div class="rigor-pillar">
-        <h4>Sources primaires</h4>
-        <p>Décisions arbitrales, codes miniers, textes réglementaires, conventions d'investissement</p>
-      </div>
-      <div class="rigor-pillar">
-        <h4>Réseau de praticiens</h4>
-        <p>Avocats, arbitres et consultants engagés dans les opérations extractives en Afrique</p>
-      </div>
+      <div class="rigor-pillar"><h4>Perspective africaine</h4><p>Analyses produites depuis le continent, par des praticiens qui connaissent les juridictions de l’intérieur</p></div>
+      <div class="rigor-pillar"><h4>Sources primaires</h4><p>Décisions arbitrales, codes miniers, textes réglementaires, conventions d’investissement</p></div>
+      <div class="rigor-pillar"><h4>Réseau de praticiens</h4><p>Avocats, arbitres et consultants engagés dans les opérations extractives en Afrique</p></div>
     </div>
   </div>
 </section>
 
-<!-- ÉDITION — Numéro Un -->
 <section class="editions">
   <div class="editions-wrapper">
     <div class="editions-layout reveal">
       <div class="editions-left">
-        <div class="section-number">05 — Première édition</div>
-        <h2 class="section-title">N°1</h2>
-        <div class="editions-meta">
-          <span class="edition-badge upcoming">Avril 2026</span>
-        </div>
-        <p class="editions-intro">Le premier numéro complet de Lex Africana Mining Intelligence. L'ensemble des rubriques récurrentes, enrichi d'un encart spécial consacré aux enseignements de la Paris Arbitration Week sur les défis de l'arbitrage minier en Afrique.</p>
-        <p class="editions-reserved">Réservé aux abonnés.</p>
+        <div class="section-number">05 — Dans le prochain numéro</div>
+        <h2 class="section-title">Numéro 1</h2>
+        <div class="editions-meta"><span class="edition-badge">Avril 2026</span></div>
+        <p class="editions-intro">Première édition complète de Lex Africana Mining Intelligence, structurée autour des rubriques clés du rapport.</p>
+        <p class="editions-intro">Inclut un encart spécial consacré aux enseignements de la Paris Arbitration Week 2026 sur les évolutions récentes de l’arbitrage minier en Afrique.</p>
+        <p class="editions-reserved">Accès réservé aux abonnés.</p>
       </div>
       <div class="editions-right">
-        <div class="editions-rubrique">
-          <span class="editions-rubrique-num">01</span>
-          <div>
-            <h4>Executive Brief</h4>
-            <p>Opportunités, risques et tendances du mois</p>
-          </div>
-        </div>
-        <div class="editions-rubrique">
-          <span class="editions-rubrique-num">02</span>
-          <div>
-            <h4>Deep Dive</h4>
-            <p>Transformation locale et ses limites en droit international</p>
-          </div>
-        </div>
-        <div class="editions-rubrique highlight">
-          <span class="editions-rubrique-num">03</span>
-          <div>
-            <h4>Encart spécial — Paris Arbitration Week</h4>
-            <p>Les enseignements de la PAW 2026 sur les défis de l'arbitrage minier en Afrique</p>
-          </div>
-        </div>
-        <div class="editions-rubrique">
-          <span class="editions-rubrique-num">04</span>
-          <div>
-            <h4>Arbitration & Dispute Tracker</h4>
-            <p>Suivi des contentieux investisseur-État</p>
-          </div>
-        </div>
-        <div class="editions-rubrique">
-          <span class="editions-rubrique-num">05</span>
-          <div>
-            <h4>Regulatory Radar</h4>
-            <p>Réformes des codes miniers et implications juridiques</p>
-          </div>
-        </div>
-        <div class="editions-rubrique">
-          <span class="editions-rubrique-num">06</span>
-          <div>
-            <h4>Expert Insight</h4>
-            <p>Regard d'un praticien de premier plan</p>
-          </div>
-        </div>
+        <div class="editions-rubrique"><span class="editions-rubrique-num">01</span><div><h4>Executive Brief</h4><p>Opportunités, risques et tendances du mois</p></div></div>
+        <div class="editions-rubrique highlight"><span class="editions-rubrique-num">02</span><div><h4>Encart spécial — Paris Arbitration Week</h4><p>Les enseignements de la PAW 2026 sur les défis de l’arbitrage minier en Afrique</p></div></div>
+        <div class="editions-rubrique"><span class="editions-rubrique-num">03</span><div><h4>Deep Dive</h4><p>Transformation locale et ses limites en droit international</p></div></div>
+        <div class="editions-rubrique"><span class="editions-rubrique-num">04</span><div><h4>Arbitration &amp; Dispute Tracker</h4><p>Suivi des contentieux investisseur-État</p></div></div>
+        <div class="editions-rubrique"><span class="editions-rubrique-num">05</span><div><h4>Regulatory Radar</h4><p>Réformes des codes miniers et implications juridiques</p></div></div>
+        <div class="editions-rubrique"><span class="editions-rubrique-num">06</span><div><h4>Expert Insight</h4><p>Regard d’un praticien de premier plan</p></div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PRICING -->
 <section class="pricing" id="access">
   <div class="pricing-wrapper">
     <div class="pricing-header reveal">
       <div class="section-number">06 — Accès</div>
-      <h2 class="section-title">Abonnement annuel</h2>
-      <p>Tarif de lancement réservé aux premiers abonnés — jusqu'au 29 mars 2026.</p>
+      <h2 class="section-title">Offre de lancement<br>Paris Arbitration Week</h2>
+      <p>Abonnez-vous avant le 29 mars 2026 pour bénéficier de tarifs préférentiels de lancement.</p>
     </div>
     <div class="pricing-cards">
       <div class="pricing-card featured reveal">
-        <div class="pricing-badge-wrap">Founding Circle</div>
         <div class="pricing-label">Individuel</div>
         <h3>Accès individuel</h3>
-        <div class="pricing-price">900 &euro; <span>HT / an</span></div>
-        <div class="pricing-price-standard">2 000 &euro; HT — tarif standard</div>
+        <div class="pricing-price">900 € <span>HT / an</span></div>
+        <div class="pricing-standard">2 000 € HT — tarif standard</div>
+        <span class="pricing-anchor">L’équivalent de moins d’une heure de conseil juridique externe.</span>
         <p class="pricing-desc">Accès complet à toutes les éditions mensuelles. Analyses, cartographies des risques et décryptages livrés directement.</p>
-        <span class="pricing-deadline">Avant le 29 mars 2026</span>
-        <a href="/cdn-cgi/l/email-protection#8cefe3e2f8edeff8cce0e9f4edeafee5efede2eda2efe3e1" class="pricing-cta">S'abonner au tarif fondateur</a>
+        <a href="mailto:contact@lexafricana.com" class="pricing-cta">S’abonner au tarif Founding Circle</a>
       </div>
       <div class="pricing-card reveal">
         <div class="pricing-label">Institutionnel</div>
         <h3>Accès institutionnel</h3>
-        <p class="pricing-desc">Diffusion multi-utilisateurs au sein de votre organisation. Services dédiés et accompagnement personnalisé. Tarif dégressif selon le nombre d'accès.</p>
-        <span class="pricing-deadline">Tarif sur demande</span>
-        <a href="/cdn-cgi/l/email-protection#c0a3afaeb4a1a3b480aca5b8a1a6b2a9a3a1aea1eea3afad" class="pricing-cta">Nous contacter</a>
+        <p class="pricing-desc">Diffusion multi-utilisateurs au sein de votre organisation. Services dédiés et accompagnement personnalisé.</p>
+        <select class="pricing-tier-select">
+          <option value="" disabled selected>Sélectionnez une formule</option>
+          <option value="5">5 personnes — 2 400 € HT / an au lieu de 5 000 €</option>
+          <option value="10">10 personnes — 4 000 € HT / an au lieu de 9 000 €</option>
+          <option value="20">20 personnes — 7 000 € HT / an au lieu de 15 000 €</option>
+          <option value="50">50 personnes — 9 000 € HT / an au lieu de 20 000 €</option>
+        </select>
+        <span class="pricing-or-custom">ou demander un devis sur mesure</span>
+        <a href="mailto:contact@lexafricana.com" class="pricing-cta">Obtenir une licence</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer class="footer">
   <div class="footer-logo">Lex Africana Mining Intelligence</div>
-  <div class="footer-tagline">
-    Chaque mois, ce qui change dans le droit minier africain —<br>
-    et ce que cela implique pour vos décisions.
-  </div>
+  <div class="footer-tagline">Chaque mois, ce qui change dans le droit minier africain —<br>et ce que cela implique pour vos décisions.</div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 document.querySelectorAll('.reveal').forEach(el => el.classList.add('hidden'));
-
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.remove('hidden');
-      entry.target.classList.add('visible');
-    }
+    if (entry.isIntersecting) { entry.target.classList.remove('hidden'); entry.target.classList.add('visible'); }
   });
 }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
 setTimeout(() => {
-  document.querySelectorAll('.reveal.hidden').forEach(el => {
-    el.classList.remove('hidden');
-    el.classList.add('visible');
-  });
+  document.querySelectorAll('.reveal.hidden').forEach(el => { el.classList.remove('hidden'); el.classList.add('visible'); });
 }, 1000);
-
 document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click'
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+</script>
+
+</body>
+</html>
