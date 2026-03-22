@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lex Africana Intelligence Report</title>
+<title>Lex Africana Mining Intelligence</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -138,9 +138,9 @@ body {
 
 .hero-title {
   font-family: var(--serif);
-  font-size: clamp(3rem, 7vw, 6.5rem);
+  font-size: clamp(2.8rem, 6.5vw, 6rem);
   font-weight: 300;
-  line-height: 1.05;
+  line-height: 1.08;
   margin-bottom: 1rem;
   opacity: 0;
   animation: fadeUp 0.8s ease 0.5s forwards;
@@ -162,7 +162,7 @@ body {
   font-weight: 400;
   font-style: italic;
   color: var(--light-text);
-  max-width: 650px;
+  max-width: 700px;
   line-height: 1.6;
   margin-top: 1.5rem;
   opacity: 0;
@@ -224,11 +224,6 @@ body {
   line-height: 1.85;
   color: var(--slate);
   margin-bottom: 2rem;
-  text-indent: 2em;
-}
-
-.manifesto p:first-of-type {
-  text-indent: 0;
 }
 
 .manifesto .emphasis {
@@ -316,27 +311,11 @@ body {
   color: var(--ink);
 }
 
-.pillar ul {
-  list-style: none;
-  padding: 0;
-}
-
-.pillar li {
+.pillar p {
   font-family: var(--sans);
   font-size: 1.02rem;
-  line-height: 1.7;
+  line-height: 1.75;
   color: var(--muted);
-  padding: 0.4rem 0;
-  padding-left: 1.2rem;
-  position: relative;
-}
-
-.pillar li::before {
-  content: '\2014';
-  position: absolute;
-  left: 0;
-  color: var(--gold);
-  font-size: 0.9rem;
 }
 
 /* ── ARCHITECTURE ── */
@@ -534,10 +513,124 @@ body {
   margin: 0;
 }
 
+/* ── EDITIONS ── */
+.editions {
+  padding: 10rem 4rem;
+  background: var(--paper);
+}
+
+.editions-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.editions-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 6rem;
+  align-items: start;
+}
+
+.editions-left .section-title {
+  margin-bottom: 1.2rem;
+}
+
+.editions-meta {
+  margin-bottom: 2rem;
+}
+
+.editions-intro {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: var(--muted);
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.editions-reserved {
+  font-family: var(--mono);
+  font-size: 0.88rem;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+
+.editions-rubrique {
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--line);
+  transition: all 0.3s ease;
+}
+
+.editions-rubrique:first-child {
+  border-top: 1px solid var(--line);
+}
+
+.editions-rubrique:hover {
+  padding-left: 0.8rem;
+}
+
+.editions-rubrique.highlight {
+  background: rgba(184, 134, 11, 0.04);
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-left: -1rem;
+  margin-right: -1rem;
+  border-left: 2px solid var(--gold);
+  border-bottom-color: transparent;
+}
+
+.editions-rubrique.highlight + .editions-rubrique {
+  border-top: 1px solid var(--line);
+}
+
+.editions-rubrique-num {
+  font-family: var(--mono);
+  font-size: 0.88rem;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  min-width: 28px;
+  flex-shrink: 0;
+}
+
+.editions-rubrique h4 {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 0.25rem;
+  line-height: 1.3;
+}
+
+.editions-rubrique p {
+  font-family: var(--sans);
+  font-size: 1rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.edition-badge {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.35rem 1rem;
+  font-weight: 600;
+}
+
+.edition-badge.upcoming {
+  background: var(--deep-green);
+  color: var(--paper);
+}
+
 /* ── PRICING ── */
 .pricing {
   padding: 10rem 4rem;
-  background: var(--paper);
+  background: linear-gradient(180deg, var(--paper) 0%, var(--gold-pale) 100%);
 }
 
 .pricing-wrapper {
@@ -571,6 +664,7 @@ body {
   border: 1px solid var(--line);
   position: relative;
   transition: all 0.4s ease;
+  background: var(--paper);
 }
 
 .pricing-card:hover {
@@ -585,6 +679,8 @@ body {
 
 .pricing-card.featured .pricing-label { color: var(--gold-light); }
 .pricing-card.featured .pricing-desc { color: var(--light-text); }
+.pricing-card.featured .pricing-price { color: var(--paper); }
+.pricing-card.featured .pricing-price-standard { color: var(--light-text-secondary); text-decoration-color: rgba(196, 154, 26, 0.6); }
 .pricing-card.featured .pricing-cta {
   background: var(--gold-light);
   color: var(--ink);
@@ -594,7 +690,7 @@ body {
   background: #D9AE2E;
 }
 
-.pricing-badge {
+.pricing-badge-wrap {
   position: absolute;
   top: -1px;
   right: 2rem;
@@ -624,12 +720,50 @@ body {
   margin-bottom: 1rem;
 }
 
+.pricing-price {
+  font-family: var(--serif);
+  font-size: 2.8rem;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.1;
+  margin-bottom: 0.3rem;
+}
+
+.pricing-price span {
+  font-size: 1.1rem;
+  font-weight: 400;
+  opacity: 0.7;
+}
+
+.pricing-price-standard {
+  font-family: var(--sans);
+  font-size: 1.05rem;
+  color: var(--muted);
+  margin-bottom: 2rem;
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+  text-decoration-color: rgba(154, 114, 9, 0.6);
+}
+
 .pricing-desc {
   font-family: var(--sans);
   font-size: 1.05rem;
   line-height: 1.75;
   color: var(--muted);
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.pricing-deadline {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.88rem;
+  color: var(--gold);
+  margin-bottom: 2rem;
+  letter-spacing: 0.05em;
+}
+
+.pricing-card.featured .pricing-deadline {
+  color: var(--gold-light);
 }
 
 .pricing-cta {
@@ -650,64 +784,6 @@ body {
 .pricing-cta:hover {
   background: var(--ink);
   color: var(--paper);
-}
-
-/* ── LAUNCH ── */
-.launch {
-  padding: 10rem 4rem;
-  background: linear-gradient(180deg, var(--paper) 0%, var(--gold-pale) 100%);
-  text-align: center;
-  position: relative;
-}
-
-.launch-wrapper {
-  max-width: 800px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 2;
-}
-
-.launch .section-number { margin-bottom: 1rem; text-align: center; }
-
-.launch-title {
-  font-family: var(--serif);
-  font-size: clamp(2rem, 4vw, 3.2rem);
-  font-weight: 300;
-  line-height: 1.3;
-  margin-bottom: 2rem;
-}
-
-.launch-title em {
-  font-style: italic;
-  color: var(--gold);
-}
-
-.launch p {
-  font-family: var(--serif);
-  font-size: 1.25rem;
-  line-height: 1.8;
-  color: var(--muted);
-  margin-bottom: 1rem;
-}
-
-.launch-cta {
-  display: inline-block;
-  margin-top: 2.5rem;
-  font-family: var(--sans);
-  font-size: 0.95rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  padding: 1.2rem 3.5rem;
-  background: var(--ink);
-  color: var(--paper);
-  text-decoration: none;
-  transition: all 0.4s ease;
-  font-weight: 500;
-}
-
-.launch-cta:hover {
-  background: var(--gold);
-  color: var(--ink);
 }
 
 /* ── FOOTER ── */
@@ -732,7 +808,7 @@ body {
   font-size: 1.12rem;
   font-style: italic;
   color: var(--light-text-secondary);
-  max-width: 450px;
+  max-width: 500px;
   text-align: right;
   line-height: 1.6;
 }
@@ -753,7 +829,6 @@ body {
   50% { opacity: 1; }
 }
 
-/* Reveal: visible by default, enhanced with JS */
 .reveal {
   opacity: 1;
   transform: translateY(0);
@@ -776,6 +851,8 @@ body {
   .arch-items { grid-template-columns: 1fr; }
   .audience-wrapper { grid-template-columns: 1fr; gap: 3rem; }
   .rigor-wrapper { grid-template-columns: 1fr; gap: 4rem; }
+  .editions-grid { grid-template-columns: 1fr; }
+  .editions-layout { grid-template-columns: 1fr; gap: 3rem; }
 }
 
 @media (max-width: 768px) {
@@ -789,9 +866,9 @@ body {
   .architecture { padding: 6rem 2rem; }
   .audience { padding: 6rem 2rem; }
   .rigor { padding: 5rem 2rem; }
+  .editions { padding: 6rem 2rem; }
   .pricing { padding: 6rem 2rem; }
   .pricing-cards { grid-template-columns: 1fr; }
-  .launch { padding: 6rem 2rem; }
   .footer { padding: 2rem; flex-direction: column; gap: 1.5rem; text-align: center; }
   .footer-tagline { text-align: center; }
 }
@@ -803,22 +880,22 @@ body {
 <section class="hero">
   <div class="hero-grid"></div>
   <nav class="hero-nav">
-    <div class="logo">Lex Africana</div>
+    <div class="logo">Lex Africana Mining Intelligence</div>
     <a href="#access" class="nav-cta">S'abonner</a>
   </nav>
   <div class="hero-content">
-    <div class="hero-tag">Intelligence Report</div>
+    <div class="hero-tag">Bulletin d'intelligence juridique</div>
     <h1 class="hero-title">
       L'intelligence <em>juridique</em><br>
       <span class="thin">du secteur minier</span><br>
       africain
     </h1>
     <p class="hero-subtitle">
-      Risques réglementaires. Contentieux émergents. Structuration des investissements. 
+      Chaque mois, une analyse de terrain — écrite depuis l'Afrique, pour ceux qui y investissent.
     </p>
   </div>
   <div class="hero-bottom">
-    <span>Lancement 2026</span>
+    <span>Lancement mars 2026</span>
     <div class="scroll-indicator">
       <span class="line"></span>
       <span>Découvrir</span>
@@ -829,14 +906,11 @@ body {
 <!-- MANIFESTO -->
 <section class="manifesto">
   <p class="reveal">
-    Codes miniers en mutation. Arbitrages investisseur-État en hausse. Clauses de stabilisation sous pression.
+    Codes miniers en mutation. Arbitrages investisseur-État en hausse. Clauses de stabilisation sous pression. Le secteur minier africain traverse une phase de recomposition accélérée — et les professionnels qui y opèrent ont besoin d'une lecture juridique claire, structurée et exploitable.
   </p>
   <span class="gold-line reveal"></span>
   <p class="reveal">
-    Le secteur minier africain traverse une phase de recomposition accélérée, et les professionnels qui y opèrent ont besoin d'une lecture juridique <span class="emphasis">claire, structurée et exploitable.</span>
-  </p>
-  <p class="reveal">
-    Lex Africa Mining Intelligence est conçu pour cela. Chaque édition est un outil de décision : <span class="emphasis">ce qui change, pourquoi c'est important, ce qu'il faut faire.</span>
+    <span class="emphasis">Lex Africana Mining Intelligence</span> est conçu pour cela. Chaque édition est un outil de décision : ce qui change, pourquoi c'est important, ce qu'il faut faire.
   </p>
 </section>
 
@@ -849,39 +923,23 @@ body {
   <div class="pillars-grid reveal">
     <div class="pillar">
       <div class="pillar-icon">Dynamiques</div>
-      <h3>Vision claire des dynamiques en cours</h3>
-      <ul>
-        <li>Évolutions du droit de l'investissement et de l'arbitrage</li>
-        <li>Réformes réglementaires à fort impact</li>
-        <li>Tendances structurelles par secteur et juridiction</li>
-      </ul>
+      <h3>Évolutions réglementaires</h3>
+      <p>Réformes des codes miniers, politiques de transformation locale, exigences de contenu local, participation étatique : les évolutions qui affectent directement les conventions et projets en cours.</p>
     </div>
     <div class="pillar">
       <div class="pillar-icon">Opportunités</div>
-      <h3>Identification précise des opportunités</h3>
-      <ul>
-        <li>Projets miniers, énergétiques et d'infrastructures</li>
-        <li>Acteurs clés, montages juridiques, points d'entrée</li>
-        <li>Analyse des fenêtres d'investissement</li>
-      </ul>
+      <h3>Projets en structuration</h3>
+      <p>Projets miniers et infrastructures en cours de structuration : Simandou, Lobito, minerais critiques. Acteurs, montages juridiques, fenêtres d'entrée.</p>
     </div>
     <div class="pillar">
       <div class="pillar-icon">Risques</div>
-      <h3>Lecture anticipée des risques</h3>
-      <ul>
-        <li>Zones de tension juridique et politique</li>
-        <li>Contentieux émergents</li>
-        <li>Signaux faibles à fort impact</li>
-      </ul>
+      <h3>Carte des risques juridiques</h3>
+      <p>Risques par juridiction : tensions fiscales (Ghana), quotas d'exportation (RDC), révocations de licences (Guinée), instabilité sahélienne. Signaux faibles et contentieux émergents.</p>
     </div>
     <div class="pillar">
       <div class="pillar-icon">Arbitrage</div>
-      <h3>Pratiques arbitrales africaines</h3>
-      <ul>
-        <li>Évolutions de la Lex Africana Arbitralis</li>
-        <li>Positionnement des États et investisseurs</li>
-        <li>Tendances décisionnelles et institutionnelles</li>
-      </ul>
+      <h3>Différends investisseur-État</h3>
+      <p>Suivi des arbitrages devant le CIRDI et la CCI. Tendances décisionnelles, stratégies contentieuses, implications des sentences récentes (Sundance c. Congo, règlement Barrick-Mali).</p>
     </div>
   </div>
 </section>
@@ -902,27 +960,27 @@ body {
       <div class="arch-item reveal">
         <div class="arch-item-label">Analyse</div>
         <h4>Deep Dive</h4>
-        <p>Analyse approfondie d'un enjeu stratégique majeur. Contexte, implications, scénarios.</p>
+        <p>Analyse approfondie d'un enjeu structurant. Exemple : jusqu'où les États africains peuvent-ils imposer la transformation locale sans heurter le droit international ?</p>
       </div>
       <div class="arch-item reveal">
         <div class="arch-item-label">Projets</div>
         <h4>Deal & Project Intelligence</h4>
-        <p>Cartographie des opportunités concrètes. Projets miniers, énergétiques, infrastructures.</p>
+        <p>Cartographie des opportunités concrètes. Projets miniers, énergétiques, infrastructures en structuration.</p>
       </div>
       <div class="arch-item reveal">
         <div class="arch-item-label">Contentieux</div>
         <h4>Arbitration & Dispute Tracker</h4>
-        <p>Suivi et lecture des contentieux. Tendances arbitrales et positionnement des parties.</p>
+        <p>Suivi et analyse des contentieux investisseur-État. Tendances arbitrales, positionnement des parties, implications pratiques.</p>
       </div>
       <div class="arch-item reveal">
         <div class="arch-item-label">Régulation</div>
         <h4>Regulatory Radar</h4>
-        <p>Décryptage des évolutions normatives. Réformes à fort impact par juridiction.</p>
+        <p>Tableau de suivi par juridiction : réforme en cours, niveau de tension, direction du risque. Actualisé chaque mois.</p>
       </div>
       <div class="arch-item reveal">
         <div class="arch-item-label">Expertise</div>
         <h4>Expert Insight</h4>
-        <p>Regard d'un praticien de premier plan. Analyse et perspective d'un expert reconnu.</p>
+        <p>Regard d'un praticien de premier plan sur un enjeu clé du secteur extractif africain.</p>
       </div>
     </div>
   </div>
@@ -934,24 +992,24 @@ body {
     <div class="audience-left reveal">
       <div class="section-number">03 — Pour qui</div>
       <h2 class="section-title">Pour ceux qui opèrent, structurent ou arbitrent</h2>
-      <p>Le rapport s'adresse aux professionnels qui ont besoin d'une lecture exigeante et directement exploitable des dynamiques africaines.</p>
+      <p>Le bulletin s'adresse aux professionnels qui ont besoin d'une lecture juridique exigeante et directement exploitable du secteur minier africain.</p>
     </div>
     <div class="audience-profiles reveal">
       <div class="profile">
         <span class="profile-num">01</span>
-        <span class="profile-name">Avocats et cabinets d'affaires</span>
+        <span class="profile-name">Cabinets d'avocats et praticiens de l'arbitrage</span>
       </div>
       <div class="profile">
         <span class="profile-num">02</span>
-        <span class="profile-name">Fonds d'investissement et institutions financières</span>
+        <span class="profile-name">Entreprises minières et opérateurs extractifs</span>
       </div>
       <div class="profile">
         <span class="profile-num">03</span>
-        <span class="profile-name">Entreprises engagées en Afrique</span>
+        <span class="profile-name">Fonds d'investissement et institutions financières</span>
       </div>
       <div class="profile">
         <span class="profile-num">04</span>
-        <span class="profile-name">Décideurs publics et régulateurs</span>
+        <span class="profile-name">Institutions publiques et régulateurs</span>
       </div>
       <div class="profile">
         <span class="profile-num">05</span>
@@ -961,27 +1019,88 @@ body {
   </div>
 </section>
 
-<!-- RIGOR -->
+<!-- RIGOR / MÉTHODE -->
 <section class="rigor">
   <div class="rigor-wrapper">
     <div class="rigor-text reveal">
-      <div class="section-number">04 — Exigence</div>
-      <h2 class="section-title">Une exigence éditoriale rare</h2>
-      <p>Le Lex Africana Intelligence Report est produit par un réseau de praticiens et d'experts engagés au plus près des réalités africaines.</p>
-      <p>Chaque analyse repose sur une méthodologie rigoureuse, une connaissance directe du terrain et une compréhension fine des dynamiques en jeu.</p>
+      <div class="section-number">04 — Méthode</div>
+      <h2 class="section-title">Écrit depuis le terrain</h2>
+      <p>Lex Africana Mining Intelligence n'est pas une veille compilée à distance. Chaque analyse est produite par des praticiens actifs dans le secteur extractif africain — avocats, arbitres, consultants — qui suivent les dossiers de l'intérieur.</p>
+      <p>La veille couvre systématiquement les sources primaires : décisions arbitrales, réformes législatives, publications des régulateurs, conventions minières.</p>
     </div>
     <div class="rigor-pillars reveal">
       <div class="rigor-pillar">
-        <h4>Connaissance de terrain</h4>
-        <p>Expertise directe des marchés et juridictions africaines</p>
+        <h4>Perspective africaine</h4>
+        <p>Analyses produites depuis le continent, par des praticiens qui connaissent les juridictions de l'intérieur</p>
       </div>
       <div class="rigor-pillar">
-        <h4>Rigueur juridique</h4>
-        <p>Analyse fondée sur une lecture précise du droit applicable</p>
+        <h4>Sources primaires</h4>
+        <p>Décisions arbitrales, codes miniers, textes réglementaires, conventions d'investissement</p>
       </div>
       <div class="rigor-pillar">
-        <h4>Intelligence politique et économique</h4>
-        <p>Compréhension des dynamiques qui structurent les décisions</p>
+        <h4>Réseau de praticiens</h4>
+        <p>Avocats, arbitres et consultants engagés dans les opérations extractives en Afrique</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ÉDITION — Numéro Un -->
+<section class="editions">
+  <div class="editions-wrapper">
+    <div class="editions-layout reveal">
+      <div class="editions-left">
+        <div class="section-number">05 — Première édition</div>
+        <h2 class="section-title">N°1</h2>
+        <div class="editions-meta">
+          <span class="edition-badge upcoming">Avril 2026</span>
+        </div>
+        <p class="editions-intro">Le premier numéro complet de Lex Africana Mining Intelligence. L'ensemble des rubriques récurrentes, enrichi d'un encart spécial consacré aux enseignements de la Paris Arbitration Week sur les défis de l'arbitrage minier en Afrique.</p>
+        <p class="editions-reserved">Réservé aux abonnés.</p>
+      </div>
+      <div class="editions-right">
+        <div class="editions-rubrique">
+          <span class="editions-rubrique-num">01</span>
+          <div>
+            <h4>Executive Brief</h4>
+            <p>Opportunités, risques et tendances du mois</p>
+          </div>
+        </div>
+        <div class="editions-rubrique">
+          <span class="editions-rubrique-num">02</span>
+          <div>
+            <h4>Deep Dive</h4>
+            <p>Transformation locale et ses limites en droit international</p>
+          </div>
+        </div>
+        <div class="editions-rubrique highlight">
+          <span class="editions-rubrique-num">03</span>
+          <div>
+            <h4>Encart spécial — Paris Arbitration Week</h4>
+            <p>Les enseignements de la PAW 2026 sur les défis de l'arbitrage minier en Afrique</p>
+          </div>
+        </div>
+        <div class="editions-rubrique">
+          <span class="editions-rubrique-num">04</span>
+          <div>
+            <h4>Arbitration & Dispute Tracker</h4>
+            <p>Suivi des contentieux investisseur-État</p>
+          </div>
+        </div>
+        <div class="editions-rubrique">
+          <span class="editions-rubrique-num">05</span>
+          <div>
+            <h4>Regulatory Radar</h4>
+            <p>Réformes des codes miniers et implications juridiques</p>
+          </div>
+        </div>
+        <div class="editions-rubrique">
+          <span class="editions-rubrique-num">06</span>
+          <div>
+            <h4>Expert Insight</h4>
+            <p>Regard d'un praticien de premier plan</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -991,52 +1110,42 @@ body {
 <section class="pricing" id="access">
   <div class="pricing-wrapper">
     <div class="pricing-header reveal">
-      <div class="section-number">05 — Accès</div>
+      <div class="section-number">06 — Accès</div>
       <h2 class="section-title">Abonnement annuel</h2>
-      <p>Un nombre limité d'abonnements fondateurs est ouvert à l'occasion du lancement.</p>
+      <p>Tarif de lancement réservé aux premiers abonnés — jusqu'au 29 mars 2026.</p>
     </div>
     <div class="pricing-cards">
-      <div class="pricing-card reveal">
+      <div class="pricing-card featured reveal">
+        <div class="pricing-badge-wrap">Founding Circle</div>
         <div class="pricing-label">Individuel</div>
         <h3>Accès individuel</h3>
-        <p class="pricing-desc">Accès complet à toutes les éditions mensuelles du Lex Africana Intelligence Report. Analyses, cartographies et décryptages livrés directement.</p>
-        <a href="#contact" class="pricing-cta">Demander l'accès</a>
+        <div class="pricing-price">900 &euro; <span>HT / an</span></div>
+        <div class="pricing-price-standard">2 000 &euro; HT — tarif standard</div>
+        <p class="pricing-desc">Accès complet à toutes les éditions mensuelles. Analyses, cartographies des risques et décryptages livrés directement.</p>
+        <span class="pricing-deadline">Avant le 29 mars 2026</span>
+        <a href="/cdn-cgi/l/email-protection#8cefe3e2f8edeff8cce0e9f4edeafee5efede2eda2efe3e1" class="pricing-cta">S'abonner au tarif fondateur</a>
       </div>
-      <div class="pricing-card featured reveal">
-        <div class="pricing-badge">Recommandé</div>
+      <div class="pricing-card reveal">
         <div class="pricing-label">Institutionnel</div>
         <h3>Accès institutionnel</h3>
-        <p class="pricing-desc">Diffusion multi-utilisateurs au sein de votre organisation. Services dédiés et accompagnement personnalisé.</p>
-        <a href="#contact" class="pricing-cta">Nous contacter</a>
+        <p class="pricing-desc">Diffusion multi-utilisateurs au sein de votre organisation. Services dédiés et accompagnement personnalisé. Tarif dégressif selon le nombre d'accès.</p>
+        <span class="pricing-deadline">Tarif sur demande</span>
+        <a href="/cdn-cgi/l/email-protection#c0a3afaeb4a1a3b480aca5b8a1a6b2a9a3a1aea1eea3afad" class="pricing-cta">Nous contacter</a>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- LAUNCH / CTA -->
-<section class="launch" id="contact">
-  <div class="launch-wrapper reveal">
-    <div class="section-number">Lancement</div>
-    <h2 class="launch-title">
-      Rejoindre les membres <em>fondateurs</em>
-    </h2>
-    <p>Accédez dès maintenant aux premières analyses et contribuez à structurer un outil d'intelligence conçu pour durer.</p>
-    <p>Dévoilé dans le prolongement des réflexions menées sur les projets miniers, énergétiques et d'infrastructures, et les nouveaux défis de l'arbitrage en Afrique.</p>
-    <a href="mailto:contact@lexafricana.com" class="launch-cta">Demande d'accès</a>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer class="footer">
-  <div class="footer-logo">Lex Africana Intelligence Report</div>
+  <div class="footer-logo">Lex Africana Mining Intelligence</div>
   <div class="footer-tagline">
-    Le temps de comprendre est un avantage.<br>
-    Le temps d'anticiper est un levier.
+    Chaque mois, ce qui change dans le droit minier africain —<br>
+    et ce que cela implique pour vos décisions.
   </div>
 </footer>
 
-<script>
-// Mark elements as hidden first, then observe
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 document.querySelectorAll('.reveal').forEach(el => el.classList.add('hidden'));
 
 const observer = new IntersectionObserver((entries) => {
@@ -1050,7 +1159,6 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// Fallback: if nothing is visible after 1s, force show all
 setTimeout(() => {
   document.querySelectorAll('.reveal.hidden').forEach(el => {
     el.classList.remove('hidden');
@@ -1059,13 +1167,4 @@ setTimeout(() => {
 }, 1000);
 
 document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    e.preventDefault();
-    const target = document.querySelector(a.getAttribute('href'));
-    if (target) target.scrollIntoView({ behavior: 'smooth' });
-  });
-});
-</script>
-
-</body>
-</html>
+  a.addEventListener('click'
