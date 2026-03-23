@@ -32,7 +32,7 @@ body { font-family: var(--sans); background: var(--paper); color: var(--ink); ov
 .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 20% 80%, rgba(184,134,11,0.08) 0%, transparent 70%), radial-gradient(ellipse 60% 80% at 80% 20%, rgba(26,58,42,0.15) 0%, transparent 70%); z-index: 1; }
 .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(184,134,11,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(184,134,11,0.04) 1px, transparent 1px); background-size: 80px 80px; z-index: 1; }
 .hero-nav { position: relative; z-index: 10; display: flex; justify-content: space-between; align-items: center; padding: 2rem 4rem; border-bottom: 1px solid rgba(245,240,232,0.08); }
-.hero-nav .logo { font-family: var(--serif); font-size: 1.15rem; letter-spacing: 0.25em; text-transform: uppercase; font-weight: 500; color: var(--gold-light); }
+.hero-nav .logo { font-family: var(--serif); font-size: 1.4rem; letter-spacing: 0.25em; text-transform: uppercase; font-weight: 500; color: var(--gold-light); }
 .hero-nav .nav-cta { font-family: var(--sans); font-size: 0.95rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.75rem 2rem; border: 1px solid var(--gold-light); color: var(--paper); text-decoration: none; transition: all 0.4s ease; }
 .hero-nav .nav-cta:hover { background: var(--gold-light); color: var(--ink); }
 .hero-content { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 4rem; position: relative; z-index: 10; max-width: 1400px; margin: 0 auto; width: 100%; }
@@ -149,9 +149,9 @@ body { font-family: var(--sans); background: var(--paper); color: var(--ink); ov
 .pricing-tier-select:focus { outline: none; border-color: var(--gold); }
 .pricing-or-custom { font-family: var(--sans); font-size: 1rem; color: var(--muted); font-style: italic; margin-bottom: 2.5rem; display: block; }
 
-.footer { padding: 4rem; background: var(--ink); display: flex; justify-content: space-between; align-items: center; }
-.footer-logo { font-family: var(--serif); font-size: 1.05rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold-light); }
-.footer-tagline { font-family: var(--serif); font-size: 1.12rem; font-style: italic; color: var(--light-text-secondary); max-width: 500px; text-align: right; line-height: 1.6; }
+.footer { padding: 4rem; background: var(--ink); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+.footer-logo { font-family: var(--serif); font-size: 1.4rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold-light); }
+.footer-tagline { font-family: var(--serif); font-size: 1.35rem; font-style: italic; color: var(--light-text-secondary); max-width: 550px; text-align: right; line-height: 1.6; }
 
 /* ═══ ORDER CONFIRMED OVERLAY ═══ */
 .order-overlay {
@@ -244,6 +244,19 @@ body { font-family: var(--sans); background: var(--paper); color: var(--ink); ov
   color: var(--ink);
 }
 
+.cgv-body h2 {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--gold-light);
+  margin-top: 2.5rem;
+  margin-bottom: 0.8rem;
+}
+
+.cgv-body p {
+  margin-bottom: 1rem;
+}
+
 @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes expandLine { 0%, 100% { width: 20px; } 50% { width: 40px; } }
 @keyframes pulse { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
@@ -293,6 +306,70 @@ body { font-family: var(--sans); background: var(--paper); color: var(--ink); ov
       <p>Les instructions pour accéder à votre espace en ligne vous seront également communiquées par email.</p>
     </div>
     <a href="#" class="order-back" id="orderBack">Retour au site</a>
+  </div>
+</div>
+
+<!-- ═══ CGV OVERLAY ═══ -->
+<div class="order-overlay" id="termsOverlay">
+  <div class="order-overlay-inner" style="text-align:left; max-width:800px;">
+    <h1 class="order-title" style="text-align:center; margin-bottom:2rem;">Conditions Générales de Vente</h1>
+    <div class="order-gold-line"></div>
+    <div class="order-body cgv-body">
+
+<h2>1. Objet</h2>
+<p>Les présentes Conditions Générales de Vente (CGV) régissent les relations contractuelles entre la société Ilini, située au 12 rue de la Part-Dieu, 69003 Lyon (ci-après « l'Éditeur »), et toute personne physique ou morale procédant à un achat via le site lexafricana.com (ci-après « le Client »).</p>
+<p>Elles encadrent la vente d'un service d'abonnement à une publication mensuelle d'analyse juridique et stratégique du secteur minier africain.</p>
+
+<h2>2. Description du service</h2>
+<p>Le service proposé consiste en un accès à un bulletin mensuel spécialisé, des contenus incluant notamment des synthèses exécutives, analyses approfondies, suivi réglementaire, veille contentieuse et arbitrale, et un accès éventuel à un espace en ligne réservé aux abonnés.</p>
+<p>Le contenu est fourni à titre informatif et ne constitue pas un conseil juridique individualisé.</p>
+
+<h2>3. Accès au service</h2>
+<p>L'accès au service est conditionné à la validation du paiement, à la création d'un compte (le cas échéant), et à la réception des identifiants transmis par email. Le Client est responsable de la confidentialité de ses identifiants.</p>
+
+<h2>4. Tarifs</h2>
+<p>Les prix sont indiqués en euros hors taxes (HT) ou toutes taxes comprises (TTC) selon le cas. Ils peuvent être modifiés à tout moment pour les nouvelles souscriptions, mais restent fermes pour la durée d'abonnement souscrite. Toute taxe applicable est facturée conformément à la réglementation en vigueur.</p>
+
+<h2>5. Modalités de paiement</h2>
+<p>Le paiement s'effectue en ligne (carte bancaire ou tout autre moyen proposé), en une fois ou de manière récurrente selon la formule choisie. Le paiement est exigible immédiatement lors de la commande.</p>
+
+<h2>6. Durée et renouvellement</h2>
+<p>L'abonnement est souscrit pour une durée déterminée (mensuelle ou annuelle) et peut être reconduit automatiquement sauf résiliation par le Client avant échéance. Les modalités précises de reconduction sont indiquées lors de l'achat.</p>
+
+<h2>7. Droit de rétractation</h2>
+<p>Conformément à la réglementation applicable, si le Client est un consommateur, il dispose d'un délai de 14 jours. Toutefois, ce droit peut être exclu en cas de fourniture immédiate de contenu numérique après accord exprès. Pour les clients professionnels, aucun droit de rétractation ne s'applique sauf disposition contraire.</p>
+
+<h2>8. Résiliation</h2>
+<p>Le Client peut résilier son abonnement à tout moment pour les abonnements sans engagement, ou à échéance pour les abonnements avec durée minimale. La résiliation prend effet à la fin de la période en cours. Aucun remboursement partiel n'est dû.</p>
+
+<h2>9. Propriété intellectuelle</h2>
+<p>Tous les contenus fournis sont protégés par le droit d'auteur et restent la propriété exclusive de l'Éditeur. Toute reproduction, diffusion, revente ou partage (même partiel) sans autorisation écrite est strictement interdite.</p>
+
+<h2>10. Usage autorisé</h2>
+<p>Le Client s'engage à utiliser les contenus uniquement pour ses besoins internes et à ne pas redistribuer les analyses à des tiers sans licence appropriée. Des licences spécifiques peuvent être proposées pour un usage collectif ou institutionnel.</p>
+
+<h2>11. Responsabilité</h2>
+<p>L'Éditeur s'efforce de fournir des informations fiables, mais ne garantit pas l'exhaustivité ou l'actualité des données et ne peut être tenu responsable des décisions prises sur la base des contenus fournis. Le service constitue un outil d'aide à la décision, non une prestation de conseil juridique personnalisée.</p>
+
+<h2>12. Disponibilité du service</h2>
+<p>L'Éditeur s'engage à fournir le service avec diligence, mais peut suspendre l'accès temporairement pour maintenance et ne saurait être tenu responsable des interruptions indépendantes de sa volonté.</p>
+
+<h2>13. Données personnelles</h2>
+<p>Les données personnelles sont traitées conformément à la réglementation applicable (RGPD) et à la politique de confidentialité disponible sur le site. Le Client dispose d'un droit d'accès, de rectification et de suppression.</p>
+
+<h2>14. Force majeure</h2>
+<p>Aucune des parties ne pourra être tenue responsable en cas de force majeure empêchant l'exécution du contrat.</p>
+
+<h2>15. Droit applicable et juridiction compétente</h2>
+<p>Les présentes CGV sont régies par le droit français. Tout litige sera soumis aux tribunaux compétents du ressort du siège de l'Éditeur, sauf disposition légale contraire.</p>
+
+<h2>16. Contact</h2>
+<p>Pour toute question : <a href="mailto:contact@lexafricana.com">contact@lexafricana.com</a></p>
+
+    </div>
+    <div style="text-align:center; margin-top:3rem;">
+      <a href="#" class="order-back" id="termsBack">Retour au site</a>
+    </div>
   </div>
 </div>
 
@@ -465,30 +542,50 @@ body { font-family: var(--sans); background: var(--paper); color: var(--ink); ov
 <footer class="footer">
   <div class="footer-logo">Lex Africana Mining Intelligence</div>
   <div class="footer-tagline">Chaque mois, ce qui change dans le droit minier africain —<br>et ce que cela implique pour vos décisions.</div>
+  <div style="width:100%; text-align:center; margin-top:2.5rem; padding-top:1.5rem; border-top:1px solid rgba(245,240,232,0.06); font-family:var(--sans); font-size:0.88rem; color:rgba(245,240,232,0.35); letter-spacing:0.02em;">Publié par Ilini, 12 rue de la Part-Dieu, 69003 Lyon, France · lexafricana.com · <a href="#/terms" style="color:rgba(245,240,232,0.35); text-decoration:none; border-bottom:1px solid rgba(245,240,232,0.15);">Conditions générales de vente</a></div>
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ═══ ORDER CONFIRMED LOGIC ═══
-function checkOrderConfirmed() {
-  const overlay = document.getElementById('orderOverlay');
-  if (window.location.hash === '#/order-confirmed') {
-    overlay.classList.add('active');
+function checkHash() {
+  const orderOverlay = document.getElementById('orderOverlay');
+  const termsOverlay = document.getElementById('termsOverlay');
+  const hash = window.location.hash;
+
+  if (hash === '#/order-confirmed') {
+    orderOverlay.classList.add('active');
+    termsOverlay.classList.remove('active');
+    document.body.style.overflow = 'hidden';
+  } else if (hash === '#/terms') {
+    termsOverlay.classList.add('active');
+    orderOverlay.classList.remove('active');
     document.body.style.overflow = 'hidden';
   } else {
-    overlay.classList.remove('active');
+    orderOverlay.classList.remove('active');
+    termsOverlay.classList.remove('active');
     document.body.style.overflow = '';
   }
 }
 
-document.getElementById('orderBack').addEventListener('click', function(e) {
-  e.preventDefault();
+function closeOverlays() {
   history.pushState(null, '', window.location.pathname);
   document.getElementById('orderOverlay').classList.remove('active');
+  document.getElementById('termsOverlay').classList.remove('active');
   document.body.style.overflow = '';
+}
+
+document.getElementById('orderBack').addEventListener('click', function(e) {
+  e.preventDefault();
+  closeOverlays();
 });
 
-window.addEventListener('hashchange', checkOrderConfirmed);
-checkOrderConfirmed();
+document.getElementById('termsBack').addEventListener('click', function(e) {
+  e.preventDefault();
+  closeOverlays();
+});
+
+window.addEventListener('hashchange', checkHash);
+checkHash();
 
 // ═══ DYNAMIC TIER CHECKOUT ═══
 var tierSelect = document.getElementById('tierSelect');
@@ -525,7 +622,7 @@ setTimeout(() => {
   document.querySelectorAll('.reveal.hidden').forEach(el => { el.classList.remove('hidden'); el.classList.add('visible'); });
 }, 1000);
 document.querySelectorAll('a[href^="#"]').forEach(a => {
-  if (a.id === 'orderBack' || a.id === 'tierCta') return;
+  if (a.id === 'orderBack' || a.id === 'tierCta' || a.id === 'termsBack') return;
   a.addEventListener('click', e => {
     e.preventDefault();
     const target = document.querySelector(a.getAttribute('href'));
