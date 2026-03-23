@@ -271,6 +271,26 @@ body { font-family: var(--sans); background: var(--paper); color: var(--ink); ov
 
 .devis-link:hover { color: var(--gold-light); }
 
+.devis-text {
+  margin-top: 1.2rem;
+  font-family: var(--sans);
+  font-size: 0.92rem;
+  color: var(--light-text-secondary);
+  line-height: 1.6;
+}
+
+.devis-link-inline {
+  color: var(--gold-light);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(196, 154, 26, 0.3);
+  transition: all 0.3s ease;
+}
+
+.devis-link-inline:hover {
+  color: #D9AE2E;
+  border-bottom-color: #D9AE2E;
+}
+
 .pricing-card.featured .devis-link { color: var(--gold-light); }
 .pricing-card.featured .devis-link:hover { color: #D9AE2E; }
 
@@ -582,9 +602,9 @@ body { font-family: var(--sans); background: var(--paper); color: var(--ink); ov
         <div class="pricing-price">900 € <span>HT / an</span></div>
         <div class="pricing-standard">2 000 € HT — tarif standard</div>
         <span class="pricing-anchor">L'équivalent de moins d'une heure de conseil juridique externe.</span>
-        <p class="pricing-desc">Accès complet à toutes les éditions mensuelles. Analyses, cartographies des risques et décryptages livrés directement.</p>
+        <p class="pricing-desc">Accès complet à toutes les éditions mensuelles.</p>
         <a href="https://ilini.quadernoapp.com/checkout/link/eaa19a784afda68d8e65ca52716097c191cf7971" class="pricing-cta">S'abonner</a>
-        <a href="#" class="devis-link" id="devisLink1">ou demander une facture</a>
+        <p class="devis-text">Une facture acquittée est fournie après paiement. Vous pouvez également <a href="#" class="devis-link-inline" id="devisLink1">demander une facture avant paiement</a>.</p>
       </div>
       <div class="pricing-card reveal">
         <div class="pricing-label">Institutionnel</div>
