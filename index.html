@@ -503,9 +503,13 @@ tierSelect.addEventListener('change', function() {
 });
 
 tierCta.addEventListener('click', function(e) {
-  if (!tierCta.href || tierCta.href === '#' || tierCta.getAttribute('href') === '#') {
+  var url = tierCta.getAttribute('href');
+  if (!url || url === '#') {
     e.preventDefault();
     tierSelect.focus();
+  } else {
+    e.preventDefault();
+    window.location.href = url;
   }
 });
 
@@ -521,7 +525,7 @@ setTimeout(() => {
   document.querySelectorAll('.reveal.hidden').forEach(el => { el.classList.remove('hidden'); el.classList.add('visible'); });
 }, 1000);
 document.querySelectorAll('a[href^="#"]').forEach(a => {
-  if (a.id === 'orderBack') return;
+  if (a.id === 'orderBack' || a.id === 'tierCta') return;
   a.addEventListener('click', e => {
     e.preventDefault();
     const target = document.querySelector(a.getAttribute('href'));
