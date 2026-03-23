@@ -258,6 +258,69 @@ body { font-family: var(--sans); background: var(--paper); color: var(--ink); ov
   margin-bottom: 1rem;
 }
 
+.devis-link {
+  display: block;
+  margin-top: 1rem;
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  color: var(--gold);
+  text-decoration: none;
+  font-style: italic;
+  transition: color 0.3s ease;
+}
+
+.devis-link:hover { color: var(--gold-light); }
+
+.pricing-card.featured .devis-link { color: var(--gold-light); }
+.pricing-card.featured .devis-link:hover { color: #D9AE2E; }
+
+/* Devis modal */
+.devis-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: rgba(10, 10, 10, 0.85);
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.devis-modal.active { display: flex; }
+
+.devis-modal-inner {
+  background: var(--paper);
+  max-width: 640px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  padding: 2rem;
+}
+
+.devis-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: 1px solid var(--line);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  color: var(--muted);
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.devis-modal-close:hover {
+  border-color: var(--gold);
+  color: var(--ink);
+}
+
 @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes expandLine { 0%, 100% { width: 20px; } 50% { width: 40px; } }
 @keyframes pulse { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
@@ -365,7 +428,7 @@ body { font-family: var(--sans); background: var(--paper); color: var(--ink); ov
 <p>Les présentes CGV sont régies par le droit français. Tout litige sera soumis aux tribunaux compétents du ressort du siège de l'Éditeur, sauf disposition légale contraire.</p>
 
 <h2>16. Contact</h2>
-<p>Pour toute question : <a href="mailto:contact@lexafricana.com">contact@lexafricana.com</a></p>
+<p>Pour toute question : <a href="/cdn-cgi/l/email-protection#6c0f0302180d0f182c0009140d0a1e050f0d020d420f0301"><span class="__cf_email__" data-cfemail="b3d0dcddc7d2d0c7f3dfd6cbd2d5c1dad0d2ddd29dd0dcde">[email&#160;protected]</span></a></p>
 
     </div>
     <div style="text-align:center; margin-top:3rem;">
@@ -521,6 +584,7 @@ body { font-family: var(--sans); background: var(--paper); color: var(--ink); ov
         <span class="pricing-anchor">L'équivalent de moins d'une heure de conseil juridique externe.</span>
         <p class="pricing-desc">Accès complet à toutes les éditions mensuelles. Analyses, cartographies des risques et décryptages livrés directement.</p>
         <a href="https://ilini.quadernoapp.com/checkout/link/eaa19a784afda68d8e65ca52716097c191cf7971" class="pricing-cta">S'abonner</a>
+        <a href="#" class="devis-link" id="devisLink1">ou demander une facture</a>
       </div>
       <div class="pricing-card reveal">
         <div class="pricing-label">Institutionnel</div>
@@ -533,12 +597,20 @@ body { font-family: var(--sans); background: var(--paper); color: var(--ink); ov
           <option value="20" data-checkout="https://ilini.quadernoapp.com/checkout/link/6be55ed1aea7fbbca64552c01496efeee14c68ba">20 personnes — 7 000 € HT / an au lieu de 15 000 €</option>
           <option value="50" data-checkout="https://ilini.quadernoapp.com/checkout/link/a418807f36cbe64073c9e1d1b9b2026a6afc5a75">50 personnes — 9 000 € HT / an au lieu de 20 000 €</option>
         </select>
-        <span class="pricing-or-custom">ou demander un devis sur mesure</span>
         <a href="#" class="pricing-cta" id="tierCta">Obtenir une licence</a>
+        <a href="#" class="devis-link" id="devisLink2">ou demander un devis</a>
       </div>
     </div>
   </div>
 </section>
+
+<!-- ═══ DEVIS MODAL ═══ -->
+<div class="devis-modal" id="devisModal">
+  <div class="devis-modal-inner">
+    <button class="devis-modal-close" id="devisClose">&#x2715;</button>
+    <iframe data-tally-src="https://tally.so/embed/5B26PZ?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="717" frameborder="0" marginheight="0" marginwidth="0" title="Request a Quote"></iframe>
+  </div>
+</div>
 
 <footer class="footer">
   <div class="footer-logo">Lex Africana Mining Intelligence</div>
@@ -546,7 +618,7 @@ body { font-family: var(--sans); background: var(--paper); color: var(--ink); ov
   <div style="width:100%; text-align:center; margin-top:2.5rem; padding-top:1.5rem; border-top:1px solid rgba(245,240,232,0.06); font-family:var(--sans); font-size:0.88rem; color:rgba(245,240,232,0.35); letter-spacing:0.02em;">Publié par Ilini, 12 rue de la Part-Dieu, 69003 Lyon, France · lexafricana.com · <a href="#/terms" id="cgvLink" style="color:rgba(245,240,232,0.35); text-decoration:none; border-bottom:1px solid rgba(245,240,232,0.15);">Conditions générales de vente</a></div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ═══ ORDER CONFIRMED LOGIC ═══
 function checkHash() {
   const orderOverlay = document.getElementById('orderOverlay');
@@ -611,6 +683,35 @@ tierCta.addEventListener('click', function(e) {
   }
 });
 
+// ═══ DEVIS MODAL ═══
+var devisModal = document.getElementById('devisModal');
+var devisClose = document.getElementById('devisClose');
+
+function openDevis(e) {
+  e.preventDefault();
+  devisModal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+  // Load Tally embed
+  var iframe = devisModal.querySelector('iframe[data-tally-src]');
+  if (iframe && !iframe.src) {
+    iframe.src = iframe.dataset.tallySrc;
+  }
+}
+
+function closeDevis() {
+  devisModal.classList.remove('active');
+  if (!document.querySelector('.order-overlay.active')) {
+    document.body.style.overflow = '';
+  }
+}
+
+document.getElementById('devisLink1').addEventListener('click', openDevis);
+document.getElementById('devisLink2').addEventListener('click', openDevis);
+devisClose.addEventListener('click', closeDevis);
+devisModal.addEventListener('click', function(e) {
+  if (e.target === devisModal) closeDevis();
+});
+
 // ═══ REVEAL ANIMATIONS ═══
 document.querySelectorAll('.reveal').forEach(el => el.classList.add('hidden'));
 const observer = new IntersectionObserver((entries) => {
@@ -623,7 +724,7 @@ setTimeout(() => {
   document.querySelectorAll('.reveal.hidden').forEach(el => { el.classList.remove('hidden'); el.classList.add('visible'); });
 }, 1000);
 document.querySelectorAll('a[href^="#"]').forEach(a => {
-  if (a.id === 'orderBack' || a.id === 'tierCta' || a.id === 'termsBack' || a.id === 'cgvLink') return;
+  if (a.id === 'orderBack' || a.id === 'tierCta' || a.id === 'termsBack' || a.id === 'cgvLink' || a.id === 'devisLink1' || a.id === 'devisLink2') return;
   a.addEventListener('click', e => {
     e.preventDefault();
     const target = document.querySelector(a.getAttribute('href'));
