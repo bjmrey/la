@@ -160,8 +160,8 @@ body { font-family: var(--sans); background: var(--paper); color: var(--ink); ov
 .footer { padding: 4rem; background: var(--ink); display: flex; flex-direction: column; align-items: center; gap: 2rem; }
 .footer-logo { font-family: var(--serif); font-size: 1.8rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold-light); text-align: center; }
 .footer-tagline { font-family: var(--serif); font-size: 1.35rem; font-style: italic; color: var(--light-text-secondary); max-width: 550px; text-align: right; line-height: 1.6; }
-.footer-legal { width: 100%; text-align: center; margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(245,240,232,0.06); font-family: var(--sans); font-size: 0.88rem; color: white; letter-spacing: 0.02em; }
-.footer-legal a { color: #D8AE2F; text-decoration: none; border-bottom: 1px solid rgba(245,240,232,0.15); }
+.footer-legal { width: 100%; text-align: center; margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(245,240,232,0.06); font-family: var(--sans); font-size: 0.88rem; color: var(--paper); letter-spacing: 0.02em; }
+.footer-legal a { color: var(--gold-light); text-decoration: none; border-bottom: 1px solid rgba(196,154,26,0.3); }
 
 .order-overlay { display: none; position: fixed; inset: 0; z-index: 9999; background: var(--ink); color: var(--paper); overflow-y: auto; }
 .order-overlay.active { display: flex; }
@@ -238,7 +238,7 @@ body { font-family: var(--sans); background: var(--paper); color: var(--ink); ov
     <p class="order-subtitle" data-i18n="order_subtitle">Merci pour votre achat.</p>
     <div class="order-gold-line"></div>
     <div class="order-body">
-      <p data-i18n="order_invoice_html">Votre facture vous sera envoyée automatiquement par email. Merci de vérifier votre dossier de spams ou de contacter <a href="mailto:benjamin@lexafricana.com">benjamin@lexafricana.com</a> si ce n'est pas le cas.</p>
+      <p data-i18n="order_invoice_html">Votre facture vous sera envoyée automatiquement par email. Merci de vérifier votre dossier de spams ou de contacter <a href="/cdn-cgi/l/email-protection#b3d1d6ddd9d2dedaddf3dfd6cbd2d5c1dad0d2ddd29dd0dcde"><span class="__cf_email__" data-cfemail="2042454e4a414d494e604c45584146524943414e410e434f4d">[email&#160;protected]</span></a> si ce n'est pas le cas.</p>
       <p data-i18n="order_access">Les instructions pour accéder à votre espace en ligne vous seront également communiquées par email.</p>
     </div>
     <a href="#" class="order-back" id="orderBack" data-i18n="back_to_site">Retour au site</a>
@@ -266,7 +266,7 @@ body { font-family: var(--sans); background: var(--paper); color: var(--ink); ov
       <h2>13. Données personnelles</h2><p>Les données personnelles sont traitées conformément à la réglementation applicable (RGPD) et à la politique de confidentialité disponible sur le site. Le Client dispose d'un droit d'accès, de rectification et de suppression.</p>
       <h2>14. Force majeure</h2><p>Aucune des parties ne pourra être tenue responsable en cas de force majeure empêchant l'exécution du contrat.</p>
       <h2>15. Droit applicable et juridiction compétente</h2><p>Les présentes CGV sont régies par le droit français. Tout litige sera soumis aux tribunaux compétents du ressort du siège de l'Éditeur, sauf disposition légale contraire.</p>
-      <h2>16. Contact</h2><p>Pour toute question : <a href="mailto:contact@lexafricana.com">contact@lexafricana.com</a></p>
+      <h2>16. Contact</h2><p>Pour toute question : <a href="/cdn-cgi/l/email-protection#e88b87869c898b9ca8848d90898e9a818b898689c68b8785"><span class="__cf_email__" data-cfemail="6e0d01001a0f0d1a2e020b160f081c070d0f000f400d0103">[email&#160;protected]</span></a></p>
     </div>
     <div style="text-align:center; margin-top:3rem;">
       <a href="#" class="order-back" id="termsBack" data-i18n="back_to_site">Retour au site</a>
@@ -309,32 +309,28 @@ body { font-family: var(--sans); background: var(--paper); color: var(--ink); ov
 <section class="pillars">
   <div class="section-header reveal">
     <div class="section-number" data-i18n="s01_label">01 — Notre approche</div>
-    <h2 class="section-title" data-i18n="s01_title">Quatre axes d'analyse</h2>
+    <h2 class="section-title" data-i18n="s01_title">Quatre axes d'analyse complémentaires</h2>
   </div>
   <div class="pillars-grid reveal">
     <div class="pillar">
       <div class="pillar-icon" data-i18n="p1_icon">Dynamiques</div>
       <h3 data-i18n="p1_title">Évolutions réglementaires</h3>
-      <p data-i18n="p1_desc">Réformes des codes miniers, politiques de transformation locale, exigences de contenu local, participation étatique.</p>
-      <span class="usage" data-i18n="p1_usage">Anticiper les changements avant qu'ils n'impactent vos conventions</span>
+      <p data-i18n="p1_desc">Couvre notamment les réformes des codes miniers, les politiques de transformation locale, les exigences de contenu local et les évolutions de la participation étatique.</p>
     </div>
     <div class="pillar">
       <div class="pillar-icon" data-i18n="p2_icon">Opportunités</div>
-      <h3 data-i18n="p2_title">Projets en structuration</h3>
-      <p data-i18n="p2_desc">Simandou, Lobito, minerais critiques. Acteurs, montages juridiques, fenêtres d'entrée.</p>
-      <span class="usage" data-i18n="p2_usage">Identifier les fenêtres d'investissement et les montages adaptés</span>
+      <h3 data-i18n="p2_title">Projets actuellement en cours de structuration</h3>
+      <p data-i18n="p2_desc">Y compris des projets tels que Simandou et Lobito, ainsi que les initiatives liées aux minerais critiques — analyse des acteurs, des montages juridiques et des opportunités d'entrée.</p>
     </div>
     <div class="pillar">
       <div class="pillar-icon" data-i18n="p3_icon">Risques</div>
-      <h3 data-i18n="p3_title">Carte des risques juridiques</h3>
-      <p data-i18n="p3_desc">Tensions fiscales (Ghana), quotas d'exportation (RDC), révocations de licences (Guinée), instabilité sahélienne.</p>
-      <span class="usage" data-i18n="p3_usage">Évaluer le risque contractuel par juridiction avant de s'engager</span>
+      <h3 data-i18n="p3_title">Cartographie des risques juridiques</h3>
+      <p data-i18n="p3_desc">Incluant, à titre d'exemples, les tensions fiscales au Ghana, les quotas d'exportation en RDC, les révocations de licences en Guinée et l'instabilité dans la région sahélienne.</p>
     </div>
     <div class="pillar">
       <div class="pillar-icon" data-i18n="p4_icon">Arbitrage</div>
       <h3 data-i18n="p4_title">Différends investisseur-État</h3>
-      <p data-i18n="p4_desc">Suivi des arbitrages CIRDI et CCI. Sundance c. Congo, règlement Barrick-Mali, affaires guinéennes.</p>
-      <span class="usage" data-i18n="p4_usage">Calibrer votre stratégie contentieuse à partir des précédents récents</span>
+      <p data-i18n="p4_desc">Suivi des arbitrages CIRDI et CCI, incluant notamment Sundance c. Congo, le règlement Barrick–Mali et des affaires récentes en Guinée.</p>
     </div>
   </div>
 </section>
@@ -344,15 +340,15 @@ body { font-family: var(--sans); background: var(--paper); color: var(--ink); ov
   <div class="arch-wrapper">
     <div class="arch-header reveal">
       <div class="section-number" data-i18n="s02_label">02 — Architecture éditoriale</div>
-      <h2 class="section-title" style="color: var(--paper)" data-i18n="s02_title">Structuré pour éclairer la décision</h2>
+      <h2 class="section-title" style="color: var(--paper)" data-i18n="s02_title">Conçu pour éclairer la prise de décision</h2>
     </div>
     <div class="arch-items">
-      <div class="arch-item reveal"><div class="arch-item-label" data-i18n="a1_label">Synthèse</div><h4>Executive Brief</h4><p data-i18n="a1_desc">L'essentiel à retenir en quelques minutes.</p><span class="usage" data-i18n="a1_usage">Préparer comités d'investissement et réunions de direction</span></div>
+      <div class="arch-item reveal"><div class="arch-item-label" data-i18n="a1_label">Synthèse</div><h4>Executive Brief</h4><p data-i18n="a1_desc">Une synthèse des développements clés, accessible en quelques minutes.</p><span class="usage" data-i18n="a1_usage">Conçu pour alimenter les comités d'investissement et les réunions de direction</span></div>
       <div class="arch-item reveal"><div class="arch-item-label" data-i18n="a2_label">Analyse</div><h4>Deep Dive</h4><p data-i18n="a2_desc">Analyse approfondie d'un enjeu structurant.</p><span class="usage" data-i18n="a2_usage">Structurer contrats et anticiper le risque réglementaire</span></div>
-      <div class="arch-item reveal"><div class="arch-item-label" data-i18n="a3_label">Projets</div><h4>Deal &amp; Project Intelligence</h4><p data-i18n="a3_desc">Cartographie des opportunités concrètes.</p><span class="usage" data-i18n="a3_usage">Sourcing et due diligence des opportunités</span></div>
-      <div class="arch-item reveal"><div class="arch-item-label" data-i18n="a4_label">Contentieux</div><h4>Arbitration &amp; Dispute Tracker</h4><p data-i18n="a4_desc">Suivi des contentieux investisseur-État.</p><span class="usage" data-i18n="a4_usage">Calibrer les stratégies de protection et de résolution</span></div>
-      <div class="arch-item reveal"><div class="arch-item-label" data-i18n="a5_label">Régulation</div><h4>Regulatory Radar</h4><p data-i18n="a5_desc">Tableau de suivi par juridiction, actualisé chaque mois.</p><span class="usage" data-i18n="a5_usage">Monitoring continu des juridictions cibles</span></div>
-      <div class="arch-item reveal"><div class="arch-item-label" data-i18n="a6_label">Expertise</div><h4>Expert Insight</h4><p data-i18n="a6_desc">Regard d'un praticien de premier plan.</p><span class="usage" data-i18n="a6_usage">Enrichir l'analyse interne avec une perspective de terrain</span></div>
+      <div class="arch-item reveal"><div class="arch-item-label" data-i18n="a3_label">Projets</div><h4>Deal &amp; Project Intelligence</h4><p data-i18n="a3_desc">Une vision structurée des opportunités concrètes.</p><span class="usage" data-i18n="a3_usage">Appui aux démarches de sourcing et de due diligence</span></div>
+      <div class="arch-item reveal"><div class="arch-item-label" data-i18n="a4_label">Contentieux</div><h4>Arbitration &amp; Dispute Tracker</h4><p data-i18n="a4_desc">Suivi continu des contentieux investisseur–État.</p><span class="usage" data-i18n="a4_usage">Calibrer les stratégies de protection et de résolution</span></div>
+      <div class="arch-item reveal"><div class="arch-item-label" data-i18n="a5_label">Régulation</div><h4>Regulatory Radar</h4><p data-i18n="a5_desc">Tableau de suivi par juridiction, mis à jour mensuellement.</p><span class="usage" data-i18n="a5_usage">Assure un suivi continu des juridictions cibles</span></div>
+      <div class="arch-item reveal"><div class="arch-item-label" data-i18n="a6_label">Expertise</div><h4>Expert Insight</h4><p data-i18n="a6_desc">Contributions de praticiens de premier plan.</p><span class="usage" data-i18n="a6_usage">Vise à enrichir l'analyse interne par une perspective de terrain</span></div>
     </div>
   </div>
 </section>
@@ -411,7 +407,7 @@ body { font-family: var(--sans); background: var(--paper); color: var(--ink); ov
         <div class="editions-rubrique"><span class="editions-rubrique-num">03</span><div><h4>Deep Dive</h4><p data-i18n="e3_desc">Analyse approfondie d'un enjeu structurant.</p></div></div>
         <div class="editions-rubrique"><span class="editions-rubrique-num">04</span><div><h4>Arbitration &amp; Dispute Tracker</h4><p data-i18n="e4_desc">Suivi des contentieux investisseur-État</p></div></div>
         <div class="editions-rubrique"><span class="editions-rubrique-num">05</span><div><h4>Regulatory Radar</h4><p data-i18n="e5_desc">Réformes des codes miniers et implications juridiques</p></div></div>
-        <div class="editions-rubrique"><span class="editions-rubrique-num">06</span><div><h4>Expert Insight</h4><p data-i18n="e6_desc">Regard d'un praticien de premier plan</p></div></div>
+        <div class="editions-rubrique"><span class="editions-rubrique-num">06</span><div><h4>Expert Insight</h4><p data-i18n="e6_desc">Contributions de praticiens de premier plan</p></div></div>
       </div>
     </div>
   </div>
@@ -447,8 +443,7 @@ body { font-family: var(--sans); background: var(--paper); color: var(--ink); ov
         <h3 data-i18n="price_ind_title">Accès individuel</h3>
         <div class="pricing-price">900 € <span>HT / an</span></div>
         <div class="pricing-standard" data-i18n="price_standard">2 000 € HT — tarif standard</div>
-        <span class="pricing-anchor" data-i18n="price_anchor">L'équivalent de moins d'une heure de conseil juridique externe.</span>
-        <p class="pricing-desc" data-i18n="price_ind_desc">Accès complet à toutes les éditions mensuelles.</p>
+        <p class="pricing-desc" data-i18n="price_ind_desc">Accès complet à toutes les éditions mensuelles pendant un an.</p>
         <a href="https://ilini.quadernoapp.com/checkout/link/eaa19a784afda68d8e65ca52716097c191cf7971" class="pricing-cta" data-i18n="price_ind_cta">S'abonner</a>
         <p class="devis-text" data-i18n="price_invoice_html">Une facture acquittée est fournie après paiement. Vous pouvez également <a href="#" class="devis-link-inline" id="devisLink1">demander une facture avant paiement</a>.</p>
       </div>
@@ -495,62 +490,62 @@ body { font-family: var(--sans); background: var(--paper); color: var(--ink); ov
   <div class="footer-legal">Publié par Ilini, 12 rue de la Part-Dieu, 69003 Lyon, France · lexafricana.com · <a href="#/terms" id="cgvLink" data-i18n="footer_cgv">Conditions générales de vente</a></div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ═══════════════════════════════════════════
 // I18N SYSTEM
 // ═══════════════════════════════════════════
 var i18n = {
 en: {
-  nav_cta: "Subscribe — PAW 2026 Special Offer",
+  nav_cta: "Subscribe — PAW 2026 special offer",
   hero_tag: "Monthly briefing",
-  hero_title_html: "<em>Legal intelligence</em><br>for the African mining sector",
-  hero_baseline: "Every month, on-the-ground analysis from Africa for those who invest there.",
+  hero_title_html: "<em>Legal intelligence</em><br>for Africa's mining sector",
+  hero_baseline: "Every month, on-the-ground analysis from across Africa for those who invest in the continent.",
   hero_launch: "Launching April 2026",
-  manifesto_1: "Mining codes in flux. Investor-State arbitrations on the rise. Stabilisation clauses under pressure. The African mining sector is undergoing rapid transformation, and most stakeholders react too late.",
-  manifesto_2_html: '<span class="emphasis">Lex Africana Mining Intelligence</span> is designed to help you stay ahead. Each edition is a decision-making tool: what is changing, why it matters, what to do.',
-  s01_label: "01 — Our approach", s01_title: "Four axes of analysis",
-  p1_icon: "Dynamics", p1_title: "Regulatory developments", p1_desc: "Mining code reforms, local transformation policies, local content requirements, state participation.", p1_usage: "Anticipate changes before they impact your agreements",
-  p2_icon: "Opportunities", p2_title: "Projects in structuring", p2_desc: "Simandou, Lobito, critical minerals. Players, legal structures, entry windows.", p2_usage: "Identify investment windows and appropriate structures",
-  p3_icon: "Risks", p3_title: "Legal risk map", p3_desc: "Fiscal tensions (Ghana), export quotas (DRC), licence revocations (Guinea), Sahel instability.", p3_usage: "Assess contractual risk by jurisdiction before committing",
-  p4_icon: "Arbitration", p4_title: "Investor-State disputes", p4_desc: "Tracking ICSID and ICC arbitrations. Sundance v. Congo, Barrick-Mali settlement, Guinea cases.", p4_usage: "Calibrate your dispute strategy based on recent precedents",
-  s02_label: "02 — Editorial architecture", s02_title: "Structured to inform decisions",
-  a1_label: "Overview", a1_desc: "The essentials in a few minutes.", a1_usage: "Prepare investment committees and board meetings",
+  manifesto_1: "Mining codes are in flux. Investor\u2013State arbitrations are on the rise. Stabilisation clauses are under pressure. The African mining sector is undergoing rapid transformation, and most stakeholders react too late.",
+  manifesto_2_html: '<span class="emphasis">Lex Africana Mining Intelligence</span> is designed to help you stay ahead. Each edition is a decision-making tool: what is changing, why it matters, and what to do.',
+  s01_label: "01 — Our approach", s01_title: "Four complementary areas of analysis",
+  p1_icon: "Dynamics", p1_title: "Regulatory developments", p1_desc: "Covers developments such as mining code reforms, local beneficiation policies, local content requirements, and evolving models of state participation.", p1_usage: "Anticipate regulatory changes before they affect your agreements",
+  p2_icon: "Opportunities", p2_title: "Projects currently under structuring", p2_desc: "Including projects such as Simandou and Lobito, as well as critical minerals initiatives\u2014analysing key players, legal structures, and entry opportunities.", p2_usage: "Identify the right entry points and structuring options",
+  p3_icon: "Risks", p3_title: "Legal risk mapping", p3_desc: "Including, for example, fiscal tensions in Ghana, export quotas in the DRC, licence revocations in Guinea, and broader instability across the Sahel.", p3_usage: "Assess jurisdiction-specific contractual risks before committing",
+  p4_icon: "Arbitration", p4_title: "Investor-State disputes", p4_desc: "Monitoring ICSID and ICC proceedings, including cases such as Sundance v. Congo, the Barrick\u2013Mali settlement, and recent Guinea disputes.", p4_usage: "Calibrate your dispute strategy in light of recent precedents",
+  s02_label: "02 — Editorial architecture", s02_title: "Designed to support decision-making",
+  a1_label: "Overview", a1_desc: "A concise overview of the key developments, delivered in minutes.", a1_usage: "Designed to support investment committee and board discussions",
   a2_label: "Analysis", a2_desc: "In-depth analysis of a structural issue.", a2_usage: "Structure contracts and anticipate regulatory risk",
-  a3_label: "Projects", a3_desc: "Mapping of concrete opportunities.", a3_usage: "Sourcing and due diligence of opportunities",
-  a4_label: "Disputes", a4_desc: "Tracking investor-State disputes.", a4_usage: "Calibrate protection and resolution strategies",
-  a5_label: "Regulation", a5_desc: "Jurisdiction-by-jurisdiction tracker, updated monthly.", a5_usage: "Continuous monitoring of target jurisdictions",
-  a6_label: "Expertise", a6_desc: "Perspective from a leading practitioner.", a6_usage: "Enrich internal analysis with a field perspective",
-  s03_label: "03 — Who it's for", s03_title: "For those who operate, structure or arbitrate", s03_desc: "For stakeholders already engaged or entering the African continent — who need rigorous, actionable legal intelligence.",
+  a3_label: "Projects", a3_desc: "A structured overview of actionable opportunities.", a3_usage: "Supporting sourcing and due diligence processes",
+  a4_label: "Disputes", a4_desc: "Ongoing tracking of Investor\u2013State disputes.", a4_usage: "Calibrate protection and resolution strategies",
+  a5_label: "Regulation", a5_desc: "A jurisdiction-by-jurisdiction tracker, updated on a monthly basis.", a5_usage: "Ensures continuous monitoring of key jurisdictions",
+  a6_label: "Expertise", a6_desc: "Contributions from leading practitioners.", a6_usage: "Designed to complement internal analysis with field-based insight",
+  s03_label: "03 — Who it's for", s03_title: "For those who operate, structure, or arbitrate", s03_desc: "For stakeholders already active in, or entering, the African market who require rigorous, actionable legal intelligence.",
   prof_1: "Law firms and arbitration practitioners", prof_2: "Mining companies and extractive operators", prof_3: "Investment funds and financial institutions", prof_4: "Public institutions and regulators", prof_5: "Arbitrators and arbitral institutions",
   s04_label: "04 — Methodology", s04_title: "Written from the field",
-  s04_p1: "Lex Africana Mining Intelligence analyses are produced by practitioners active in the African extractive sector — lawyers, arbitrators, consultants — who follow cases from the inside.",
-  s04_p2: "Our monitoring systematically covers primary sources: arbitral decisions, legislative reforms, regulator publications, mining conventions.",
-  s04_key: "A significant portion of this information is not accessible from the outside.",
-  m1_title: "African perspective", m1_desc: "Analyses produced from the continent, by practitioners who know the jurisdictions from within",
+  s04_p1: "Lex Africana Mining Intelligence analyses are prepared by practitioners active in Africa\u2019s extractive sector \u2014 lawyers, arbitrators, consultants \u2014 who are directly involved in the cases they analyse.",
+  s04_p2: "Our monitoring systematically covers primary sources: arbitral decisions, legislative reforms, regulatory publications, mining conventions.",
+  s04_key: "A significant portion of this information is not publicly accessible.",
+  m1_title: "African perspective", m1_desc: "Analyses produced on the continent by practitioners with in-depth knowledge of local jurisdictions",
   m2_title: "Primary sources", m2_desc: "Arbitral decisions, mining codes, regulatory texts, investment conventions",
-  m3_title: "Practitioner network", m3_desc: "Lawyers, arbitrators and consultants engaged in extractive operations across Africa",
+  m3_title: "Practitioner network", m3_desc: "Lawyers, arbitrators, and consultants engaged in extractive operations across Africa",
   s05_label: "05 — In the next issue", s05_title: "Issue 1", s05_badge: "April 2026",
-  s05_intro1: "First edition of Lex Africana Mining Intelligence, structured around the report's core sections.",
-  s05_intro2: "Includes a special feature on lessons from Paris Arbitration Week 2026 on recent developments in mining arbitration in Africa.",
+  s05_intro1: "The first edition of Lex Africana Mining Intelligence is structured around the report\u2019s core sections.",
+  s05_intro2: "Includes a special feature on lessons from Paris Arbitration Week 2026, focusing on recent developments in mining arbitration in Africa.",
   s05_reserved: "Subscriber access only.",
-  e1_desc: "Opportunities, risks and trends of the month",
-  e2_title: "Special feature — Paris Arbitration Week", e2_desc: "Lessons from PAW 2026 on the challenges of mining arbitration in Africa",
-  e3_desc: "In-depth analysis of a structural issue.", e4_desc: "Tracking investor-State disputes", e5_desc: "Mining code reforms and legal implications", e6_desc: "Perspective from a leading practitioner",
-  s06_label: "06 — Access", s06_title_html: "Launch offer<br>Paris Arbitration Week", s06_subtitle: "Subscribe before March 29, 2026 to benefit from preferential launch pricing.",
-  price_ind_label: "Individual", price_ind_title: "Individual access", price_standard: "€2,000 excl. VAT — standard rate", price_anchor: "Less than one hour of outside legal counsel.", price_ind_desc: "Full access to all monthly editions.", price_ind_cta: "Subscribe",
-  price_invoice_html: 'A paid invoice is provided after payment. You can also <a href="#" class="devis-link-inline" id="devisLink1">request an invoice before payment</a>.',
-  price_inst_label: "Institutional", price_inst_title: "Institutional access", price_inst_desc: "Multi-user distribution within your organisation. Dedicated services and personalised support.", price_inst_cta: "Get a licence", price_devis: "or request a quote",
+  e1_desc: "Opportunities, risks, and trends of the month",
+  e2_title: "Special feature — Paris Arbitration Week", e2_desc: "Lessons from PAW 2026 on the challenges facing mining arbitration in Africa",
+  e3_desc: "In-depth analysis of a structural issue.", e4_desc: "Tracking Investor\u2013State disputes", e5_desc: "Mining code reforms and their legal implications", e6_desc: "Insights from a leading practitioner",
+  s06_label: "06 — Access", s06_title_html: "Launch offer<br>Paris Arbitration Week", s06_subtitle: "Subscribe before 29 March 2026 to benefit from preferential launch pricing.",
+  price_ind_label: "Individual", price_ind_title: "Individual access", price_standard: "€2,000 excl. VAT — standard rate", price_anchor: "Less than one hour of external legal counsel.", price_ind_desc: "Full access to all monthly editions for one year.", price_ind_cta: "Subscribe",
+  price_invoice_html: 'A paid invoice will be issued after payment. You may also <a href="#" class="devis-link-inline" id="devisLink1">request an invoice prior to payment</a>.',
+  price_inst_label: "Institutional", price_inst_title: "Institutional access", price_inst_desc: "Multi-user access within your organisation. Dedicated services and personalized support.", price_inst_cta: "Get a licence", price_devis: "or request a quote",
   tier_placeholder: "Select a plan", tier_5: "5 users — €2,400 excl. VAT / year instead of €5,000", tier_10: "10 users — €4,000 excl. VAT / year instead of €9,000", tier_20: "20 users — €7,000 excl. VAT / year instead of €15,000", tier_50: "50 users — €9,000 excl. VAT / year instead of €20,000",
-  contact_title: "Stay in touch", contact_subtitle: "Leave us your email to follow Lex Africana news. No spam, unsubscribe anytime.",
+  contact_title: "Stay in touch", contact_subtitle: "Leave your email to receive Lex Africana updates. No spam. Unsubscribe at any time.",
   footer_tagline: "Every month, what's changing in African mining law —<br>and what it means for your decisions.",
-  footer_cgv: "Terms and conditions",
+  footer_cgv: "Terms and Conditions",
   order_title: "Your order is confirmed.", order_subtitle: "Thank you for your purchase.",
   order_invoice_html: 'Your invoice will be sent automatically by email. Please check your spam folder or contact <a href="mailto:benjamin@lexafricana.com">benjamin@lexafricana.com</a> if you haven\'t received it.',
   order_access: "Instructions to access your online space will also be sent by email.",
   back_to_site: "Back to site",
-  expert_label: "read in the upcoming issue",
+  expert_label: "Read in the upcoming issue",
   expert_quote: "« We are witnessing a shift in the centre of gravity: the challenges facing the African mining sector are no longer solely about access to resources, but about how disputes are structured and resolved. Arbitration is becoming the space where the balance between sovereignty and legal certainty is being concretely redefined. »",
-  expert_role: "Lawyer, President of the African Academy of International Law Practice",
+  expert_role: "Lawyer, President of the African Academy of International Law and Practice",
   terms_title: "Terms and Conditions"
 },
 fr: {}
