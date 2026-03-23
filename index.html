@@ -150,6 +150,13 @@ body { font-family: var(--sans); background: var(--paper); color: var(--ink); ov
 .pricing-tier-select:focus { outline: none; border-color: var(--gold); }
 .pricing-or-custom { font-family: var(--sans); font-size: 1rem; color: var(--muted); font-style: italic; margin-bottom: 2.5rem; display: block; }
 
+/* Restons en contact */
+.contact-band { padding: 6rem 4rem; background: var(--paper-alt); border-top: 1px solid var(--line); }
+.contact-wrapper { max-width: 600px; margin: 0 auto; text-align: center; }
+.contact-title { font-family: var(--serif); font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 300; color: var(--ink); margin-bottom: 1rem; }
+.contact-subtitle { font-family: var(--sans); font-size: 1.05rem; color: var(--muted); line-height: 1.7; margin-bottom: 2rem; }
+.contact-form { max-width: 500px; margin: 0 auto; }
+
 .footer { padding: 4rem; background: var(--ink); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
 .footer-logo { font-family: var(--serif); font-size: 1.4rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold-light); }
 .footer-tagline { font-family: var(--serif); font-size: 1.35rem; font-style: italic; color: var(--light-text-secondary); max-width: 550px; text-align: right; line-height: 1.6; }
@@ -632,6 +639,17 @@ body { font-family: var(--sans); background: var(--paper); color: var(--ink); ov
   </div>
 </div>
 
+<!-- ═══ RESTONS EN CONTACT ═══ -->
+<section class="contact-band">
+  <div class="contact-wrapper">
+    <h2 class="contact-title">Restons en contact</h2>
+    <p class="contact-subtitle">Indiquez-nous votre adresse email pour suivre l'actualité de Lex Africana. Pas de spams, désinscrivez-vous quand vous voulez.</p>
+    <div class="contact-form">
+      <iframe data-tally-src="https://tally.so/embed/OD0p2g?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="120" frameborder="0" marginheight="0" marginwidth="0" title="Email submission"></iframe>
+    </div>
+  </div>
+</section>
+
 <footer class="footer">
   <div class="footer-logo">Lex Africana Mining Intelligence</div>
   <div class="footer-tagline">Chaque mois, ce qui change dans le droit minier africain —<br>et ce que cela implique pour vos décisions.</div>
@@ -731,6 +749,19 @@ devisClose.addEventListener('click', closeDevis);
 devisModal.addEventListener('click', function(e) {
   if (e.target === devisModal) closeDevis();
 });
+
+// ═══ TALLY EMBEDS ═══
+(function() {
+  var d = document, w = "https://tally.so/widgets/embed.js";
+  var v = function() {
+    if (typeof Tally !== 'undefined') { Tally.loadEmbeds(); }
+    else { d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach(function(e) { e.src = e.dataset.tallySrc; }); }
+  };
+  if (typeof Tally !== 'undefined') { v(); }
+  else if (!d.querySelector('script[src="' + w + '"]')) {
+    var s = d.createElement("script"); s.src = w; s.onload = v; s.onerror = v; d.body.appendChild(s);
+  }
+})();
 
 // ═══ REVEAL ANIMATIONS ═══
 document.querySelectorAll('.reveal').forEach(el => el.classList.add('hidden'));
