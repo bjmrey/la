@@ -289,7 +289,7 @@ body { font-family: var(--sans); background: var(--paper); color: var(--ink); ov
     <p class="order-subtitle">Merci pour votre achat.</p>
     <div class="order-gold-line"></div>
     <div class="order-body">
-      <p>Votre facture vous sera envoyée automatiquement par email. Merci de vérifier votre dossier de spams ou de contacter <a href="mailto:benjamin@lexafricana.com">benjamin@lexafricana.com</a> si ce n'est pas le cas.</p>
+      <p>Votre facture vous sera envoyée automatiquement par email. Merci de vérifier votre dossier de spams ou de contacter <a href="/cdn-cgi/l/email-protection#4f2d2a21252e2226210f232a372e293d262c2e212e612c2022"><span class="__cf_email__" data-cfemail="7311161d19121e1a1d331f160b1215011a10121d125d101c1e">[email&#160;protected]</span></a> si ce n'est pas le cas.</p>
       <p>Les instructions pour accéder à votre espace en ligne vous seront également communiquées par email.</p>
     </div>
     <a href="#" class="order-back" id="orderBack">Retour au site</a>
@@ -442,21 +442,21 @@ body { font-family: var(--sans); background: var(--paper); color: var(--ink); ov
         <div class="pricing-standard">2 000 € HT — tarif standard</div>
         <span class="pricing-anchor">L'équivalent de moins d'une heure de conseil juridique externe.</span>
         <p class="pricing-desc">Accès complet à toutes les éditions mensuelles. Analyses, cartographies des risques et décryptages livrés directement.</p>
-        <a href="mailto:contact@lexafricana.com" class="pricing-cta">S'abonner</a>
+        <a href="https://ilini.quadernoapp.com/checkout/link/eaa19a784afda68d8e65ca52716097c191cf7971" class="pricing-cta">S'abonner</a>
       </div>
       <div class="pricing-card reveal">
         <div class="pricing-label">Institutionnel</div>
         <h3>Accès institutionnel</h3>
         <p class="pricing-desc">Diffusion multi-utilisateurs au sein de votre organisation. Services dédiés et accompagnement personnalisé.</p>
-        <select class="pricing-tier-select">
+        <select class="pricing-tier-select" id="tierSelect">
           <option value="" disabled selected>Sélectionnez une formule</option>
-          <option value="5">5 personnes — 2 400 € HT / an au lieu de 5 000 €</option>
-          <option value="10">10 personnes — 4 000 € HT / an au lieu de 9 000 €</option>
-          <option value="20">20 personnes — 7 000 € HT / an au lieu de 15 000 €</option>
-          <option value="50">50 personnes — 9 000 € HT / an au lieu de 20 000 €</option>
+          <option value="5" data-checkout="https://ilini.quadernoapp.com/checkout/link/df883ffdb4fa05d525df090457f32fbeab209c4a">5 personnes — 2 400 € HT / an au lieu de 5 000 €</option>
+          <option value="10" data-checkout="https://ilini.quadernoapp.com/checkout/link/7fa1b1d774dca8aafc3c561675c448393039c566">10 personnes — 4 000 € HT / an au lieu de 9 000 €</option>
+          <option value="20" data-checkout="https://ilini.quadernoapp.com/checkout/link/6be55ed1aea7fbbca64552c01496efeee14c68ba">20 personnes — 7 000 € HT / an au lieu de 15 000 €</option>
+          <option value="50" data-checkout="https://ilini.quadernoapp.com/checkout/link/a418807f36cbe64073c9e1d1b9b2026a6afc5a75">50 personnes — 9 000 € HT / an au lieu de 20 000 €</option>
         </select>
         <span class="pricing-or-custom">ou demander un devis sur mesure</span>
-        <a href="mailto:contact@lexafricana.com" class="pricing-cta">Obtenir une licence</a>
+        <a href="#" class="pricing-cta" id="tierCta">Obtenir une licence</a>
       </div>
     </div>
   </div>
@@ -467,7 +467,7 @@ body { font-family: var(--sans); background: var(--paper); color: var(--ink); ov
   <div class="footer-tagline">Chaque mois, ce qui change dans le droit minier africain —<br>et ce que cela implique pour vos décisions.</div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ═══ ORDER CONFIRMED LOGIC ═══
 function checkOrderConfirmed() {
   const overlay = document.getElementById('orderOverlay');
@@ -489,6 +489,25 @@ document.getElementById('orderBack').addEventListener('click', function(e) {
 
 window.addEventListener('hashchange', checkOrderConfirmed);
 checkOrderConfirmed();
+
+// ═══ DYNAMIC TIER CHECKOUT ═══
+var tierSelect = document.getElementById('tierSelect');
+var tierCta = document.getElementById('tierCta');
+
+tierSelect.addEventListener('change', function() {
+  var selected = tierSelect.options[tierSelect.selectedIndex];
+  var url = selected.getAttribute('data-checkout');
+  if (url) {
+    tierCta.href = url;
+  }
+});
+
+tierCta.addEventListener('click', function(e) {
+  if (!tierCta.href || tierCta.href === '#' || tierCta.getAttribute('href') === '#') {
+    e.preventDefault();
+    tierSelect.focus();
+  }
+});
 
 // ═══ REVEAL ANIMATIONS ═══
 document.querySelectorAll('.reveal').forEach(el => el.classList.add('hidden'));
@@ -513,18 +532,4 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   window.chatwootSettings = {"position":"right","type":"standard","launcherTitle":""};
   (function(d,t) {
     var BASE_URL="https://app.chatwoot.com";
-    var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-    g.src=BASE_URL+"/packs/js/sdk.js";
-    g.async = true;
-    s.parentNode.insertBefore(g,s);
-    g.onload=function(){
-      window.chatwootSDK.run({
-        websiteToken: '9noXz3moVxFPsi5CRJGQzCUd',
-        baseUrl: BASE_URL
-      })
-    }
-  })(document,"script");
-</script>
-
-</body>
-</html>
+    var g=
