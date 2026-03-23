@@ -8,21 +8,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
 <style>
 :root {
-  --ink: #0A0A0A;
-  --paper: #F5F0E8;
-  --paper-alt: #EBE5D8;
-  --gold: #9A7209;
-  --gold-light: #C49A1A;
-  --gold-pale: #F0E6C8;
-  --deep-green: #1A3A2A;
-  --slate: #2E2E2E;
-  --muted: #4A4A4A;
-  --light-text: rgba(245, 240, 232, 0.88);
-  --light-text-secondary: rgba(245, 240, 232, 0.68);
-  --line: rgba(184, 134, 11, 0.2);
-  --serif: 'Cormorant Garamond', Georgia, serif;
-  --sans: 'DM Sans', sans-serif;
-  --mono: 'JetBrains Mono', monospace;
+  --ink: #0A0A0A; --paper: #F5F0E8; --paper-alt: #EBE5D8; --gold: #9A7209; --gold-light: #C49A1A; --gold-pale: #F0E6C8; --deep-green: #1A3A2A; --slate: #2E2E2E; --muted: #4A4A4A;
+  --light-text: rgba(245,240,232,0.88); --light-text-secondary: rgba(245,240,232,0.68); --line: rgba(184,134,11,0.2);
+  --serif: 'Cormorant Garamond', Georgia, serif; --sans: 'DM Sans', sans-serif; --mono: 'JetBrains Mono', monospace;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 ::selection { background: var(--gold); color: var(--paper); }
@@ -32,10 +20,14 @@ body { font-family: var(--sans); background: var(--paper); color: var(--ink); ov
 .hero { min-height: 100vh; display: flex; flex-direction: column; position: relative; background: var(--ink); color: var(--paper); overflow: hidden; }
 .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 20% 80%, rgba(184,134,11,0.08) 0%, transparent 70%), radial-gradient(ellipse 60% 80% at 80% 20%, rgba(26,58,42,0.15) 0%, transparent 70%); z-index: 1; }
 .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(184,134,11,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(184,134,11,0.04) 1px, transparent 1px); background-size: 80px 80px; z-index: 1; }
-.hero-nav { position: relative; z-index: 10; display: flex; justify-content: space-between; align-items: center; padding: 2rem 4rem; border-bottom: 1px solid rgba(245,240,232,0.08); }
+.hero-nav { position: relative; z-index: 10; display: flex; justify-content: space-between; align-items: center; padding: 2rem 4rem; border-bottom: 1px solid rgba(245,240,232,0.08); gap: 1.5rem; }
 .hero-nav .logo { font-family: var(--serif); font-size: 1.4rem; letter-spacing: 0.25em; text-transform: uppercase; font-weight: 500; color: var(--gold-light); }
-.hero-nav .nav-cta { font-family: var(--sans); font-size: 0.95rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.75rem 2rem; border: 1px solid var(--gold-light); color: var(--paper); text-decoration: none; transition: all 0.4s ease; }
-.hero-nav .nav-cta:hover { background: var(--gold-light); color: var(--ink); }
+.hero-nav .nav-right { display: flex; align-items: center; gap: 1.5rem; }
+.nav-cta { font-family: var(--sans); font-size: 0.95rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.75rem 2rem; border: 1px solid var(--gold-light); color: var(--paper); text-decoration: none; transition: all 0.4s ease; display: inline-block; }
+.nav-cta:hover { background: var(--gold-light); color: var(--ink); }
+.lang-toggle { font-family: var(--mono); font-size: 0.82rem; letter-spacing: 0.1em; color: var(--light-text-secondary); cursor: pointer; user-select: none; display: flex; align-items: center; gap: 0.4rem; padding: 0.4rem 0.6rem; border: 1px solid rgba(245,240,232,0.12); transition: all 0.3s ease; }
+.lang-toggle:hover { border-color: var(--gold-light); color: var(--paper); }
+.lang-toggle .active-lang { color: var(--gold-light); font-weight: 600; }
 .hero-content { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 4rem; position: relative; z-index: 10; max-width: 1400px; margin: 0 auto; width: 100%; }
 .hero-tag { font-family: var(--mono); font-size: 0.95rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 2.5rem; opacity: 0; animation: fadeUp 0.8s ease 0.3s forwards; display: flex; align-items: center; gap: 1rem; }
 .hero-tag::before { content: ''; width: 40px; height: 1px; background: var(--gold-light); }
@@ -43,8 +35,6 @@ body { font-family: var(--sans); background: var(--paper); color: var(--ink); ov
 .hero-title em { font-style: italic; color: var(--gold-light); }
 .hero-baseline { font-family: var(--serif); font-size: clamp(1.2rem, 2vw, 1.55rem); font-weight: 400; font-style: italic; color: var(--light-text); max-width: 680px; line-height: 1.6; margin-top: 2rem; opacity: 0; animation: fadeUp 0.8s ease 0.7s forwards; }
 .hero-bottom { position: relative; z-index: 10; padding: 2rem 4rem; border-top: 1px solid rgba(245,240,232,0.08); display: flex; justify-content: space-between; align-items: center; font-family: var(--mono); font-size: 0.92rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--light-text-secondary); }
-.scroll-indicator { display: flex; align-items: center; gap: 0.8rem; animation: pulse 2s ease infinite; }
-.scroll-indicator .line { width: 20px; height: 1px; background: var(--gold-light); animation: expandLine 2s ease infinite; }
 
 .intro-band { background: var(--paper-alt); }
 .manifesto { padding: 7rem 4rem 3rem; max-width: 900px; margin: 0 auto; }
@@ -148,205 +138,48 @@ body { font-family: var(--sans); background: var(--paper); color: var(--ink); ov
 .pricing-cta:hover { background: var(--ink); color: var(--paper); }
 .pricing-tier-select { width: 100%; font-family: var(--sans); font-size: 1.05rem; padding: 0.9rem 1.2rem; border: 1px solid var(--line); background: var(--paper); color: var(--ink); appearance: none; -webkit-appearance: none; cursor: pointer; margin-bottom: 1rem; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239A7209' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1.2rem center; padding-right: 3rem; }
 .pricing-tier-select:focus { outline: none; border-color: var(--gold); }
-.pricing-or-custom { font-family: var(--sans); font-size: 1rem; color: var(--muted); font-style: italic; margin-bottom: 2.5rem; display: block; }
 
-/* Restons en contact */
 .contact-band { padding: 6rem 4rem; background: var(--paper-alt); border-top: 1px solid var(--line); }
 .contact-wrapper { max-width: 600px; margin: 0 auto; text-align: center; }
 .contact-title { font-family: var(--serif); font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 300; color: var(--ink); margin-bottom: 1rem; }
 .contact-subtitle { font-family: var(--sans); font-size: 1.05rem; color: var(--muted); line-height: 1.7; margin-bottom: 2rem; }
 .contact-form { max-width: 500px; margin: 0 auto; }
 
-.footer { padding: 4rem; background: var(--ink); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
-.footer-logo { font-family: var(--serif); font-size: 1.4rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold-light); }
+.footer { padding: 4rem; background: var(--ink); display: flex; flex-direction: column; align-items: center; gap: 2rem; }
+.footer-logo { font-family: var(--serif); font-size: 1.8rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold-light); text-align: center; }
 .footer-tagline { font-family: var(--serif); font-size: 1.35rem; font-style: italic; color: var(--light-text-secondary); max-width: 550px; text-align: right; line-height: 1.6; }
+.footer-legal { width: 100%; text-align: center; margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(245,240,232,0.06); font-family: var(--sans); font-size: 0.88rem; color: rgba(245,240,232,0.35); letter-spacing: 0.02em; }
+.footer-legal a { color: rgba(245,240,232,0.35); text-decoration: none; border-bottom: 1px solid rgba(245,240,232,0.15); }
 
-/* ═══ ORDER CONFIRMED OVERLAY ═══ */
-.order-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  background: var(--ink);
-  color: var(--paper);
-  overflow-y: auto;
-}
-
+.order-overlay { display: none; position: fixed; inset: 0; z-index: 9999; background: var(--ink); color: var(--paper); overflow-y: auto; }
 .order-overlay.active { display: flex; }
-
-.order-overlay-inner {
-  margin: auto;
-  max-width: 640px;
-  padding: 4rem 2rem;
-  text-align: center;
-}
-
-.order-check {
-  width: 64px;
-  height: 64px;
-  border: 2px solid var(--gold-light);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 3rem;
-}
-
+.order-overlay-inner { margin: auto; max-width: 640px; padding: 4rem 2rem; text-align: center; }
+.order-check { width: 64px; height: 64px; border: 2px solid var(--gold-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 3rem; }
 .order-check svg { width: 28px; height: 28px; }
-
-.order-title {
-  font-family: var(--serif);
-  font-size: clamp(2rem, 5vw, 3.2rem);
-  font-weight: 400;
-  color: var(--paper);
-  margin-bottom: 1rem;
-  line-height: 1.2;
-}
-
-.order-subtitle {
-  font-family: var(--serif);
-  font-size: 1.4rem;
-  font-style: italic;
-  color: var(--gold-light);
-  margin-bottom: 3rem;
-}
-
-.order-gold-line {
-  width: 60px;
-  height: 2px;
-  background: var(--gold-light);
-  margin: 0 auto 3rem;
-}
-
-.order-body p {
-  font-family: var(--sans);
-  font-size: 1.1rem;
-  line-height: 1.85;
-  color: var(--light-text);
-  margin-bottom: 1.5rem;
-}
-
-.order-body a {
-  color: var(--gold-light);
-  text-decoration: none;
-}
-
+.order-title { font-family: var(--serif); font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 400; color: var(--paper); margin-bottom: 1rem; line-height: 1.2; }
+.order-subtitle { font-family: var(--serif); font-size: 1.4rem; font-style: italic; color: var(--gold-light); margin-bottom: 3rem; }
+.order-gold-line { width: 60px; height: 2px; background: var(--gold-light); margin: 0 auto 3rem; }
+.order-body p { font-family: var(--sans); font-size: 1.1rem; line-height: 1.85; color: var(--light-text); margin-bottom: 1.5rem; }
+.order-body a { color: var(--gold-light); text-decoration: none; }
 .order-body a:hover { text-decoration: underline; }
+.order-back { display: inline-block; margin-top: 2.5rem; font-family: var(--sans); font-size: 0.95rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 1rem 2.8rem; border: 1px solid var(--gold-light); color: var(--paper); text-decoration: none; transition: all 0.4s ease; }
+.order-back:hover { background: var(--gold-light); color: var(--ink); }
+.cgv-body h2 { font-family: var(--serif); font-size: 1.5rem; font-weight: 500; color: var(--gold-light); margin-top: 2.5rem; margin-bottom: 0.8rem; }
+.cgv-body p { margin-bottom: 1rem; }
 
-.order-back {
-  display: inline-block;
-  margin-top: 2.5rem;
-  font-family: var(--sans);
-  font-size: 0.95rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  padding: 1rem 2.8rem;
-  border: 1px solid var(--gold-light);
-  color: var(--paper);
-  text-decoration: none;
-  transition: all 0.4s ease;
-}
-
-.order-back:hover {
-  background: var(--gold-light);
-  color: var(--ink);
-}
-
-.cgv-body h2 {
-  font-family: var(--serif);
-  font-size: 1.5rem;
-  font-weight: 500;
-  color: var(--gold-light);
-  margin-top: 2.5rem;
-  margin-bottom: 0.8rem;
-}
-
-.cgv-body p {
-  margin-bottom: 1rem;
-}
-
-.devis-link {
-  display: block;
-  margin-top: 1rem;
-  font-family: var(--sans);
-  font-size: 0.95rem;
-  color: var(--gold);
-  text-decoration: none;
-  font-style: italic;
-  transition: color 0.3s ease;
-}
-
+.devis-link { display: block; margin-top: 1rem; font-family: var(--sans); font-size: 0.95rem; color: var(--gold); text-decoration: none; font-style: italic; transition: color 0.3s ease; }
 .devis-link:hover { color: var(--gold-light); }
-
-.devis-text {
-  margin-top: 1.2rem;
-  font-family: var(--sans);
-  font-size: 0.92rem;
-  color: var(--light-text-secondary);
-  line-height: 1.6;
-}
-
-.devis-link-inline {
-  color: var(--gold-light);
-  text-decoration: none;
-  border-bottom: 1px solid rgba(196, 154, 26, 0.3);
-  transition: all 0.3s ease;
-}
-
-.devis-link-inline:hover {
-  color: #D9AE2E;
-  border-bottom-color: #D9AE2E;
-}
-
+.devis-text { margin-top: 1.2rem; font-family: var(--sans); font-size: 0.92rem; color: var(--light-text-secondary); line-height: 1.6; }
+.devis-link-inline { color: var(--gold-light); text-decoration: none; border-bottom: 1px solid rgba(196,154,26,0.3); transition: all 0.3s ease; }
+.devis-link-inline:hover { color: #D9AE2E; border-bottom-color: #D9AE2E; }
 .pricing-card.featured .devis-link { color: var(--gold-light); }
 .pricing-card.featured .devis-link:hover { color: #D9AE2E; }
 
-/* Devis modal */
-.devis-modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 10000;
-  background: rgba(10, 10, 10, 0.85);
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
-}
-
+.devis-modal { display: none; position: fixed; inset: 0; z-index: 10000; background: rgba(10,10,10,0.85); justify-content: center; align-items: center; padding: 2rem; }
 .devis-modal.active { display: flex; }
-
-.devis-modal-inner {
-  background: var(--paper);
-  max-width: 640px;
-  width: 100%;
-  max-height: 90vh;
-  overflow-y: auto;
-  position: relative;
-  padding: 2rem;
-}
-
-.devis-modal-close {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  width: 36px;
-  height: 36px;
-  background: none;
-  border: 1px solid var(--line);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  color: var(--muted);
-  font-size: 1.2rem;
-  line-height: 1;
-}
-
-.devis-modal-close:hover {
-  border-color: var(--gold);
-  color: var(--ink);
-}
+.devis-modal-inner { background: var(--paper); max-width: 640px; width: 100%; max-height: 90vh; overflow-y: auto; position: relative; padding: 2rem; }
+.devis-modal-close { position: absolute; top: 1rem; right: 1rem; width: 36px; height: 36px; background: none; border: 1px solid var(--line); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; color: var(--muted); font-size: 1.2rem; line-height: 1; }
+.devis-modal-close:hover { border-color: var(--gold); color: var(--ink); }
 
 @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes expandLine { 0%, 100% { width: 20px; } 50% { width: 40px; } }
@@ -363,7 +196,7 @@ body { font-family: var(--sans); background: var(--paper); color: var(--ink); ov
   .editions-layout { grid-template-columns: 1fr; gap: 3rem; }
 }
 @media (max-width: 768px) {
-  .hero-nav { padding: 1.5rem 2rem; }
+  .hero-nav { padding: 1.5rem 2rem; flex-wrap: wrap; }
   .hero-content { padding: 3rem 2rem; }
   .hero-bottom { padding: 1.5rem 2rem; flex-direction: column; gap: 1rem; }
   .manifesto { padding: 5rem 2rem 2rem; }
@@ -386,246 +219,222 @@ body { font-family: var(--sans); background: var(--paper); color: var(--ink); ov
 <!-- ═══ ORDER CONFIRMED OVERLAY ═══ -->
 <div class="order-overlay" id="orderOverlay">
   <div class="order-overlay-inner">
-    <div class="order-check">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#C49A1A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-    </div>
-    <h1 class="order-title">Votre commande est confirmée.</h1>
-    <p class="order-subtitle">Merci pour votre achat.</p>
+    <div class="order-check"><svg viewBox="0 0 24 24" fill="none" stroke="#C49A1A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+    <h1 class="order-title" data-i18n="order_title">Votre commande est confirmée.</h1>
+    <p class="order-subtitle" data-i18n="order_subtitle">Merci pour votre achat.</p>
     <div class="order-gold-line"></div>
     <div class="order-body">
-      <p>Votre facture vous sera envoyée automatiquement par email. Merci de vérifier votre dossier de spams ou de contacter <a href="/cdn-cgi/l/email-protection#4f2d2a21252e2226210f232a372e293d262c2e212e612c2022"><span class="__cf_email__" data-cfemail="7311161d19121e1a1d331f160b1215011a10121d125d101c1e">[email&#160;protected]</span></a> si ce n'est pas le cas.</p>
-      <p>Les instructions pour accéder à votre espace en ligne vous seront également communiquées par email.</p>
+      <p data-i18n="order_invoice_html">Votre facture vous sera envoyée automatiquement par email. Merci de vérifier votre dossier de spams ou de contacter <a href="mailto:benjamin@lexafricana.com">benjamin@lexafricana.com</a> si ce n'est pas le cas.</p>
+      <p data-i18n="order_access">Les instructions pour accéder à votre espace en ligne vous seront également communiquées par email.</p>
     </div>
-    <a href="#" class="order-back" id="orderBack">Retour au site</a>
+    <a href="#" class="order-back" id="orderBack" data-i18n="back_to_site">Retour au site</a>
   </div>
 </div>
 
 <!-- ═══ CGV OVERLAY ═══ -->
 <div class="order-overlay" id="termsOverlay">
   <div class="order-overlay-inner" style="text-align:left; max-width:800px;">
-    <h1 class="order-title" style="text-align:center; margin-bottom:2rem;">Conditions Générales de Vente</h1>
+    <h1 class="order-title" style="text-align:center; margin-bottom:2rem;" data-i18n="terms_title">Conditions Générales de Vente</h1>
     <div class="order-gold-line"></div>
-    <div class="order-body cgv-body">
-
-<h2>1. Objet</h2>
-<p>Les présentes Conditions Générales de Vente (CGV) régissent les relations contractuelles entre la société Ilini, située au 12 rue de la Part-Dieu, 69003 Lyon (ci-après « l'Éditeur »), et toute personne physique ou morale procédant à un achat via le site lexafricana.com (ci-après « le Client »).</p>
-<p>Elles encadrent la vente d'un service d'abonnement à une publication mensuelle d'analyse juridique et stratégique du secteur minier africain.</p>
-
-<h2>2. Description du service</h2>
-<p>Le service proposé consiste en un accès à un bulletin mensuel spécialisé, des contenus incluant notamment des synthèses exécutives, analyses approfondies, suivi réglementaire, veille contentieuse et arbitrale, et un accès éventuel à un espace en ligne réservé aux abonnés.</p>
-<p>Le contenu est fourni à titre informatif et ne constitue pas un conseil juridique individualisé.</p>
-
-<h2>3. Accès au service</h2>
-<p>L'accès au service est conditionné à la validation du paiement, à la création d'un compte (le cas échéant), et à la réception des identifiants transmis par email. Le Client est responsable de la confidentialité de ses identifiants.</p>
-
-<h2>4. Tarifs</h2>
-<p>Les prix sont indiqués en euros hors taxes (HT) ou toutes taxes comprises (TTC) selon le cas. Ils peuvent être modifiés à tout moment pour les nouvelles souscriptions, mais restent fermes pour la durée d'abonnement souscrite. Toute taxe applicable est facturée conformément à la réglementation en vigueur.</p>
-
-<h2>5. Modalités de paiement</h2>
-<p>Le paiement s'effectue en ligne (carte bancaire ou tout autre moyen proposé), en une fois ou de manière récurrente selon la formule choisie. Le paiement est exigible immédiatement lors de la commande.</p>
-
-<h2>6. Durée et renouvellement</h2>
-<p>L'abonnement est souscrit pour une durée déterminée (mensuelle ou annuelle) et peut être reconduit automatiquement sauf résiliation par le Client avant échéance. Les modalités précises de reconduction sont indiquées lors de l'achat.</p>
-
-<h2>7. Droit de rétractation</h2>
-<p>Conformément à la réglementation applicable, si le Client est un consommateur, il dispose d'un délai de 14 jours. Toutefois, ce droit peut être exclu en cas de fourniture immédiate de contenu numérique après accord exprès. Pour les clients professionnels, aucun droit de rétractation ne s'applique sauf disposition contraire.</p>
-
-<h2>8. Résiliation</h2>
-<p>Le Client peut résilier son abonnement à tout moment pour les abonnements sans engagement, ou à échéance pour les abonnements avec durée minimale. La résiliation prend effet à la fin de la période en cours. Aucun remboursement partiel n'est dû.</p>
-
-<h2>9. Propriété intellectuelle</h2>
-<p>Tous les contenus fournis sont protégés par le droit d'auteur et restent la propriété exclusive de l'Éditeur. Toute reproduction, diffusion, revente ou partage (même partiel) sans autorisation écrite est strictement interdite.</p>
-
-<h2>10. Usage autorisé</h2>
-<p>Le Client s'engage à utiliser les contenus uniquement pour ses besoins internes et à ne pas redistribuer les analyses à des tiers sans licence appropriée. Des licences spécifiques peuvent être proposées pour un usage collectif ou institutionnel.</p>
-
-<h2>11. Responsabilité</h2>
-<p>L'Éditeur s'efforce de fournir des informations fiables, mais ne garantit pas l'exhaustivité ou l'actualité des données et ne peut être tenu responsable des décisions prises sur la base des contenus fournis. Le service constitue un outil d'aide à la décision, non une prestation de conseil juridique personnalisée.</p>
-
-<h2>12. Disponibilité du service</h2>
-<p>L'Éditeur s'engage à fournir le service avec diligence, mais peut suspendre l'accès temporairement pour maintenance et ne saurait être tenu responsable des interruptions indépendantes de sa volonté.</p>
-
-<h2>13. Données personnelles</h2>
-<p>Les données personnelles sont traitées conformément à la réglementation applicable (RGPD) et à la politique de confidentialité disponible sur le site. Le Client dispose d'un droit d'accès, de rectification et de suppression.</p>
-
-<h2>14. Force majeure</h2>
-<p>Aucune des parties ne pourra être tenue responsable en cas de force majeure empêchant l'exécution du contrat.</p>
-
-<h2>15. Droit applicable et juridiction compétente</h2>
-<p>Les présentes CGV sont régies par le droit français. Tout litige sera soumis aux tribunaux compétents du ressort du siège de l'Éditeur, sauf disposition légale contraire.</p>
-
-<h2>16. Contact</h2>
-<p>Pour toute question : <a href="/cdn-cgi/l/email-protection#6c0f0302180d0f182c0009140d0a1e050f0d020d420f0301"><span class="__cf_email__" data-cfemail="b3d0dcddc7d2d0c7f3dfd6cbd2d5c1dad0d2ddd29dd0dcde">[email&#160;protected]</span></a></p>
-
+    <div class="order-body cgv-body" id="cgvContent">
+      <h2>1. Objet</h2><p>Les présentes Conditions Générales de Vente (CGV) régissent les relations contractuelles entre la société Ilini, située au 12 rue de la Part-Dieu, 69003 Lyon (ci-après « l'Éditeur »), et toute personne physique ou morale procédant à un achat via le site lexafricana.com (ci-après « le Client »).</p><p>Elles encadrent la vente d'un service d'abonnement à une publication mensuelle d'analyse juridique et stratégique du secteur minier africain.</p>
+      <h2>2. Description du service</h2><p>Le service proposé consiste en un accès à un bulletin mensuel spécialisé, des contenus incluant notamment des synthèses exécutives, analyses approfondies, suivi réglementaire, veille contentieuse et arbitrale, et un accès éventuel à un espace en ligne réservé aux abonnés.</p><p>Le contenu est fourni à titre informatif et ne constitue pas un conseil juridique individualisé.</p>
+      <h2>3. Accès au service</h2><p>L'accès au service est conditionné à la validation du paiement, à la création d'un compte (le cas échéant), et à la réception des identifiants transmis par email. Le Client est responsable de la confidentialité de ses identifiants.</p>
+      <h2>4. Tarifs</h2><p>Les prix sont indiqués en euros hors taxes (HT) ou toutes taxes comprises (TTC) selon le cas. Ils peuvent être modifiés à tout moment pour les nouvelles souscriptions, mais restent fermes pour la durée d'abonnement souscrite. Toute taxe applicable est facturée conformément à la réglementation en vigueur.</p>
+      <h2>5. Modalités de paiement</h2><p>Le paiement s'effectue en ligne (carte bancaire ou tout autre moyen proposé), en une fois ou de manière récurrente selon la formule choisie. Le paiement est exigible immédiatement lors de la commande.</p>
+      <h2>6. Durée et renouvellement</h2><p>L'abonnement est souscrit pour une durée déterminée (mensuelle ou annuelle) et peut être reconduit automatiquement sauf résiliation par le Client avant échéance. Les modalités précises de reconduction sont indiquées lors de l'achat.</p>
+      <h2>7. Droit de rétractation</h2><p>Conformément à la réglementation applicable, si le Client est un consommateur, il dispose d'un délai de 14 jours. Toutefois, ce droit peut être exclu en cas de fourniture immédiate de contenu numérique après accord exprès. Pour les clients professionnels, aucun droit de rétractation ne s'applique sauf disposition contraire.</p>
+      <h2>8. Résiliation</h2><p>Le Client peut résilier son abonnement à tout moment pour les abonnements sans engagement, ou à échéance pour les abonnements avec durée minimale. La résiliation prend effet à la fin de la période en cours. Aucun remboursement partiel n'est dû.</p>
+      <h2>9. Propriété intellectuelle</h2><p>Tous les contenus fournis sont protégés par le droit d'auteur et restent la propriété exclusive de l'Éditeur. Toute reproduction, diffusion, revente ou partage (même partiel) sans autorisation écrite est strictement interdite.</p>
+      <h2>10. Usage autorisé</h2><p>Le Client s'engage à utiliser les contenus uniquement pour ses besoins internes et à ne pas redistribuer les analyses à des tiers sans licence appropriée. Des licences spécifiques peuvent être proposées pour un usage collectif ou institutionnel.</p>
+      <h2>11. Responsabilité</h2><p>L'Éditeur s'efforce de fournir des informations fiables, mais ne garantit pas l'exhaustivité ou l'actualité des données et ne peut être tenu responsable des décisions prises sur la base des contenus fournis. Le service constitue un outil d'aide à la décision, non une prestation de conseil juridique personnalisée.</p>
+      <h2>12. Disponibilité du service</h2><p>L'Éditeur s'engage à fournir le service avec diligence, mais peut suspendre l'accès temporairement pour maintenance et ne saurait être tenu responsable des interruptions indépendantes de sa volonté.</p>
+      <h2>13. Données personnelles</h2><p>Les données personnelles sont traitées conformément à la réglementation applicable (RGPD) et à la politique de confidentialité disponible sur le site. Le Client dispose d'un droit d'accès, de rectification et de suppression.</p>
+      <h2>14. Force majeure</h2><p>Aucune des parties ne pourra être tenue responsable en cas de force majeure empêchant l'exécution du contrat.</p>
+      <h2>15. Droit applicable et juridiction compétente</h2><p>Les présentes CGV sont régies par le droit français. Tout litige sera soumis aux tribunaux compétents du ressort du siège de l'Éditeur, sauf disposition légale contraire.</p>
+      <h2>16. Contact</h2><p>Pour toute question : <a href="mailto:contact@lexafricana.com">contact@lexafricana.com</a></p>
     </div>
     <div style="text-align:center; margin-top:3rem;">
-      <a href="#" class="order-back" id="termsBack">Retour au site</a>
+      <a href="#" class="order-back" id="termsBack" data-i18n="back_to_site">Retour au site</a>
     </div>
   </div>
 </div>
 
+<!-- ═══ HERO ═══ -->
 <section class="hero">
   <div class="hero-grid"></div>
   <nav class="hero-nav">
     <div class="logo">Lex Africana Mining Intelligence</div>
-    <a href="#access" class="nav-cta">S'abonner</a>
+    <div class="nav-right">
+      <div class="lang-toggle" id="langToggle"><span id="langFr">FR</span> / <span id="langEn">EN</span></div>
+    </div>
   </nav>
   <div class="hero-content">
-    <div class="hero-tag">Bulletin mensuel</div>
-    <h1 class="hero-title">L'intelligence <em>juridique</em><br>du secteur minier africain</h1>
-    <p class="hero-baseline">Chaque mois, une analyse de terrain écrite depuis l'Afrique, pour ceux qui y investissent.</p>
+    <div class="hero-tag" data-i18n="hero_tag">Bulletin mensuel</div>
+    <h1 class="hero-title" data-i18n="hero_title_html">L'intelligence <em>juridique</em><br>du secteur minier africain</h1>
+    <p class="hero-baseline" data-i18n="hero_baseline">Chaque mois, une analyse de terrain écrite depuis l'Afrique, pour ceux qui y investissent.</p>
+    <div style="margin-top: 2.5rem; opacity: 0; animation: fadeUp 0.8s ease 0.9s forwards;">
+      <a href="#access" class="nav-cta" data-i18n="nav_cta">S'abonner</a>
+    </div>
   </div>
   <div class="hero-bottom">
-    <span>Lancement avril 2026</span>
+    <span data-i18n="hero_launch">Lancement avril 2026</span>
   </div>
 </section>
 
+<!-- ═══ MANIFESTO ═══ -->
 <div class="intro-band">
 <section class="manifesto">
-  <p class="reveal">Codes miniers en mutation. Arbitrages investisseur-État en hausse. Clauses de stabilisation sous pression. Le secteur minier africain traverse une phase de recomposition accélérée, et la plupart des acteurs réagissent trop tard.</p>
+  <p class="reveal" data-i18n="manifesto_1">Codes miniers en mutation. Arbitrages investisseur-État en hausse. Clauses de stabilisation sous pression. Le secteur minier africain traverse une phase de recomposition accélérée, et la plupart des acteurs réagissent trop tard.</p>
   <span class="gold-line reveal"></span>
-  <p class="reveal"><span class="emphasis">Lex Africana Mining Intelligence</span> est conçu pour anticiper. Chaque édition est un outil de décision : ce qui change, pourquoi c'est important, ce qu'il faut faire.</p>
+  <p class="reveal" data-i18n="manifesto_2_html"><span class="emphasis">Lex Africana Mining Intelligence</span> est conçu pour anticiper. Chaque édition est un outil de décision : ce qui change, pourquoi c'est important, ce qu'il faut faire.</p>
 </section>
 </div>
 
+<!-- ═══ PILLARS ═══ -->
 <section class="pillars">
   <div class="section-header reveal">
-    <div class="section-number">01 — Notre approche</div>
-    <h2 class="section-title">Quatre axes d'analyse</h2>
+    <div class="section-number" data-i18n="s01_label">01 — Notre approche</div>
+    <h2 class="section-title" data-i18n="s01_title">Quatre axes d'analyse</h2>
   </div>
   <div class="pillars-grid reveal">
     <div class="pillar">
-      <div class="pillar-icon">Dynamiques</div>
-      <h3>Évolutions réglementaires</h3>
-      <p>Réformes des codes miniers, politiques de transformation locale, exigences de contenu local, participation étatique.</p>
-      <span class="usage">Anticiper les changements avant qu'ils n'impactent vos conventions</span>
+      <div class="pillar-icon" data-i18n="p1_icon">Dynamiques</div>
+      <h3 data-i18n="p1_title">Évolutions réglementaires</h3>
+      <p data-i18n="p1_desc">Réformes des codes miniers, politiques de transformation locale, exigences de contenu local, participation étatique.</p>
+      <span class="usage" data-i18n="p1_usage">Anticiper les changements avant qu'ils n'impactent vos conventions</span>
     </div>
     <div class="pillar">
-      <div class="pillar-icon">Opportunités</div>
-      <h3>Projets en structuration</h3>
-      <p>Simandou, Lobito, minerais critiques. Acteurs, montages juridiques, fenêtres d'entrée.</p>
-      <span class="usage">Identifier les fenêtres d'investissement et les montages adaptés</span>
+      <div class="pillar-icon" data-i18n="p2_icon">Opportunités</div>
+      <h3 data-i18n="p2_title">Projets en structuration</h3>
+      <p data-i18n="p2_desc">Simandou, Lobito, minerais critiques. Acteurs, montages juridiques, fenêtres d'entrée.</p>
+      <span class="usage" data-i18n="p2_usage">Identifier les fenêtres d'investissement et les montages adaptés</span>
     </div>
     <div class="pillar">
-      <div class="pillar-icon">Risques</div>
-      <h3>Carte des risques juridiques</h3>
-      <p>Tensions fiscales (Ghana), quotas d'exportation (RDC), révocations de licences (Guinée), instabilité sahélienne.</p>
-      <span class="usage">Évaluer le risque contractuel par juridiction avant de s'engager</span>
+      <div class="pillar-icon" data-i18n="p3_icon">Risques</div>
+      <h3 data-i18n="p3_title">Carte des risques juridiques</h3>
+      <p data-i18n="p3_desc">Tensions fiscales (Ghana), quotas d'exportation (RDC), révocations de licences (Guinée), instabilité sahélienne.</p>
+      <span class="usage" data-i18n="p3_usage">Évaluer le risque contractuel par juridiction avant de s'engager</span>
     </div>
     <div class="pillar">
-      <div class="pillar-icon">Arbitrage</div>
-      <h3>Différends investisseur-État</h3>
-      <p>Suivi des arbitrages CIRDI et CCI. Sundance c. Congo, règlement Barrick-Mali, affaires guinéennes.</p>
-      <span class="usage">Calibrer votre stratégie contentieuse à partir des précédents récents</span>
+      <div class="pillar-icon" data-i18n="p4_icon">Arbitrage</div>
+      <h3 data-i18n="p4_title">Différends investisseur-État</h3>
+      <p data-i18n="p4_desc">Suivi des arbitrages CIRDI et CCI. Sundance c. Congo, règlement Barrick-Mali, affaires guinéennes.</p>
+      <span class="usage" data-i18n="p4_usage">Calibrer votre stratégie contentieuse à partir des précédents récents</span>
     </div>
   </div>
 </section>
 
+<!-- ═══ ARCHITECTURE ═══ -->
 <section class="architecture">
   <div class="arch-wrapper">
     <div class="arch-header reveal">
-      <div class="section-number">02 — Architecture éditoriale</div>
-      <h2 class="section-title" style="color: var(--paper)">Structuré pour éclairer la décision</h2>
+      <div class="section-number" data-i18n="s02_label">02 — Architecture éditoriale</div>
+      <h2 class="section-title" style="color: var(--paper)" data-i18n="s02_title">Structuré pour éclairer la décision</h2>
     </div>
     <div class="arch-items">
-      <div class="arch-item reveal"><div class="arch-item-label">Synthèse</div><h4>Executive Brief</h4><p>L'essentiel à retenir en quelques minutes.</p><span class="usage">Préparer comités d'investissement et réunions de direction</span></div>
-      <div class="arch-item reveal"><div class="arch-item-label">Analyse</div><h4>Deep Dive</h4><p>Analyse approfondie d'un enjeu structurant.</p><span class="usage">Structurer contrats et anticiper le risque réglementaire</span></div>
-      <div class="arch-item reveal"><div class="arch-item-label">Projets</div><h4>Deal &amp; Project Intelligence</h4><p>Cartographie des opportunités concrètes.</p><span class="usage">Sourcing et due diligence des opportunités</span></div>
-      <div class="arch-item reveal"><div class="arch-item-label">Contentieux</div><h4>Arbitration &amp; Dispute Tracker</h4><p>Suivi des contentieux investisseur-État.</p><span class="usage">Calibrer les stratégies de protection et de résolution</span></div>
-      <div class="arch-item reveal"><div class="arch-item-label">Régulation</div><h4>Regulatory Radar</h4><p>Tableau de suivi par juridiction, actualisé chaque mois.</p><span class="usage">Monitoring continu des juridictions cibles</span></div>
-      <div class="arch-item reveal"><div class="arch-item-label">Expertise</div><h4>Expert Insight</h4><p>Regard d'un praticien de premier plan.</p><span class="usage">Enrichir l'analyse interne avec une perspective de terrain</span></div>
+      <div class="arch-item reveal"><div class="arch-item-label" data-i18n="a1_label">Synthèse</div><h4>Executive Brief</h4><p data-i18n="a1_desc">L'essentiel à retenir en quelques minutes.</p><span class="usage" data-i18n="a1_usage">Préparer comités d'investissement et réunions de direction</span></div>
+      <div class="arch-item reveal"><div class="arch-item-label" data-i18n="a2_label">Analyse</div><h4>Deep Dive</h4><p data-i18n="a2_desc">Analyse approfondie d'un enjeu structurant.</p><span class="usage" data-i18n="a2_usage">Structurer contrats et anticiper le risque réglementaire</span></div>
+      <div class="arch-item reveal"><div class="arch-item-label" data-i18n="a3_label">Projets</div><h4>Deal &amp; Project Intelligence</h4><p data-i18n="a3_desc">Cartographie des opportunités concrètes.</p><span class="usage" data-i18n="a3_usage">Sourcing et due diligence des opportunités</span></div>
+      <div class="arch-item reveal"><div class="arch-item-label" data-i18n="a4_label">Contentieux</div><h4>Arbitration &amp; Dispute Tracker</h4><p data-i18n="a4_desc">Suivi des contentieux investisseur-État.</p><span class="usage" data-i18n="a4_usage">Calibrer les stratégies de protection et de résolution</span></div>
+      <div class="arch-item reveal"><div class="arch-item-label" data-i18n="a5_label">Régulation</div><h4>Regulatory Radar</h4><p data-i18n="a5_desc">Tableau de suivi par juridiction, actualisé chaque mois.</p><span class="usage" data-i18n="a5_usage">Monitoring continu des juridictions cibles</span></div>
+      <div class="arch-item reveal"><div class="arch-item-label" data-i18n="a6_label">Expertise</div><h4>Expert Insight</h4><p data-i18n="a6_desc">Regard d'un praticien de premier plan.</p><span class="usage" data-i18n="a6_usage">Enrichir l'analyse interne avec une perspective de terrain</span></div>
     </div>
   </div>
 </section>
 
+<!-- ═══ AUDIENCE ═══ -->
 <section class="audience">
   <div class="audience-wrapper">
     <div class="audience-left reveal">
-      <div class="section-number">03 — Pour qui</div>
-      <h2 class="section-title">Pour ceux qui opèrent, structurent ou arbitrent</h2>
-      <p>Pour des acteurs déjà engagés ou en cours d'engagement sur le continent africain — qui ont besoin d'une lecture juridique exigeante et directement exploitable.</p>
+      <div class="section-number" data-i18n="s03_label">03 — Pour qui</div>
+      <h2 class="section-title" data-i18n="s03_title">Pour ceux qui opèrent, structurent ou arbitrent</h2>
+      <p data-i18n="s03_desc">Pour des acteurs déjà engagés ou en cours d'engagement sur le continent africain — qui ont besoin d'une lecture juridique exigeante et directement exploitable.</p>
     </div>
     <div class="audience-profiles reveal">
-      <div class="profile"><span class="profile-num">01</span><span class="profile-name">Cabinets d'avocats et praticiens de l'arbitrage</span></div>
-      <div class="profile"><span class="profile-num">02</span><span class="profile-name">Entreprises minières et opérateurs extractifs</span></div>
-      <div class="profile"><span class="profile-num">03</span><span class="profile-name">Fonds d'investissement et institutions financières</span></div>
-      <div class="profile"><span class="profile-num">04</span><span class="profile-name">Institutions publiques et régulateurs</span></div>
-      <div class="profile"><span class="profile-num">05</span><span class="profile-name">Arbitres et institutions d'arbitrage</span></div>
+      <div class="profile"><span class="profile-num">01</span><span class="profile-name" data-i18n="prof_1">Cabinets d'avocats et praticiens de l'arbitrage</span></div>
+      <div class="profile"><span class="profile-num">02</span><span class="profile-name" data-i18n="prof_2">Entreprises minières et opérateurs extractifs</span></div>
+      <div class="profile"><span class="profile-num">03</span><span class="profile-name" data-i18n="prof_3">Fonds d'investissement et institutions financières</span></div>
+      <div class="profile"><span class="profile-num">04</span><span class="profile-name" data-i18n="prof_4">Institutions publiques et régulateurs</span></div>
+      <div class="profile"><span class="profile-num">05</span><span class="profile-name" data-i18n="prof_5">Arbitres et institutions d'arbitrage</span></div>
     </div>
   </div>
 </section>
 
+<!-- ═══ MÉTHODE ═══ -->
 <section class="rigor">
   <div class="rigor-wrapper">
     <div class="rigor-text reveal">
-      <div class="section-number">04 — Méthode</div>
-      <h2 class="section-title">Écrit depuis le terrain</h2>
-      <p>Les analyses de Lex Africana Mining Intelligence sont produites par des praticiens actifs dans le secteur extractif africain — avocats, arbitres, consultants — qui suivent les dossiers de l'intérieur.</p>
-      <p>La veille couvre systématiquement les sources primaires : décisions arbitrales, réformes législatives, publications des régulateurs, conventions minières.</p>
-      <p class="key-line">Une partie significative de ces informations n'est pas accessible de l'extérieur.</p>
+      <div class="section-number" data-i18n="s04_label">04 — Méthode</div>
+      <h2 class="section-title" data-i18n="s04_title">Écrit depuis le terrain</h2>
+      <p data-i18n="s04_p1">Les analyses de Lex Africana Mining Intelligence sont produites par des praticiens actifs dans le secteur extractif africain — avocats, arbitres, consultants — qui suivent les dossiers de l'intérieur.</p>
+      <p data-i18n="s04_p2">La veille couvre systématiquement les sources primaires : décisions arbitrales, réformes législatives, publications des régulateurs, conventions minières.</p>
+      <p class="key-line" data-i18n="s04_key">Une partie significative de ces informations n'est pas accessible de l'extérieur.</p>
     </div>
     <div class="rigor-pillars reveal">
-      <div class="rigor-pillar"><h4>Perspective africaine</h4><p>Analyses produites depuis le continent, par des praticiens qui connaissent les juridictions de l'intérieur</p></div>
-      <div class="rigor-pillar"><h4>Sources primaires</h4><p>Décisions arbitrales, codes miniers, textes réglementaires, conventions d'investissement</p></div>
-      <div class="rigor-pillar"><h4>Réseau de praticiens</h4><p>Avocats, arbitres et consultants engagés dans les opérations extractives en Afrique</p></div>
+      <div class="rigor-pillar"><h4 data-i18n="m1_title">Perspective africaine</h4><p data-i18n="m1_desc">Analyses produites depuis le continent, par des praticiens qui connaissent les juridictions de l'intérieur</p></div>
+      <div class="rigor-pillar"><h4 data-i18n="m2_title">Sources primaires</h4><p data-i18n="m2_desc">Décisions arbitrales, codes miniers, textes réglementaires, conventions d'investissement</p></div>
+      <div class="rigor-pillar"><h4 data-i18n="m3_title">Réseau de praticiens</h4><p data-i18n="m3_desc">Avocats, arbitres et consultants engagés dans les opérations extractives en Afrique</p></div>
     </div>
   </div>
 </section>
 
+<!-- ═══ ÉDITIONS ═══ -->
 <section class="editions">
   <div class="editions-wrapper">
     <div class="editions-layout reveal">
       <div class="editions-left">
-        <div class="section-number">05 — Dans le prochain numéro</div>
-        <h2 class="section-title">Numéro 1</h2>
-        <div class="editions-meta"><span class="edition-badge">Avril 2026</span></div>
-        <p class="editions-intro">Première édition de Lex Africana Mining Intelligence, structurée autour des rubriques clés du rapport.</p>
-        <p class="editions-intro">Inclut un encart spécial consacré aux enseignements de la Paris Arbitration Week 2026 sur les évolutions récentes de l'arbitrage minier en Afrique.</p>
-        <p class="editions-reserved">Accès réservé aux abonnés.</p>
+        <div class="section-number" data-i18n="s05_label">05 — Dans le prochain numéro</div>
+        <h2 class="section-title" data-i18n="s05_title">Numéro 1</h2>
+        <div class="editions-meta"><span class="edition-badge" data-i18n="s05_badge">Avril 2026</span></div>
+        <p class="editions-intro" data-i18n="s05_intro1">Première édition de Lex Africana Mining Intelligence, structurée autour des rubriques clés du rapport.</p>
+        <p class="editions-intro" data-i18n="s05_intro2">Inclut un encart spécial consacré aux enseignements de la Paris Arbitration Week 2026 sur les évolutions récentes de l'arbitrage minier en Afrique.</p>
+        <p class="editions-reserved" data-i18n="s05_reserved">Accès réservé aux abonnés.</p>
       </div>
       <div class="editions-right">
-        <div class="editions-rubrique"><span class="editions-rubrique-num">01</span><div><h4>Executive Brief</h4><p>Opportunités, risques et tendances du mois</p></div></div>
-        <div class="editions-rubrique highlight"><span class="editions-rubrique-num">02</span><div><h4>Encart spécial — Paris Arbitration Week</h4><p>Les enseignements de la PAW 2026 sur les défis de l'arbitrage minier en Afrique</p></div></div>
-        <div class="editions-rubrique"><span class="editions-rubrique-num">03</span><div><h4>Deep Dive</h4><p>Analyse approfondie d'un enjeu structurant.</p></div></div>
-        <div class="editions-rubrique"><span class="editions-rubrique-num">04</span><div><h4>Arbitration &amp; Dispute Tracker</h4><p>Suivi des contentieux investisseur-État</p></div></div>
-        <div class="editions-rubrique"><span class="editions-rubrique-num">05</span><div><h4>Regulatory Radar</h4><p>Réformes des codes miniers et implications juridiques</p></div></div>
-        <div class="editions-rubrique"><span class="editions-rubrique-num">06</span><div><h4>Expert Insight</h4><p>Regard d'un praticien de premier plan</p></div></div>
+        <div class="editions-rubrique"><span class="editions-rubrique-num">01</span><div><h4>Executive Brief</h4><p data-i18n="e1_desc">Opportunités, risques et tendances du mois</p></div></div>
+        <div class="editions-rubrique highlight"><span class="editions-rubrique-num">02</span><div><h4 data-i18n="e2_title">Encart spécial — Paris Arbitration Week</h4><p data-i18n="e2_desc">Les enseignements de la PAW 2026 sur les défis de l'arbitrage minier en Afrique</p></div></div>
+        <div class="editions-rubrique"><span class="editions-rubrique-num">03</span><div><h4>Deep Dive</h4><p data-i18n="e3_desc">Analyse approfondie d'un enjeu structurant.</p></div></div>
+        <div class="editions-rubrique"><span class="editions-rubrique-num">04</span><div><h4>Arbitration &amp; Dispute Tracker</h4><p data-i18n="e4_desc">Suivi des contentieux investisseur-État</p></div></div>
+        <div class="editions-rubrique"><span class="editions-rubrique-num">05</span><div><h4>Regulatory Radar</h4><p data-i18n="e5_desc">Réformes des codes miniers et implications juridiques</p></div></div>
+        <div class="editions-rubrique"><span class="editions-rubrique-num">06</span><div><h4>Expert Insight</h4><p data-i18n="e6_desc">Regard d'un praticien de premier plan</p></div></div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- ═══ PRICING ═══ -->
 <section class="pricing" id="access">
   <div class="pricing-wrapper">
     <div class="pricing-header reveal">
-      <div class="section-number">06 — Accès</div>
-      <h2 class="section-title">Offre de lancement<br>Paris Arbitration Week</h2>
-      <p>Abonnez-vous avant le 29 mars 2026 pour bénéficier de tarifs préférentiels de lancement.</p>
+      <div class="section-number" data-i18n="s06_label">06 — Accès</div>
+      <h2 class="section-title" data-i18n="s06_title_html">Offre de lancement<br>Paris Arbitration Week</h2>
+      <p data-i18n="s06_subtitle">Abonnez-vous avant le 29 mars 2026 pour bénéficier de tarifs préférentiels de lancement.</p>
     </div>
     <div class="pricing-cards">
       <div class="pricing-card featured reveal">
-        <div class="pricing-label">Individuel</div>
-        <h3>Accès individuel</h3>
+        <div class="pricing-label" data-i18n="price_ind_label">Individuel</div>
+        <h3 data-i18n="price_ind_title">Accès individuel</h3>
         <div class="pricing-price">900 € <span>HT / an</span></div>
-        <div class="pricing-standard">2 000 € HT — tarif standard</div>
-        <span class="pricing-anchor">L'équivalent de moins d'une heure de conseil juridique externe.</span>
-        <p class="pricing-desc">Accès complet à toutes les éditions mensuelles.</p>
-        <a href="https://ilini.quadernoapp.com/checkout/link/eaa19a784afda68d8e65ca52716097c191cf7971" class="pricing-cta">S'abonner</a>
-        <p class="devis-text">Une facture acquittée est fournie après paiement. Vous pouvez également <a href="#" class="devis-link-inline" id="devisLink1">demander une facture avant paiement</a>.</p>
+        <div class="pricing-standard" data-i18n="price_standard">2 000 € HT — tarif standard</div>
+        <span class="pricing-anchor" data-i18n="price_anchor">L'équivalent de moins d'une heure de conseil juridique externe.</span>
+        <p class="pricing-desc" data-i18n="price_ind_desc">Accès complet à toutes les éditions mensuelles.</p>
+        <a href="https://ilini.quadernoapp.com/checkout/link/eaa19a784afda68d8e65ca52716097c191cf7971" class="pricing-cta" data-i18n="price_ind_cta">S'abonner</a>
+        <p class="devis-text" data-i18n="price_invoice_html">Une facture acquittée est fournie après paiement. Vous pouvez également <a href="#" class="devis-link-inline" id="devisLink1">demander une facture avant paiement</a>.</p>
       </div>
       <div class="pricing-card reveal">
-        <div class="pricing-label">Institutionnel</div>
-        <h3>Accès institutionnel</h3>
-        <p class="pricing-desc">Diffusion multi-utilisateurs au sein de votre organisation. Services dédiés et accompagnement personnalisé.</p>
+        <div class="pricing-label" data-i18n="price_inst_label">Institutionnel</div>
+        <h3 data-i18n="price_inst_title">Accès institutionnel</h3>
+        <p class="pricing-desc" data-i18n="price_inst_desc">Diffusion multi-utilisateurs au sein de votre organisation. Services dédiés et accompagnement personnalisé.</p>
         <select class="pricing-tier-select" id="tierSelect">
-          <option value="" disabled selected>Sélectionnez une formule</option>
-          <option value="5" data-checkout="https://ilini.quadernoapp.com/checkout/link/df883ffdb4fa05d525df090457f32fbeab209c4a">5 personnes — 2 400 € HT / an au lieu de 5 000 €</option>
-          <option value="10" data-checkout="https://ilini.quadernoapp.com/checkout/link/7fa1b1d774dca8aafc3c561675c448393039c566">10 personnes — 4 000 € HT / an au lieu de 9 000 €</option>
-          <option value="20" data-checkout="https://ilini.quadernoapp.com/checkout/link/6be55ed1aea7fbbca64552c01496efeee14c68ba">20 personnes — 7 000 € HT / an au lieu de 15 000 €</option>
-          <option value="50" data-checkout="https://ilini.quadernoapp.com/checkout/link/a418807f36cbe64073c9e1d1b9b2026a6afc5a75">50 personnes — 9 000 € HT / an au lieu de 20 000 €</option>
+          <option value="" disabled selected data-i18n="tier_placeholder">Sélectionnez une formule</option>
+          <option value="5" data-checkout="https://ilini.quadernoapp.com/checkout/link/df883ffdb4fa05d525df090457f32fbeab209c4a" data-i18n="tier_5">5 personnes — 2 400 € HT / an au lieu de 5 000 €</option>
+          <option value="10" data-checkout="https://ilini.quadernoapp.com/checkout/link/7fa1b1d774dca8aafc3c561675c448393039c566" data-i18n="tier_10">10 personnes — 4 000 € HT / an au lieu de 9 000 €</option>
+          <option value="20" data-checkout="https://ilini.quadernoapp.com/checkout/link/6be55ed1aea7fbbca64552c01496efeee14c68ba" data-i18n="tier_20">20 personnes — 7 000 € HT / an au lieu de 15 000 €</option>
+          <option value="50" data-checkout="https://ilini.quadernoapp.com/checkout/link/a418807f36cbe64073c9e1d1b9b2026a6afc5a75" data-i18n="tier_50">50 personnes — 9 000 € HT / an au lieu de 20 000 €</option>
         </select>
-        <a href="#" class="pricing-cta" id="tierCta">Obtenir une licence</a>
-        <a href="#" class="devis-link" id="devisLink2">ou demander un devis</a>
+        <a href="#" class="pricing-cta" id="tierCta" data-i18n="price_inst_cta">Obtenir une licence</a>
+        <a href="#" class="devis-link" id="devisLink2" data-i18n="price_devis">ou demander un devis</a>
       </div>
     </div>
   </div>
@@ -642,161 +451,192 @@ body { font-family: var(--sans); background: var(--paper); color: var(--ink); ov
 <!-- ═══ RESTONS EN CONTACT ═══ -->
 <section class="contact-band">
   <div class="contact-wrapper">
-    <h2 class="contact-title">Restons en contact</h2>
-    <p class="contact-subtitle">Indiquez-nous votre adresse email pour suivre l'actualité de Lex Africana. Pas de spams, désinscrivez-vous quand vous voulez.</p>
+    <h2 class="contact-title" data-i18n="contact_title">Restons en contact</h2>
+    <p class="contact-subtitle" data-i18n="contact_subtitle">Indiquez-nous votre adresse email pour suivre l'actualité de Lex Africana. Pas de spams, désinscrivez-vous quand vous voulez.</p>
     <div class="contact-form">
       <iframe data-tally-src="https://tally.so/embed/OD0p2g?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="120" frameborder="0" marginheight="0" marginwidth="0" title="Email submission"></iframe>
     </div>
   </div>
 </section>
 
+<!-- ═══ FOOTER ═══ -->
 <footer class="footer">
   <div class="footer-logo">Lex Africana Mining Intelligence</div>
-  <div class="footer-tagline">Chaque mois, ce qui change dans le droit minier africain —<br>et ce que cela implique pour vos décisions.</div>
-  <div style="width:100%; text-align:center; margin-top:2.5rem; padding-top:1.5rem; border-top:1px solid rgba(245,240,232,0.06); font-family:var(--sans); font-size:0.88rem; color:rgba(245,240,232,0.35); letter-spacing:0.02em;">Publié par Ilini, 12 rue de la Part-Dieu, 69003 Lyon, France · lexafricana.com · <a href="#/terms" id="cgvLink" style="color:rgba(245,240,232,0.35); text-decoration:none; border-bottom:1px solid rgba(245,240,232,0.15);">Conditions générales de vente</a></div>
+  <div class="footer-legal">Publié par Ilini, 12 rue de la Part-Dieu, 69003 Lyon, France · lexafricana.com · <a href="#/terms" id="cgvLink" data-i18n="footer_cgv">Conditions générales de vente</a></div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-// ═══ ORDER CONFIRMED LOGIC ═══
-function checkHash() {
-  const orderOverlay = document.getElementById('orderOverlay');
-  const termsOverlay = document.getElementById('termsOverlay');
-  const hash = window.location.hash;
+<script>
+// ═══════════════════════════════════════════
+// I18N SYSTEM
+// ═══════════════════════════════════════════
+var i18n = {
+en: {
+  nav_cta: "Subscribe",
+  hero_tag: "Monthly briefing",
+  hero_title_html: "<em>Legal intelligence</em><br>for the African mining sector",
+  hero_baseline: "Every month, on-the-ground analysis from Africa for those who invest there.",
+  hero_launch: "Launching April 2026",
+  manifesto_1: "Mining codes in flux. Investor-State arbitrations on the rise. Stabilisation clauses under pressure. The African mining sector is undergoing rapid transformation, and most stakeholders react too late.",
+  manifesto_2_html: '<span class="emphasis">Lex Africana Mining Intelligence</span> is designed to help you stay ahead. Each edition is a decision-making tool: what is changing, why it matters, what to do.',
+  s01_label: "01 — Our approach", s01_title: "Four axes of analysis",
+  p1_icon: "Dynamics", p1_title: "Regulatory developments", p1_desc: "Mining code reforms, local transformation policies, local content requirements, state participation.", p1_usage: "Anticipate changes before they impact your agreements",
+  p2_icon: "Opportunities", p2_title: "Projects in structuring", p2_desc: "Simandou, Lobito, critical minerals. Players, legal structures, entry windows.", p2_usage: "Identify investment windows and appropriate structures",
+  p3_icon: "Risks", p3_title: "Legal risk map", p3_desc: "Fiscal tensions (Ghana), export quotas (DRC), licence revocations (Guinea), Sahel instability.", p3_usage: "Assess contractual risk by jurisdiction before committing",
+  p4_icon: "Arbitration", p4_title: "Investor-State disputes", p4_desc: "Tracking ICSID and ICC arbitrations. Sundance v. Congo, Barrick-Mali settlement, Guinea cases.", p4_usage: "Calibrate your dispute strategy based on recent precedents",
+  s02_label: "02 — Editorial architecture", s02_title: "Structured to inform decisions",
+  a1_label: "Overview", a1_desc: "The essentials in a few minutes.", a1_usage: "Prepare investment committees and board meetings",
+  a2_label: "Analysis", a2_desc: "In-depth analysis of a structural issue.", a2_usage: "Structure contracts and anticipate regulatory risk",
+  a3_label: "Projects", a3_desc: "Mapping of concrete opportunities.", a3_usage: "Sourcing and due diligence of opportunities",
+  a4_label: "Disputes", a4_desc: "Tracking investor-State disputes.", a4_usage: "Calibrate protection and resolution strategies",
+  a5_label: "Regulation", a5_desc: "Jurisdiction-by-jurisdiction tracker, updated monthly.", a5_usage: "Continuous monitoring of target jurisdictions",
+  a6_label: "Expertise", a6_desc: "Perspective from a leading practitioner.", a6_usage: "Enrich internal analysis with a field perspective",
+  s03_label: "03 — Who it's for", s03_title: "For those who operate, structure or arbitrate", s03_desc: "For stakeholders already engaged or entering the African continent — who need rigorous, actionable legal intelligence.",
+  prof_1: "Law firms and arbitration practitioners", prof_2: "Mining companies and extractive operators", prof_3: "Investment funds and financial institutions", prof_4: "Public institutions and regulators", prof_5: "Arbitrators and arbitral institutions",
+  s04_label: "04 — Methodology", s04_title: "Written from the field",
+  s04_p1: "Lex Africana Mining Intelligence analyses are produced by practitioners active in the African extractive sector — lawyers, arbitrators, consultants — who follow cases from the inside.",
+  s04_p2: "Our monitoring systematically covers primary sources: arbitral decisions, legislative reforms, regulator publications, mining conventions.",
+  s04_key: "A significant portion of this information is not accessible from the outside.",
+  m1_title: "African perspective", m1_desc: "Analyses produced from the continent, by practitioners who know the jurisdictions from within",
+  m2_title: "Primary sources", m2_desc: "Arbitral decisions, mining codes, regulatory texts, investment conventions",
+  m3_title: "Practitioner network", m3_desc: "Lawyers, arbitrators and consultants engaged in extractive operations across Africa",
+  s05_label: "05 — In the next issue", s05_title: "Issue 1", s05_badge: "April 2026",
+  s05_intro1: "First edition of Lex Africana Mining Intelligence, structured around the report's core sections.",
+  s05_intro2: "Includes a special feature on lessons from Paris Arbitration Week 2026 on recent developments in mining arbitration in Africa.",
+  s05_reserved: "Subscriber access only.",
+  e1_desc: "Opportunities, risks and trends of the month",
+  e2_title: "Special feature — Paris Arbitration Week", e2_desc: "Lessons from PAW 2026 on the challenges of mining arbitration in Africa",
+  e3_desc: "In-depth analysis of a structural issue.", e4_desc: "Tracking investor-State disputes", e5_desc: "Mining code reforms and legal implications", e6_desc: "Perspective from a leading practitioner",
+  s06_label: "06 — Access", s06_title_html: "Launch offer<br>Paris Arbitration Week", s06_subtitle: "Subscribe before March 29, 2026 to benefit from preferential launch pricing.",
+  price_ind_label: "Individual", price_ind_title: "Individual access", price_standard: "€2,000 excl. VAT — standard rate", price_anchor: "Less than one hour of outside legal counsel.", price_ind_desc: "Full access to all monthly editions.", price_ind_cta: "Subscribe",
+  price_invoice_html: 'A paid invoice is provided after payment. You can also <a href="#" class="devis-link-inline" id="devisLink1">request an invoice before payment</a>.',
+  price_inst_label: "Institutional", price_inst_title: "Institutional access", price_inst_desc: "Multi-user distribution within your organisation. Dedicated services and personalised support.", price_inst_cta: "Get a licence", price_devis: "or request a quote",
+  tier_placeholder: "Select a plan", tier_5: "5 users — €2,400 excl. VAT / year instead of €5,000", tier_10: "10 users — €4,000 excl. VAT / year instead of €9,000", tier_20: "20 users — €7,000 excl. VAT / year instead of €15,000", tier_50: "50 users — €9,000 excl. VAT / year instead of €20,000",
+  contact_title: "Stay in touch", contact_subtitle: "Leave us your email to follow Lex Africana news. No spam, unsubscribe anytime.",
+  footer_tagline: "Every month, what's changing in African mining law —<br>and what it means for your decisions.",
+  footer_cgv: "Terms and conditions",
+  order_title: "Your order is confirmed.", order_subtitle: "Thank you for your purchase.",
+  order_invoice_html: 'Your invoice will be sent automatically by email. Please check your spam folder or contact <a href="mailto:benjamin@lexafricana.com">benjamin@lexafricana.com</a> if you haven\'t received it.',
+  order_access: "Instructions to access your online space will also be sent by email.",
+  back_to_site: "Back to site",
+  terms_title: "Terms and Conditions"
+},
+fr: {}
+};
 
-  if (hash === '#/order-confirmed') {
-    orderOverlay.classList.add('active');
-    termsOverlay.classList.remove('active');
-    document.body.style.overflow = 'hidden';
-  } else if (hash === '#/terms') {
-    termsOverlay.classList.add('active');
-    orderOverlay.classList.remove('active');
-    document.body.style.overflow = 'hidden';
+var currentLang = 'fr';
+
+function setLang(lang) {
+  currentLang = lang;
+  document.documentElement.lang = lang;
+  try { localStorage.setItem('lexafricana_lang', lang); } catch(e) {}
+
+  document.getElementById('langFr').className = lang === 'fr' ? 'active-lang' : '';
+  document.getElementById('langEn').className = lang === 'en' ? 'active-lang' : '';
+
+  if (lang === 'fr') {
+    // Restore original FR content from data attributes
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+      if (el.dataset.fr) {
+        if (el.dataset.i18n.endsWith('_html')) { el.innerHTML = el.dataset.fr; }
+        else if (el.tagName === 'OPTION') { el.textContent = el.dataset.fr; }
+        else { el.textContent = el.dataset.fr; }
+      }
+    });
   } else {
-    orderOverlay.classList.remove('active');
-    termsOverlay.classList.remove('active');
-    document.body.style.overflow = '';
+    var strings = i18n[lang];
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+      var key = el.dataset.i18n;
+      if (strings[key]) {
+        if (key.endsWith('_html')) { el.innerHTML = strings[key]; }
+        else if (el.tagName === 'OPTION') { el.textContent = strings[key]; }
+        else { el.textContent = strings[key]; }
+      }
+    });
   }
+
+  // Re-bind devisLink1 after innerHTML swap
+  var dl1 = document.getElementById('devisLink1');
+  if (dl1) dl1.addEventListener('click', openDevis);
 }
 
-function closeOverlays() {
-  history.pushState(null, '', window.location.pathname);
-  document.getElementById('orderOverlay').classList.remove('active');
-  document.getElementById('termsOverlay').classList.remove('active');
-  document.body.style.overflow = '';
+// Store original FR text on load
+document.querySelectorAll('[data-i18n]').forEach(function(el) {
+  if (el.dataset.i18n.endsWith('_html')) { el.dataset.fr = el.innerHTML; }
+  else if (el.tagName === 'OPTION') { el.dataset.fr = el.textContent; }
+  else { el.dataset.fr = el.textContent; }
+});
+
+// Detect language
+(function() {
+  var saved = null;
+  try { saved = localStorage.getItem('lexafricana_lang'); } catch(e) {}
+  if (saved === 'en' || saved === 'fr') { setLang(saved); }
+  else {
+    var browserLang = (navigator.language || navigator.userLanguage || 'fr').substring(0, 2);
+    setLang(browserLang === 'fr' ? 'fr' : 'en');
+  }
+})();
+
+document.getElementById('langToggle').addEventListener('click', function() {
+  setLang(currentLang === 'fr' ? 'en' : 'fr');
+});
+
+// ═══ OVERLAYS ═══
+function checkHash() {
+  var h = window.location.hash;
+  var oo = document.getElementById('orderOverlay');
+  var to = document.getElementById('termsOverlay');
+  if (h === '#/order-confirmed') { oo.classList.add('active'); to.classList.remove('active'); document.body.style.overflow = 'hidden'; }
+  else if (h === '#/terms') { to.classList.add('active'); oo.classList.remove('active'); document.body.style.overflow = 'hidden'; }
+  else { oo.classList.remove('active'); to.classList.remove('active'); document.body.style.overflow = ''; }
 }
-
-document.getElementById('orderBack').addEventListener('click', function(e) {
-  e.preventDefault();
-  closeOverlays();
-});
-
-document.getElementById('termsBack').addEventListener('click', function(e) {
-  e.preventDefault();
-  closeOverlays();
-});
-
+function closeOverlays() { history.pushState(null, '', window.location.pathname); document.getElementById('orderOverlay').classList.remove('active'); document.getElementById('termsOverlay').classList.remove('active'); document.body.style.overflow = ''; }
+document.getElementById('orderBack').addEventListener('click', function(e) { e.preventDefault(); closeOverlays(); });
+document.getElementById('termsBack').addEventListener('click', function(e) { e.preventDefault(); closeOverlays(); });
 window.addEventListener('hashchange', checkHash);
 checkHash();
 
 // ═══ DYNAMIC TIER CHECKOUT ═══
 var tierSelect = document.getElementById('tierSelect');
 var tierCta = document.getElementById('tierCta');
-
-tierSelect.addEventListener('change', function() {
-  var selected = tierSelect.options[tierSelect.selectedIndex];
-  var url = selected.getAttribute('data-checkout');
-  if (url) {
-    tierCta.href = url;
-  }
-});
-
-tierCta.addEventListener('click', function(e) {
-  var url = tierCta.getAttribute('href');
-  if (!url || url === '#') {
-    e.preventDefault();
-    tierSelect.focus();
-  } else {
-    e.preventDefault();
-    window.location.href = url;
-  }
-});
+tierSelect.addEventListener('change', function() { var s = tierSelect.options[tierSelect.selectedIndex]; var u = s.getAttribute('data-checkout'); if (u) tierCta.href = u; });
+tierCta.addEventListener('click', function(e) { var u = tierCta.getAttribute('href'); if (!u || u === '#') { e.preventDefault(); tierSelect.focus(); } else { e.preventDefault(); window.location.href = u; } });
 
 // ═══ DEVIS MODAL ═══
 var devisModal = document.getElementById('devisModal');
 var devisClose = document.getElementById('devisClose');
-
-function openDevis(e) {
-  e.preventDefault();
-  devisModal.classList.add('active');
-  document.body.style.overflow = 'hidden';
-  // Load Tally embed
-  var iframe = devisModal.querySelector('iframe[data-tally-src]');
-  if (iframe && !iframe.src) {
-    iframe.src = iframe.dataset.tallySrc;
-  }
-}
-
-function closeDevis() {
-  devisModal.classList.remove('active');
-  if (!document.querySelector('.order-overlay.active')) {
-    document.body.style.overflow = '';
-  }
-}
-
+function openDevis(e) { e.preventDefault(); devisModal.classList.add('active'); document.body.style.overflow = 'hidden'; var iframe = devisModal.querySelector('iframe[data-tally-src]'); if (iframe && !iframe.src) iframe.src = iframe.dataset.tallySrc; }
+function closeDevis() { devisModal.classList.remove('active'); if (!document.querySelector('.order-overlay.active')) document.body.style.overflow = ''; }
 document.getElementById('devisLink1').addEventListener('click', openDevis);
 document.getElementById('devisLink2').addEventListener('click', openDevis);
 devisClose.addEventListener('click', closeDevis);
-devisModal.addEventListener('click', function(e) {
-  if (e.target === devisModal) closeDevis();
+devisModal.addEventListener('click', function(e) { if (e.target === devisModal) closeDevis(); });
+
+// ═══ TALLY ═══
+(function() { var d=document,w="https://tally.so/widgets/embed.js",v=function(){if(typeof Tally!=='undefined'){Tally.loadEmbeds();}else{d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach(function(e){e.src=e.dataset.tallySrc;});}};if(typeof Tally!=='undefined'){v();}else if(!d.querySelector('script[src="'+w+'"]')){var s=d.createElement("script");s.src=w;s.onload=v;s.onerror=v;d.body.appendChild(s);}})();
+
+// ═══ REVEAL ═══
+document.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('hidden'); });
+var observer = new IntersectionObserver(function(entries) { entries.forEach(function(entry) { if (entry.isIntersecting) { entry.target.classList.remove('hidden'); entry.target.classList.add('visible'); } }); }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
+setTimeout(function() { document.querySelectorAll('.reveal.hidden').forEach(function(el) { el.classList.remove('hidden'); el.classList.add('visible'); }); }, 1000);
+
+// ═══ SMOOTH SCROLL ═══
+document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+  if (['orderBack','tierCta','termsBack','cgvLink','devisLink1','devisLink2'].indexOf(a.id) !== -1) return;
+  a.addEventListener('click', function(e) { e.preventDefault(); var t = document.querySelector(a.getAttribute('href')); if (t) t.scrollIntoView({ behavior: 'smooth' }); });
 });
 
-// ═══ TALLY EMBEDS ═══
-(function() {
-  var d = document, w = "https://tally.so/widgets/embed.js";
-  var v = function() {
-    if (typeof Tally !== 'undefined') { Tally.loadEmbeds(); }
-    else { d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach(function(e) { e.src = e.dataset.tallySrc; }); }
-  };
-  if (typeof Tally !== 'undefined') { v(); }
-  else if (!d.querySelector('script[src="' + w + '"]')) {
-    var s = d.createElement("script"); s.src = w; s.onload = v; s.onerror = v; d.body.appendChild(s);
-  }
-})();
-
-// ═══ REVEAL ANIMATIONS ═══
-document.querySelectorAll('.reveal').forEach(el => el.classList.add('hidden'));
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) { entry.target.classList.remove('hidden'); entry.target.classList.add('visible'); }
-  });
-}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-setTimeout(() => {
-  document.querySelectorAll('.reveal.hidden').forEach(el => { el.classList.remove('hidden'); el.classList.add('visible'); });
-}, 1000);
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  if (a.id === 'orderBack' || a.id === 'tierCta' || a.id === 'termsBack' || a.id === 'cgvLink' || a.id === 'devisLink1' || a.id === 'devisLink2') return;
-  a.addEventListener('click', e => {
-    e.preventDefault();
-    const target = document.querySelector(a.getAttribute('href'));
-    if (target) target.scrollIntoView({ behavior: 'smooth' });
-  });
-});
-
-  window.chatwootSettings = {"position":"right","type":"standard","launcherTitle":""};
-  (function(d,t) {
-    var BASE_URL="https://app.chatwoot.com";
-    var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-    g.src=BASE_URL+"/packs/js/sdk.js";
-    g.async = true;
-    s.parentNode.insertBefore(g,s);
-    g.onload=function(){
-      window.chatwootSDK.run({
-        websiteToken: '9noXz3moVxFPsi5CRJGQzCUd',
-        baseUrl: BASE_URL
-      })
-    }
-  })(document,"script");
+// ═══ CHATWOOT ═══
+window.chatwootSettings = {"position":"right","type":"standard","launcherTitle":""};
+(function(d,t) {
+  var BASE_URL="https://app.chatwoot.com";
+  var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+  g.src=BASE_URL+"/packs/js/sdk.js";
+  g.async = true;
+  s.parentNode.insertBefore(g,s);
+  g.onload=function(){ window.chatwootSDK.run({ websiteToken: '9noXz3moVxFPsi5CRJGQzCUd', baseUrl: BASE_URL }) }
+})(document,"script");
 </script>
 
 </body>
